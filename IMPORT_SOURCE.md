@@ -1,37 +1,21 @@
-# Import the full v0.3.0 project
+# Publish AI Interview Studio v0.4.0 into this repository
 
-The actual project source is distributed in `AI-Interview-Studio-Source-v0.3.0.zip` in the ChatGPT conversation. This GitHub repository currently contains only initialization documentation and a Windows CI workflow, **not** the complete source project. Do not start a release build until the full source is committed.
+This GitHub repository is **not** the complete application until the verified source ZIP is imported. The source ZIP is provided in the ChatGPT conversation and cannot be fetched from a public GitHub URL because it has not yet been uploaded. The GitHub connector can edit repository text files but cannot unpack and upload the binary ZIP as a repository tree.
 
-## Import on Windows (PowerShell)
+## One-command source import on Windows
 
-1. Download the ZIP from the ChatGPT conversation.
-2. Extract it. The ZIP has a top-level `AI-Interview-Studio` folder.
-3. Open PowerShell and run the following (replace the two paths):
+Download and extract `AI-Interview-Studio-Source-v0.4.0.zip`, open Windows PowerShell in its extracted `AI-Interview-Studio` folder, and run:
 
 ```powershell
-$source = 'C:\\Users\\YOUR_NAME\\Downloads\\AI-Interview-Studio'
-$repo = 'C:\\Users\\YOUR_NAME\\Documents\\AI-Interview-Studio-Repo'
-git clone https://github.com/AmalBajpayee09/AI-Interview-Studio.git $repo
-Get-ChildItem -LiteralPath $source -Force | Copy-Item -Destination $repo -Recurse -Force
-Set-Location $repo
-# Keep this repository's stricter Windows release workflow:
-git restore .github/workflows/windows-release.yml
-git add -A
-git commit -m 'Import AI Interview Studio v0.3.0 source'
-git push origin main
+powershell -NoProfile -ExecutionPolicy Bypass -File .\\scripts\\publish-github.ps1
 ```
 
-The input ZIP does **not** contain an npm package-lock.json. From the repository root run:
+This imports the *actual source* (including hidden configuration folders), excludes ignored generated content, creates a dedicated `import/v0.4.0` branch, generates a real `package-lock.json`, executes `npm ci` and `npm run build`, and pushes the branch. The script exits without pushing if dependency setup or the frontend build fails. The repository must be reachable and Git authentication must already be configured.
 
-```powershell
-Set-Location apps/desktop
-npm install --package-lock-only
-Set-Location ../..
-git add apps/desktop/package-lock.json
-git commit -m 'Lock frontend dependencies'
-git push origin main
-```
+Open a pull request from that import branch into `main`. [Windows CI workflow](.github/workflows/windows-release.yml) then runs Python tests, builds the React UI, checks Rust, packages the Python worker, bundles an NSIS installer, validates that the installer exists and uploads artifacts when the build gets that far.
 
-Once the full source and lockfile are committed, use GitHub Actions → **Windows native build and installer** → **Run workflow**. Inspect the run logs and download the `windows-build-artifacts-and-logs` artifact only if the build succeeds. A successful compile does not substitute for clean-machine install, upgrade and uninstall tests.
+## Evidence from the first actual Windows run
 
-This document is not an installer and does not assert that GitHub Actions has run.
+[Run #41346727566](https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41346727566) started on a GitHub Windows runner and failed at the required source check (`apps/desktop/package.json` missing). Subsequent build jobs were skipped. **This is a genuine CI failure and is not a successful Windows application build.**
+
+Do not declare a release until actual installer artifacts exist and have passed clean-machine install, launch, upgrade, uninstall and recovery verification. This repository is public: ensure no personal documents, API keys, transcripts or private databases are committed.
