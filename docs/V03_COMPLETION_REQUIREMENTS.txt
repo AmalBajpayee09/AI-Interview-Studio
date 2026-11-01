@@ -1,0 +1,641 @@
+# AI INTERVIEW STUDIO v0.3.0
+## FINAL ENGINEERING COMPLETION ADD-ON — RESOLVE ALL BLOCKERS AND DELIVER A WORKING WINDOWS PRODUCT
+
+You are continuing development of the existing AI Interview Studio project, currently at v0.2.0.
+
+This is an incremental engineering task. Preserve the existing codebase, completed features, database, documentation, and project history.
+
+The previous completion add-on remains fully applicable. This document specifically addresses the remaining blockers, incomplete implementations, unverified features, and gaps that were not adequately resolved in the previous development cycle.
+
+Your mission is to move the project from a tested source preview to a genuinely functional, installable Windows desktop application.
+
+Do not create another superficial source-only release.
+
+---
+
+# 1. FIRST: INVESTIGATE THE v0.2.0 BLOCKERS
+
+Before writing new code, inspect the latest source archive and identify the exact reasons for:
+
+1. React production build being blocked.
+2. Rust/Tauri compilation being blocked.
+3. Windows installer not being generated.
+4. Isolated code execution remaining blocked.
+5. Dual-speaker transcription being only partial.
+6. Actual AI generation latency not being measured.
+7. Real audio device integration not being validated.
+
+Do not merely repeat that the Linux environment lacks Rust/Cargo or npm dependencies.
+
+Determine which issues are:
+- Missing dependencies.
+- Incorrect package versions.
+- Build configuration errors.
+- Missing source files.
+- Platform-specific restrictions.
+- Incomplete implementations.
+- External environment limitations.
+
+Fix every issue that can be fixed in the current environment.
+
+Do not downgrade dependencies or remove functionality merely to make a build pass.
+
+# 2. COMPLETE THE FRONTEND PRODUCTION BUILD
+
+The React/TypeScript frontend must build successfully.
+
+Implement and verify:
+
+- Dependency installation using the correct lockfile.
+- TypeScript type checking.
+- ESLint or equivalent linting.
+- Production bundling.
+- Correct environment configuration.
+- Asset handling.
+- Route handling.
+- Error boundaries.
+- No unresolved imports.
+- No missing components.
+- No broken application routes.
+- No placeholder pages for promised features.
+- No critical browser-console errors.
+
+Use reproducible dependency versions.
+
+Deliver the actual production build output.
+
+Do not consider TypeScript syntax transpilation equivalent to a successful production build.
+
+# 3. COMPLETE RUST AND TAURI COMPILATION
+
+Resolve all available Rust/Tauri build issues.
+
+Implement and verify:
+
+- Rust toolchain compatibility.
+- Tauri 2 dependency compatibility.
+- Correct Cargo configuration.
+- Correct application entry point.
+- Correct frontend asset integration.
+- Correct Tauri permissions and capabilities.
+- Secure command registration.
+- Typed IPC contracts.
+- Error propagation.
+- Native window configuration.
+- Process lifecycle management.
+- Release-mode compilation.
+
+Run appropriate commands, including Cargo checks and release builds, in an environment with the required toolchain.
+
+Do not claim a successful native build based on source inspection alone.
+
+# 4. WINDOWS BUILD PIPELINE — DO NOT STOP BECAUSE DEVELOPMENT IS ON LINUX
+
+A Linux development environment must not become the reason the Windows installer remains permanently blocked.
+
+Create a proper Windows release pipeline.
+
+Use GitHub Actions with a Windows runner (`windows-latest`) or another genuine Windows build environment.
+
+The workflow should:
+
+1. Check out the project.
+2. Install the supported Node.js version.
+3. Install Rust and the required Windows target.
+4. Install the necessary Windows build dependencies.
+5. Install frontend dependencies reproducibly.
+6. Run frontend checks and production build.
+7. Run Rust checks and tests.
+8. Build/package the Python AI worker for Windows.
+9. Execute available integration tests.
+10. Run Tauri Windows bundling.
+11. Generate the NSIS installer.
+12. Generate MSI where configured and supported.
+13. Upload generated release artifacts.
+14. Preserve useful build logs on failure.
+
+The workflow must use pinned or controlled dependency versions where practical.
+
+Do not make a workflow that merely prints success or uploads placeholder files.
+
+Actually run the workflow when repository access and credentials are available.
+
+If GitHub Actions cannot be executed, provide the exact remaining steps and a truthful blocked status.
+
+# 5. COMPLETE THE WINDOWS INSTALLER AND END-USER EXPERIENCE
+
+The final application must not require the user to install developer tools manually.
+
+The Windows installer should include or correctly manage:
+
+- Tauri desktop application.
+- Production React assets.
+- Packaged Python worker.
+- Required Python dependencies.
+- SQLite initialization.
+- Required runtime components.
+- Application icon and metadata.
+- Application shortcuts.
+- Uninstaller.
+- Upgrade behaviour.
+- Persistent user data.
+
+Ensure that:
+
+- The application can be installed on a clean Windows machine.
+- It can start without a manually activated Python virtual environment.
+- It can locate its worker regardless of installation directory.
+- It handles Windows paths with spaces.
+- It reports missing dependencies clearly.
+- It does not expose API keys or secrets in packaged files.
+- It cleans up child processes on shutdown.
+- It preserves user data across upgrades.
+- It does not delete user data unexpectedly during uninstall.
+
+Test fresh installation, first launch, restart, upgrade, uninstall, and reinstall.
+
+Generate actual installer files.
+
+# 6. COMPLETE REAL DUAL-SPEAKER AUDIO TRANSCRIPTION
+
+The current implementation only has partial transcription functionality.
+
+Turn it into a complete audio-processing subsystem.
+
+Implement:
+
+- Microphone capture.
+- Configurable system-audio capture using supported Windows APIs.
+- Independent audio source configuration.
+- Continuous audio buffering.
+- Voice activity detection.
+- Speech-to-text.
+- Speaker diarization.
+- Timestamped transcript segments.
+- Candidate/interviewer speaker classification where evidence supports it.
+- Unknown-speaker fallback.
+- Noise handling.
+- Silence handling.
+- Language selection.
+- Hindi and English transcription.
+- Streaming partial transcripts.
+- Final transcript correction.
+- Device selection.
+- Device disconnection recovery.
+- Audio permission and device error handling.
+
+Architecture should separate:
+1. Audio capture.
+2. Audio preprocessing.
+3. Speech recognition.
+4. Speaker diarization.
+5. Transcript management.
+6. Question detection.
+7. AI answer generation.
+
+Do not use simple alternating-speaker assumptions as diarization.
+
+Do not treat two simultaneous audio sources as automatically equivalent to two distinct people.
+
+Test with real recorded fixtures and real Windows audio devices wherever possible.
+
+Provide a visible status for:
+- Microphone connected.
+- System audio connected.
+- Transcription running.
+- Speaker uncertain.
+- AI processing.
+
+Measure transcription latency and time-to-final-transcript.
+
+# 7. COMPLETE SECURE CODE EXECUTION
+
+The previous implementation still reports isolated code execution as BLOCKED.
+
+Resolve this with a genuine execution architecture.
+
+Implement a dedicated execution service separate from the main desktop application.
+
+Requirements:
+
+- Python execution.
+- C++ compilation and execution.
+- Java compilation and execution.
+- JavaScript execution.
+- SQL practice execution.
+- Configurable stdin.
+- Standard output and error capture.
+- Compilation error reporting.
+- Runtime error reporting.
+- Execution time measurement.
+- Timeouts.
+- Memory limits where supported.
+- Temporary workspace cleanup.
+- Process-tree termination.
+- Test-case execution.
+- Expected versus actual output comparison.
+- Test history.
+
+Security requirements:
+
+- Never execute untrusted code in the Tauri/Rust main process.
+- Do not claim that an ordinary subprocess is a secure sandbox.
+- Restrict filesystem access.
+- Restrict network access.
+- Prevent access to application secrets.
+- Use an actual isolation boundary.
+
+Evaluate Windows-compatible isolation approaches, such as Windows Sandbox, Hyper-V isolation, restricted containers, or another technically justified sandbox.
+
+Provide capability detection and a clear fallback when a required runtime or isolation feature is unavailable.
+
+Never silently run dangerous code without isolation.
+
+For SQL practice, use disposable practice databases and restrict destructive operations as appropriate.
+
+# 8. COMPLETE REAL AI PROVIDER INTEGRATIONS
+
+The existing AI adapter implementation must be validated against real providers.
+
+Support:
+
+- Ollama.
+- Configured cloud AI providers.
+- Model discovery.
+- Model selection.
+- Streaming responses.
+- Cancellation.
+- Provider health checks.
+- API error handling.
+- Rate-limit handling.
+- Timeouts.
+- Token usage tracking where available.
+- Configurable fallback.
+- Secure credential storage.
+
+Run at least one genuine local AI integration test when Ollama is available.
+
+Run at least one genuine cloud integration test when valid user-provided credentials are available.
+
+Use mocked responses for automated tests, but do not present mocked tests as real provider verification.
+
+Do not silently switch local/private data to a cloud provider.
+
+# 9. COMPLETE THE QUESTION-TO-ANSWER PIPELINE
+
+Connect the entire flow:
+
+Audio/text input
+→ Transcript
+→ Speaker identification
+→ Question detection
+→ Question segmentation
+→ Context retrieval
+→ Model selection
+→ Answer generation
+→ Streaming response
+→ Session persistence
+→ Analytics.
+
+The pipeline must support:
+
+- Long interviewer questions.
+- Multiple questions in one utterance.
+- Constraints and follow-ups.
+- Candidate interruptions.
+- Repeated questions.
+- Clarifications.
+- Code-related questions.
+- Resume-based questions.
+- Previous answer context.
+
+Prevent duplicate generation and preserve session continuity.
+
+The user must be able to switch between automatic and manual answer generation.
+
+# 10. FINISH THE MODULES THAT WERE ONLY BASIC OR PARTIAL
+
+Inspect every module in the original specification and both previous completion prompts.
+
+Complete these areas:
+
+### Interview workspace
+- Real-time question/answer workflow.
+- Session controls.
+- Previous question history.
+- Context retrieval.
+- Response modes.
+- Session export.
+
+### Resume intelligence
+- Robust PDF/DOCX parsing.
+- OCR fallback.
+- Skill and experience extraction.
+- Project extraction.
+- Retrieval with source references.
+- Resume-specific question generation.
+- User correction of extracted information.
+
+### Communication practice
+- Reading exercises.
+- Listening and repeating.
+- Speech feedback.
+- Filler-word detection.
+- Pace analysis.
+- Clarity feedback.
+- Constructive improvement suggestions.
+
+### Assessment engine
+- All supported MCQ types.
+- Timers.
+- Negative marking.
+- Partial marking.
+- Autosave.
+- Resume after interruption.
+- Review marks.
+- Result analysis.
+- Topic-wise analytics.
+
+### SQL practice
+- Real query execution.
+- Practice datasets.
+- Query result tables.
+- Joins.
+- Aggregations.
+- Error explanations.
+- Query history.
+
+### DSA and coding
+- Multiple languages.
+- Sample tests.
+- Custom tests.
+- Edge-case suggestions.
+- Complexity explanation.
+- Debugging support.
+
+### Frontend practice
+- HTML/CSS/JavaScript/React tasks.
+- Live preview.
+- Error reporting.
+- Responsive preview.
+
+### System design
+- Requirement analysis.
+- Architecture diagrams.
+- API design.
+- Database design.
+- Scalability.
+- Reliability.
+- Trade-off analysis.
+
+### ML and AI practice
+- ML fundamentals.
+- Deep learning.
+- Neural networks.
+- NLP.
+- LLMs.
+- RAG.
+- Model evaluation.
+- ML system design.
+- Deployment and monitoring.
+
+### HR and behavioural practice
+- STAR answers.
+- Leadership questions.
+- Conflict resolution.
+- Ownership.
+- Teamwork.
+- Communication.
+- Project discussion.
+
+These must be real functional workflows, not static dashboard cards.
+
+# 11. COMPLETE RESOURCE GOVERNOR
+
+The current resource monitoring must be tested and expanded.
+
+Measure actual:
+
+- CPU usage.
+- RAM usage.
+- GPU availability where supported.
+- Worker memory.
+- Model memory requirements.
+- Audio pipeline load.
+- Active task count.
+
+Support:
+
+- Battery Saver.
+- Balanced.
+- Performance.
+
+Implement intelligent model selection based on actual hardware and resource pressure.
+
+Support user overrides.
+
+Do not unload an active model or interrupt a critical task without appropriate handling.
+
+Add clear monitoring and diagnostics.
+
+# 12. COMPLETE THE DESKTOP APPLICATION EXPERIENCE
+
+Review every screen and interaction.
+
+The final desktop UI must be cohesive and polished.
+
+Verify:
+
+- Dashboard navigation.
+- Interview workspace.
+- Assessment workspace.
+- Coding editor.
+- Audio controls.
+- Resume library.
+- Session history.
+- Analytics.
+- Provider settings.
+- Model settings.
+- Resource settings.
+- Privacy settings.
+- Keyboard shortcuts.
+- Compact overlay.
+
+Test all buttons, forms, navigation, settings, dialogs, loading states, error states, and empty states.
+
+No decorative controls that do nothing.
+
+The compact overlay must work as a real native desktop window, not merely a browser element.
+
+Implement supported multi-monitor, DPI scaling, positioning, resizing, and window lifecycle behaviour.
+
+Use documented operating-system capabilities only.
+
+# 13. SECURITY, PRIVACY AND RELIABILITY REVIEW
+
+Perform a complete review of:
+
+- Tauri capabilities.
+- Rust IPC.
+- Python worker IPC.
+- API key storage.
+- Database permissions.
+- File uploads.
+- Audio handling.
+- Code execution.
+- Temporary files.
+- Logging.
+- Network exposure.
+- Process cleanup.
+- Error handling.
+
+Ensure that sensitive information is not accidentally written to logs or uploaded to cloud providers.
+
+Provide clear user controls for data retention and deletion.
+
+# 14. END-TO-END ACCEPTANCE TESTS
+
+Create real tests covering the complete workflows.
+
+Test scenarios:
+
+1. Install the Windows application.
+2. Launch the desktop application.
+3. Create a new interview session.
+4. Upload a resume.
+5. Extract resume information.
+6. Configure an AI provider.
+7. Generate an interview question.
+8. Submit a text answer.
+9. Start microphone transcription.
+10. Process interviewer audio.
+11. Detect a question.
+12. Generate a contextual answer.
+13. Save the transcript and answer.
+14. Restart the application.
+15. Recover the session.
+16. Start an MCQ assessment.
+17. Save and restore assessment progress.
+18. Run a SQL practice query.
+19. Execute isolated coding tests.
+20. Export session analytics.
+21. Uninstall and reinstall without accidental data loss.
+
+Test the actual Windows executable, not only individual backend functions.
+
+Use deterministic fixtures where live audio or external AI providers are unavailable.
+
+Clearly distinguish simulated tests from real integration tests.
+
+# 15. PERFORMANCE VALIDATION
+
+Measure the actual desktop application, not just the Python HTTP endpoint.
+
+Report separately:
+
+- Cold startup.
+- Warm startup.
+- Idle RAM.
+- Idle CPU.
+- Worker startup.
+- Model discovery.
+- First-token latency.
+- Complete AI answer latency.
+- Speech recognition latency.
+- Final transcript latency.
+- Audio processing overhead.
+- Database operation latency.
+- Code execution latency.
+
+Test on available hardware and record its specifications.
+
+117.5 MB Python worker RSS must not be presented as total application RAM.
+
+Do not promise fixed response times independent of model, hardware, and network.
+
+# 16. RELEASE ENGINEERING AND FINAL ARTIFACTS
+
+Deliver:
+
+- `AI-Interview-Studio-Setup.exe`
+- MSI package where supported.
+- Portable Windows package where feasible.
+- `AI-Interview-Studio-Source.zip`
+- Complete test report.
+- Windows installation guide.
+- User guide.
+- Developer documentation.
+- Architecture documentation.
+- Release notes.
+- Known limitations.
+- Dependency and licensing summary.
+
+Ensure the source archive contains all required source files but excludes secrets, caches, unnecessary virtual environments, and temporary build files.
+
+Verify ZIP integrity and installer integrity.
+
+# 17. STRICT RELEASE GATE
+
+The project must have a clear release status.
+
+Use:
+
+- PASS: Actually implemented and tested.
+- PARTIAL: Implemented but not completely validated.
+- BLOCKED: Specific technical or environmental blocker remains.
+- NOT STARTED: Not yet implemented.
+
+The final report must include evidence for every PASS.
+
+The release cannot be labelled as a fully completed Windows desktop product if:
+- React production build fails.
+- Rust/Tauri release build fails.
+- Installer is not generated.
+- Python worker does not launch from the installed application.
+- Core application workflows fail.
+- Critical security requirements are unmet.
+
+Do not hide blocked features behind a successful Python test count.
+
+# 18. EXECUTION PRIORITY
+
+Work in this exact order:
+
+1. Fix frontend production build.
+2. Fix Rust/Tauri compilation.
+3. Set up and execute the Windows CI build.
+4. Package the Python worker.
+5. Generate the real Windows installer.
+6. Complete secure code execution.
+7. Complete dual-speaker transcription.
+8. Complete actual AI provider integrations.
+9. Connect the end-to-end question-to-answer pipeline.
+10. Complete basic and partial product modules.
+11. Complete security and resource management.
+12. Perform end-to-end testing.
+13. Measure real performance.
+14. Package and verify final deliverables.
+
+Do not stop after creating documentation, build scripts, or CI configuration.
+
+Continue through all independent tasks even if a particular task is blocked.
+
+If the environment cannot perform a Windows build, use the Windows CI pipeline where authorized. If external access or repository credentials are unavailable, provide the exact reproducible workflow and mark execution as blocked rather than claiming success.
+
+# FINAL DIRECTIVE
+
+This is the final engineering completion cycle, not another prototype cycle.
+
+Do not optimize for a green status dashboard. Optimize for a real, reliable, secure, installable application.
+
+Preserve completed work, eliminate the remaining blockers, finish incomplete features, and produce evidence-backed deliverables.
+
+At the end, provide:
+1. Actual installer and source artifacts.
+2. Actual build logs or CI results.
+3. Complete test report.
+4. Feature-by-feature completion matrix.
+5. Hardware and performance measurements.
+6. Exact remaining blockers, if any.
+
+Never claim the product is complete until the acceptance criteria are genuinely satisfied.

@@ -1,0 +1,75 @@
+{
+  "version": "0.3.0",
+  "environment": {
+    "platform": "Linux x86_64",
+    "python": "3.13.5",
+    "node": "22.16.0",
+    "typescript": "5.8.3",
+    "rust": "unavailable"
+  },
+  "results": [
+    {
+      "name": "Python regression suite",
+      "status": "PASS",
+      "count": 41,
+      "command": "PYTHONPATH=services/ai_worker python -m pytest services/ai_worker/tests -q",
+      "note": "includes Docker command unit mocks, not real Docker execution"
+    },
+    {
+      "name": "Authenticated live HTTP smoke",
+      "status": "PASS",
+      "checks": 6,
+      "report": "docs/V03_HTTP_BENCHMARK.json"
+    },
+    {
+      "name": "TS/TSX syntactic transpilation",
+      "status": "PASS",
+      "files": 9,
+      "note": "does not verify types, imports or production bundling"
+    },
+    {
+      "name": "Tauri/CI JSON and YAML parsing",
+      "status": "PASS"
+    },
+    {
+      "name": "npm dependency resolution",
+      "status": "BLOCKED",
+      "reason": "offline npm registry, no lockfile/cache; ENOTCACHED"
+    },
+    {
+      "name": "React typecheck and production bundle",
+      "status": "BLOCKED",
+      "reason": "node dependencies unavailable; no node_modules/dist"
+    },
+    {
+      "name": "Rust/Cargo build",
+      "status": "BLOCKED",
+      "reason": "no Rust toolchain or crates cache"
+    },
+    {
+      "name": "Windows NSIS installer and install tests",
+      "status": "BLOCKED",
+      "reason": "no Windows runner or connected repository"
+    },
+    {
+      "name": "Docker Linux-container execution",
+      "status": "BLOCKED",
+      "reason": "Docker engine/images unavailable"
+    },
+    {
+      "name": "Real audio device and Whisper transcription",
+      "status": "BLOCKED",
+      "reason": "no enabled physical audio backend/optional STT packages"
+    },
+    {
+      "name": "Real Ollama or cloud answer generation",
+      "status": "BLOCKED",
+      "reason": "no local model or authorized cloud credentials"
+    },
+    {
+      "name": "End-to-end Windows user acceptance",
+      "status": "BLOCKED",
+      "reason": "native Windows executable absent"
+    }
+  ]
+}

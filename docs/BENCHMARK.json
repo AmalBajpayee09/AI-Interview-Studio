@@ -1,0 +1,13 @@
+{
+  "environment": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "cpu": "",
+  "ram_total_gb": 5.81,
+  "worker_rss_mb": 111.95,
+  "classification_p50_ms": 0.0013,
+  "classification_p95_ms": 0.0015,
+  "health_http_p50_ms": 0.502,
+  "health_http_p95_ms": 0.945,
+  "stt": "not run: optional model unavailable",
+  "llm": "not run: provider not configured",
+  "desktop_ui": "not run: Windows build unavailable"
+}

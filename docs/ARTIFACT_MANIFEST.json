@@ -1,0 +1,424 @@
+{
+  "name": "AI Interview Studio source upgrade v0.2.0",
+  "status": "source preview only; NO WINDOWS INSTALLER GENERATED",
+  "date": "2026-11-02",
+  "python_tests_passed": 32,
+  "real_http_smoke_passed": 5,
+  "files": [
+    {
+      "path": ".env.example",
+      "bytes": 230,
+      "sha256": "4f9673899bedc2275adb4ea5b414410b35f135fe9e0741a14ee7a0c2ccfe1ec7"
+    },
+    {
+      "path": ".github/workflows/windows-release.yml",
+      "bytes": 1319,
+      "sha256": "f477ce72e0af75dd020eb0b90b4ab423fed1b531989d26bb8f1d0f7b1d9670f5"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 136,
+      "sha256": "5894bac6331a8be3562259fdda6584a8f6e1c5db4b0ca285666c3672aca22d90"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1084,
+      "sha256": "8348676b89c2caaf8386821085ed8357bf2eac14006546fa13bfc4356d49b108"
+    },
+    {
+      "path": "README.md",
+      "bytes": 8110,
+      "sha256": "1fc04e9537c219c4ffbe50972cad6cf6fad6372bf70bb19d7595e8251d8ee178"
+    },
+    {
+      "path": "apps/desktop/index.html",
+      "bytes": 306,
+      "sha256": "edc8aaa7de3986dad34495e05deca370d6d4177e9dc348d020e6964fffe65252"
+    },
+    {
+      "path": "apps/desktop/package.json",
+      "bytes": 484,
+      "sha256": "90de680cfa7cbc87a10e197f422b1f5ebd17fa905c40e3cf31c7e066b27cede9"
+    },
+    {
+      "path": "apps/desktop/src/App.tsx",
+      "bytes": 8247,
+      "sha256": "fe444866ac7c88616acbad6484e86e1e48ffc946e6cd3902e13cdb6f86981a18"
+    },
+    {
+      "path": "apps/desktop/src/components/Ui.tsx",
+      "bytes": 945,
+      "sha256": "a31757737fa359fec04f3e24d3b1c748eeb4c2daf8c8f357bc6682fd26cbde89"
+    },
+    {
+      "path": "apps/desktop/src/lib/api.ts",
+      "bytes": 2315,
+      "sha256": "a2bece55283647d8ae37f11c87b749c0097a0e5baadb6bba52ff07803e19f999"
+    },
+    {
+      "path": "apps/desktop/src/main.tsx",
+      "bytes": 240,
+      "sha256": "99afa4276b538881c6bad9756671815a7988ff4a2ebd0e7d2298d79178867ca5"
+    },
+    {
+      "path": "apps/desktop/src/style.css",
+      "bytes": 12680,
+      "sha256": "ed9875d5a1a4b11a5e4a88fbc083976758b2a49b789e5c85ecc529cc061f862d"
+    },
+    {
+      "path": "apps/desktop/src/views/Assessments.tsx",
+      "bytes": 6378,
+      "sha256": "7f3e6256b24fefd0cba6aa5faad75b94aeeb3686f581dc3e8b4a2f42c1f608c4"
+    },
+    {
+      "path": "apps/desktop/src/views/Live.tsx",
+      "bytes": 6954,
+      "sha256": "4159c43f38fd28dbbcae3870f33bd986faab70248b305c9d32eb3ea3f96650da"
+    },
+    {
+      "path": "apps/desktop/src/views/SQLLab.tsx",
+      "bytes": 2815,
+      "sha256": "d6a783be5e0ce77800326a027c0594229ac292247c0aa8fe9b5e899d460d4e1c"
+    },
+    {
+      "path": "apps/desktop/src/views/Tools.tsx",
+      "bytes": 11186,
+      "sha256": "e57cbedfc7bfe23a00922c7e9d6ea57315f5dd310560791fba33c1fca9f18da0"
+    },
+    {
+      "path": "apps/desktop/src-tauri/Cargo.toml",
+      "bytes": 425,
+      "sha256": "7eac594ab41cc8b13ac63e6fc3a578d481b9604569129a88dc326aed6ab5c54f"
+    },
+    {
+      "path": "apps/desktop/src-tauri/build.rs",
+      "bytes": 39,
+      "sha256": "487059eaf8a947b80f20a9aacac038a5047b2ad69d2401b827376c67d6fe847f"
+    },
+    {
+      "path": "apps/desktop/src-tauri/capabilities/default.json",
+      "bytes": 190,
+      "sha256": "381bc9ee23028a337e1def7fc6439b2b183c2aa650f4a89ae0a2aba531ed8fe8"
+    },
+    {
+      "path": "apps/desktop/src-tauri/icons/icon.ico",
+      "bytes": 15927,
+      "sha256": "7cab4d0916a9e54f113f3817811ca0ac6c543e086c3f0247c8935197f89d0e7e"
+    },
+    {
+      "path": "apps/desktop/src-tauri/icons/icon.png",
+      "bytes": 4258,
+      "sha256": "69dfb7cdd60c88b799ebef48c6eae5fe35bb340f8ff6a1ee4136b93605890f4e"
+    },
+    {
+      "path": "apps/desktop/src-tauri/src/lib.rs",
+      "bytes": 2324,
+      "sha256": "ad6c45c3480ab6f6aecbec2349542989c981f5374fe405fdb9670bcf4fc26617"
+    },
+    {
+      "path": "apps/desktop/src-tauri/src/main.rs",
+      "bytes": 116,
+      "sha256": "2b6e59306c6d94eb57c06a1b288c3c2fcfda1e730f1cf37572157c16068ad97b"
+    },
+    {
+      "path": "apps/desktop/src-tauri/tauri.conf.json",
+      "bytes": 873,
+      "sha256": "90af30c1f04380489af08924aa3398ea5f31efbb26818f9dff8cef216de1fa7a"
+    },
+    {
+      "path": "apps/desktop/src-tauri/tauri.prod.conf.json",
+      "bytes": 83,
+      "sha256": "256f27fd7dce09272bb743ed57f33a36f1a7388221829d477e8fc90034319c7e"
+    },
+    {
+      "path": "apps/desktop/tsconfig.json",
+      "bytes": 370,
+      "sha256": "d84d2080a71017154bf7bf310409a290928777a2b01e9d804113a5a104ae2f7b"
+    },
+    {
+      "path": "docs/ADDON_COMPLETION_STATUS.md",
+      "bytes": 3578,
+      "sha256": "40b6a9afda7d7c5d8fb248dc6561513186d03d7ce84a719aa0b5bb912b63c75e"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "bytes": 2701,
+      "sha256": "aa775db0745870c5a649caa94d95c10df3c2b2dcba916588aa4ffbfb1e09e6eb"
+    },
+    {
+      "path": "docs/AUDIO_SETUP.md",
+      "bytes": 1573,
+      "sha256": "417a01be6000af714890b82c83cab3eec19e5a662c41b95ff674d568172f46db"
+    },
+    {
+      "path": "docs/BENCHMARK.json",
+      "bytes": 402,
+      "sha256": "f5b34cf17990aa1dc89f9b975f02b948839239b21d33063af3ed64b2e0c73534"
+    },
+    {
+      "path": "docs/BENCHMARK_V02.json",
+      "bytes": 633,
+      "sha256": "38d623aefff01025eaec53a1d9727f12778ef98f459926a10da944b0715ff084"
+    },
+    {
+      "path": "docs/CLOUD_AI_SETUP.md",
+      "bytes": 1103,
+      "sha256": "b07610b0fa305660289aff5241847f88f91218c06ebc02bf66a3d6f23ff479cf"
+    },
+    {
+      "path": "docs/COMPLETION_ADDON.pdf",
+      "bytes": 273648,
+      "sha256": "4377be5184b31ff722cf83b690ca2fb1ef1c1e528b94ee01c36f5848577da483"
+    },
+    {
+      "path": "docs/DEPENDENCIES_LICENSES.md",
+      "bytes": 1152,
+      "sha256": "e4ea9fe7b19b8132da94ef9a7ec667293dfd01fcccc27b56e26b4dcf8eb1ba20"
+    },
+    {
+      "path": "docs/DEVELOPER_GUIDE.md",
+      "bytes": 1890,
+      "sha256": "fc94613b24f48ba8943c7411430e89d080ceb52754fa782a755c6eef95232eaa"
+    },
+    {
+      "path": "docs/HLD.md",
+      "bytes": 2701,
+      "sha256": "aa775db0745870c5a649caa94d95c10df3c2b2dcba916588aa4ffbfb1e09e6eb"
+    },
+    {
+      "path": "docs/HTTP_SMOKE.json",
+      "bytes": 338,
+      "sha256": "33a9552f94477958d64c5f8a755b68f76908a7bc309533a7ccf4dd85ba613ce9"
+    },
+    {
+      "path": "docs/IMPLEMENTATION_AUDIT.md",
+      "bytes": 2367,
+      "sha256": "41fa121b036c117e0cb28cc0a0ab195299652fc0d349f39ecc7083471be74f5f"
+    },
+    {
+      "path": "docs/LLD.md",
+      "bytes": 2250,
+      "sha256": "03fad94b98e31bea13b715a6e606e8aa246ab3f6b5bdfa20fe7dc6921f40d045"
+    },
+    {
+      "path": "docs/LOCAL_AI_SETUP.md",
+      "bytes": 1630,
+      "sha256": "5186ec0a849f7598ae2d337648d2bbd693d6071d5b4990b6e7994d331eba0197"
+    },
+    {
+      "path": "docs/PERFORMANCE.md",
+      "bytes": 1559,
+      "sha256": "60d88ac36b2019b48733ba4667bbc6b109051369bf2e887325d0ac370b730dc2"
+    },
+    {
+      "path": "docs/RELEASE_CHECKLIST.md",
+      "bytes": 3716,
+      "sha256": "3ad47df364ec254ba9ac3e956528325545e45b8f0df372e9302fec739cccdf67"
+    },
+    {
+      "path": "docs/RELEASE_NOTES.md",
+      "bytes": 1676,
+      "sha256": "814caaf3ee94216338b25d84bc0d4da3f7329e81410be7a463e8bfeedd8c9248"
+    },
+    {
+      "path": "docs/REQUIREMENTS_MATRIX.md",
+      "bytes": 4499,
+      "sha256": "5720b8c36a52f8dfe1c99b388ed98272258e5249737204623f80a0490ad4664b"
+    },
+    {
+      "path": "docs/SEB_MOCK_TESTING.md",
+      "bytes": 1809,
+      "sha256": "4ae61c534f76fd5af34a2bb675be1a7b13b038322b942061579db559ae108abf"
+    },
+    {
+      "path": "docs/SECURITY.md",
+      "bytes": 2361,
+      "sha256": "6a8816c30aaec108df326a890f94f92dc9c5c910160b5c6d74549e3326671db7"
+    },
+    {
+      "path": "docs/SQL_PRACTICE.md",
+      "bytes": 1190,
+      "sha256": "704cf807e73bafca2742566474f31e5fbb609e5cad357bc3a5b841b18f68c32e"
+    },
+    {
+      "path": "docs/TEST_REPORT.json",
+      "bytes": 1128,
+      "sha256": "eda29ae5c903d4701b51f5c324ced5b9279fc26fdf47836c10a6b06bd365bc41"
+    },
+    {
+      "path": "docs/TROUBLESHOOTING.md",
+      "bytes": 5779,
+      "sha256": "8e4d6019131c2a5df54e3387232053aa7be14a591ff578c4953fa2e8fd2daf9c"
+    },
+    {
+      "path": "docs/USER_GUIDE.md",
+      "bytes": 2420,
+      "sha256": "d3b24e169f2e406940e3e39543a9f9bd5eafa3726ebb92ced1b097d4d375225a"
+    },
+    {
+      "path": "docs/USER_REQUIREMENTS.pdf",
+      "bytes": 603393,
+      "sha256": "455ca23ea28a87011a66e5b7c408b466acf87d2a1cbe3602f2355d469f724efb"
+    },
+    {
+      "path": "docs/WINDOWS_SETUP.md",
+      "bytes": 7965,
+      "sha256": "f012415bef6f8567d830c01244f7d1fcd44d4e80c23649a338e9f00eb1a29b3b"
+    },
+    {
+      "path": "scripts/build.ps1",
+      "bytes": 1206,
+      "sha256": "4011f650361da0d762b2d660201767ce868ebdfd5b8675956bc3faba4a6e50dd"
+    },
+    {
+      "path": "scripts/dev.ps1",
+      "bytes": 737,
+      "sha256": "e5733028420a6345ff2fd7786704e2e0a432afde058167c3e4653da45f843656"
+    },
+    {
+      "path": "scripts/diagnose.ps1",
+      "bytes": 739,
+      "sha256": "45bb1a3a0b00dca2036f6ed65f13ebad389acc9ab2e14917501398356ea00132"
+    },
+    {
+      "path": "scripts/load-env.ps1",
+      "bytes": 389,
+      "sha256": "8a50a7a47f10bced66592d5eb4ffe51e2449ae4570e1ccdc4d8aee1e69625e02"
+    },
+    {
+      "path": "scripts/mock-capture-test.ps1",
+      "bytes": 745,
+      "sha256": "b3965d8a30b7414782bde0af66796be742b5d9ad32325a8c6c4d95e1632034ee"
+    },
+    {
+      "path": "scripts/package-source.ps1",
+      "bytes": 714,
+      "sha256": "a6ad4ad75fa10ea321a7799f6ee4f8b19c07fcad409bd188321f04e1114349fe"
+    },
+    {
+      "path": "scripts/restore-database.py",
+      "bytes": 2534,
+      "sha256": "5aef9404a2b23fbf46e654f9f36c134b17a5733f71538380ca056f7635744acb"
+    },
+    {
+      "path": "scripts/run-browser.ps1",
+      "bytes": 1078,
+      "sha256": "8a67e7def45b0d5cb7e28120e498324d19c5aa3a1de6b23aa337dbbd08d38a04"
+    },
+    {
+      "path": "scripts/setup.ps1",
+      "bytes": 800,
+      "sha256": "5f054c13c898e7caa474ca59fa37e316cd4e12377739d23e7c821a7f723d2b9b"
+    },
+    {
+      "path": "scripts/test.ps1",
+      "bytes": 550,
+      "sha256": "ddb516513bb38f8de38ee1a542aafc81e933f384e2a47a9ec668f2573debac15"
+    },
+    {
+      "path": "services/ai_worker/app/__init__.py",
+      "bytes": 35,
+      "sha256": "10f864df362a47b4d0a49ee1214af083539236be32637055b1839bf11b77e7b6"
+    },
+    {
+      "path": "services/ai_worker/app/config.py",
+      "bytes": 627,
+      "sha256": "23e9e5889f6231f5cddb39f42ee3cf9f5ac0b16bad5023b73288224ea93b927d"
+    },
+    {
+      "path": "services/ai_worker/app/db.py",
+      "bytes": 9318,
+      "sha256": "cd58b6338b5a518d4251f5dd7d1fa495d8fd3d5326e7edadf14ad1c05d7de1c3"
+    },
+    {
+      "path": "services/ai_worker/app/logic.py",
+      "bytes": 6360,
+      "sha256": "165812bab6381074f5f89a035608e552fa337c1b5e7f02165d1c8a86fdb5e227"
+    },
+    {
+      "path": "services/ai_worker/app/main.py",
+      "bytes": 16451,
+      "sha256": "bbe97410b5745e842245d40e2fe88d5a88c906deeb672ec2a3c4221c91b0b9e6"
+    },
+    {
+      "path": "services/ai_worker/app/providers.py",
+      "bytes": 3825,
+      "sha256": "789ac38c83364528213feda42d5a3559af60cfcdb798a90b47787d963112c22f"
+    },
+    {
+      "path": "services/ai_worker/app/resources.py",
+      "bytes": 1476,
+      "sha256": "c0d638bf645045f358e209e113bf83c1714834f60d9860ac8714749ea904b6e3"
+    },
+    {
+      "path": "services/ai_worker/app/sql_lab.py",
+      "bytes": 4635,
+      "sha256": "ed3fc90d5f596ea160c08b8a5db97719abe770aad9f1ed9c9932580fd0d166bb"
+    },
+    {
+      "path": "services/ai_worker/app/static/index.html",
+      "bytes": 21684,
+      "sha256": "c3aaecdfcaa455f3080ecd099159b45aa2146203b8e652eb25b20a7bc9845276"
+    },
+    {
+      "path": "services/ai_worker/bench.py",
+      "bytes": 1080,
+      "sha256": "429f8f48368c5c33c12dc45147dc79a816cce5527992dbfb2559d0ad12f28c1c"
+    },
+    {
+      "path": "services/ai_worker/migrations/001_initial.sql",
+      "bytes": 1056,
+      "sha256": "3f3723bef0efefc1e3df88897c431a5c1a51e08e1e887fbc5a9b91d13618d486"
+    },
+    {
+      "path": "services/ai_worker/migrations/002_indexes.sql",
+      "bytes": 147,
+      "sha256": "387def47496f161679128902c7ab8e711bf77e33749a74c0e28beeddf697f8b9"
+    },
+    {
+      "path": "services/ai_worker/migrations/003_drafts.sql",
+      "bytes": 380,
+      "sha256": "b46ebaac2073525dd63d975e21b9aec237dd16f5048fe649032dbc619af755a9"
+    },
+    {
+      "path": "services/ai_worker/migrations/004_settings.sql",
+      "bytes": 136,
+      "sha256": "2f735175a929191e03c52ea16c9b48acb84d3f6c03a18e71c782d3996a5532f9"
+    },
+    {
+      "path": "services/ai_worker/requirements-stt.txt",
+      "bytes": 22,
+      "sha256": "d72dfa3b67f743ea5a1e808096c0bcc036ffe00c84c6bee5f7dac664f9f1f472"
+    },
+    {
+      "path": "services/ai_worker/requirements.txt",
+      "bytes": 188,
+      "sha256": "889d1024a5d8285a628a8b7074243c6378e8559fcb4c7547ea1b9a51ae2f0a13"
+    },
+    {
+      "path": "services/ai_worker/run_worker.py",
+      "bytes": 911,
+      "sha256": "18c7f66aaa306f0942801606873267657774fa1c09a69a8e39235277fec32784"
+    },
+    {
+      "path": "services/ai_worker/tests/conftest.py",
+      "bytes": 368,
+      "sha256": "b559c1c38a0638a67f0392c09f36c97e810067d4d4ca4ff446aa441bb017949e"
+    },
+    {
+      "path": "services/ai_worker/tests/test_studio.py",
+      "bytes": 4607,
+      "sha256": "dcfa3ea0beb1605ccea7241cfa63b4dff525961d85663a431d3454e483acb7b0"
+    },
+    {
+      "path": "services/ai_worker/tests/test_upgrade.py",
+      "bytes": 8183,
+      "sha256": "663b5dd8655c2c4fc74ad72f2f364d6893ab479b74138b60f5a67cfcec3afa78"
+    },
+    {
+      "path": "shared/CONTRACTS.json",
+      "bytes": 767,
+      "sha256": "47abd874da75fae143da89a44bedf494d54faaf46d8cd8efbad7db953ee48a6d"
+    }
+  ]
+}

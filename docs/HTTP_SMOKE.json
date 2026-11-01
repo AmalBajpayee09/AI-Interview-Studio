@@ -1,0 +1,22 @@
+[
+  {
+    "test": "live HTTP health",
+    "status": "PASS"
+  },
+  {
+    "test": "browser companion served",
+    "status": "PASS"
+  },
+  {
+    "test": "real HTTP SQL read",
+    "status": "PASS"
+  },
+  {
+    "test": "real HTTP SQL write rejected",
+    "status": "PASS"
+  },
+  {
+    "test": "database backup HTTP",
+    "status": "PASS"
+  }
+]
