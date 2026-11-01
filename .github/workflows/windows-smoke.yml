@@ -1,0 +1,94 @@
+name: Windows installer installation and portable smoke test
+on:
+  push:
+    branches: ['qa/windows-installer-v0.4.0']
+    paths: ['.github/workflows/windows-smoke.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  installer-smoke:
+    runs-on: windows-latest
+    timeout-minutes: 35
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: windows-installers-and-test-evidence
+          run-id: 41347725338
+          github-token: ${{ github.token }}
+          path: downloaded
+      - name: Verify installer binary and silently install
+        run: |
+          $ErrorActionPreference='Stop'
+          $installer = @(Get-ChildItem downloaded -Recurse -Filter '*setup.exe')
+          if ($installer.Count -ne 1) { throw "Expected exactly one NSIS setup executable, found $($installer.Count)" }
+          if ($installer[0].Length -lt 1000000) { throw 'Installer unexpectedly small' }
+          Get-FileHash $installer[0].FullName -Algorithm SHA256 | Format-List
+          $dest=Join-Path $env:RUNNER_TEMP 'AIStudioSmoke'
+          "STUDIO_SMOKE_PATH=$dest" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+          $proc=Start-Process -FilePath $installer[0].FullName -ArgumentList @('/S',"/D=$dest") -Wait -PassThru
+          if ($proc.ExitCode -ne 0) {throw "Silent installation returned $($proc.ExitCode)"}
+          Write-Host "Installer returned success"
+      - name: Locate installed application, worker and create portable distribution
+        run: |
+          $candidates=@($env:STUDIO_SMOKE_PATH,(Join-Path $env:LOCALAPPDATA 'Programs/AI Interview Studio'),(Join-Path $env:ProgramFiles 'AI Interview Studio'))
+          $folder=$null
+          foreach($p in $candidates) {
+            if (Test-Path $p) {
+              $executables=@(Get-ChildItem $p -Recurse -Filter '*.exe' -ErrorAction SilentlyContinue)
+              if ($executables | Where-Object { $_.Name -match 'ai-interview-studio' }) {$folder=$p; break}
+            }
+          }
+          if (-not $folder) {throw 'Installed AI Interview Studio executable not found in expected folders'}
+          $apps=@(Get-ChildItem $folder -Recurse -Filter '*.exe' | Where-Object { $_.Name -match 'ai-interview-studio' })
+          $workers=@(Get-ChildItem $folder -Recurse -Filter 'ai-studio-worker.exe')
+          if ($apps.Count -eq 0 -or $workers.Count -eq 0) {throw 'Installed app or packaged worker is missing'}
+          Write-Host "Installed app: $($apps[0].FullName)"
+          Write-Host "Packaged worker: $($workers[0].FullName)"
+          "STUDIO_INSTALLED_EXE=$($apps[0].FullName)" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+          "STUDIO_INSTALLED_DIR=$folder" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+          New-Item -ItemType Directory -Force -Path 'portable' | Out-Null
+          Copy-Item (Join-Path $folder '*') 'portable/' -Recurse -Force
+          Compress-Archive -Path 'portable/*' -DestinationPath 'AI-Interview-Studio-Portable-v0.4.0.zip' -CompressionLevel Optimal -Force
+          if ((Get-Item 'AI-Interview-Studio-Portable-v0.4.0.zip').Length -lt 1000000) {throw 'Portable archive is unexpectedly small'}
+      - name: Smoke launch desktop and detect worker
+        run: |
+          $ErrorActionPreference='Stop'
+          $env:STUDIO_DATA_DIR=Join-Path $env:RUNNER_TEMP 'StudioSmokeData'
+          $proc=Start-Process -FilePath $env:STUDIO_INSTALLED_EXE -PassThru
+          try {
+            Start-Sleep -Seconds 12
+            $proc.Refresh()
+            if ($proc.HasExited) {throw "Desktop application exited unexpectedly: $($proc.ExitCode)"}
+            $workers=@(Get-CimInstance Win32_Process -Filter "Name='ai-studio-worker.exe'")
+            if ($workers.Count -eq 0) {throw 'Bundled AI worker did not start'}
+            Write-Host "Desktop and bundled worker remained running"
+          } finally {
+            if (-not $proc.HasExited) {
+              $null=$proc.CloseMainWindow()
+              Start-Sleep -Seconds 3
+              $proc.Refresh()
+              if (-not $proc.HasExited) {$proc.Kill();$proc.WaitForExit()}
+            }
+          }
+      - name: Attempt silent uninstall
+        if: always()
+        run: |
+          if ($env:STUDIO_INSTALLED_DIR -and (Test-Path $env:STUDIO_INSTALLED_DIR)) {
+            $u=@(Get-ChildItem $env:STUDIO_INSTALLED_DIR -Filter '*uninstall*.exe' -Recurse -ErrorAction SilentlyContinue)
+            if ($u.Count -gt 0) {
+              $proc=Start-Process -FilePath $u[0].FullName -ArgumentList '/S' -Wait -PassThru
+              if ($proc.ExitCode -ne 0) {Write-Warning "Silent uninstall exit code $($proc.ExitCode)"}
+            } else {Write-Warning 'Uninstaller was not located'}
+          }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: installer-smoke-and-portable-v04
+          path: AI-Interview-Studio-Portable-v0.4.0.zip
+          if-no-files-found: warn

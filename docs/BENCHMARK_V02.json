@@ -1,0 +1,31 @@
+{
+  "revision": "0.2.0",
+  "environment": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "cpu_count": 5,
+  "ram_total_gb": 5.81,
+  "api_worker_rss_mb": 117.5,
+  "http_health_real_socket": {
+    "p50_ms": 0.493,
+    "p95_ms": 0.733,
+    "samples": 120
+  },
+  "sqlite_sql_practice": {
+    "p50_ms": 0.134,
+    "p95_ms": 0.191,
+    "samples": 300
+  },
+  "question_classification": {
+    "p50_ms": 0.001,
+    "p95_ms": 0.001,
+    "samples": 500
+  },
+  "not_measured": [
+    "Windows/Tauri cold start",
+    "local/cloud LLM first token",
+    "STT latency",
+    "device audio",
+    "GPU path",
+    "Windows installer"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "host": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "checks": {
+    "unauthorized_401": true,
+    "auth_health_200": true,
+    "local_session_creation": true,
+    "sql_read": true,
+    "audio_status": true,
+    "code_capabilities": true
+  },
+  "api_health_p50_ms": 0.544,
+  "api_health_p95_ms": 0.946,
+  "sample_count": 50,
+  "port": "ephemeral test loopback",
+  "note": "No native shell or LLM timing measured"
+}

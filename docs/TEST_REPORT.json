@@ -1,0 +1,21 @@
+{
+  "revision": "0.2.0",
+  "date": "2026-11-02",
+  "environment": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "test_summary": {
+    "python_pytest": "32 passed",
+    "actual_http_smoke": "5 passed",
+    "browser_js_parse": "PASS (node --check)",
+    "react_ts_source_transpilation": "8 files, syntax only",
+    "React production build": "BLOCKED (react and Tauri packages missing, npm registry DNS unavailable)",
+    "Rust compilation": "BLOCKED (cargo/rustc unavailable)",
+    "Chromium rendering": "BLOCKED (ERR_BLOCKED_BY_ADMINISTRATOR)",
+    "Win32 installer": "NOT BUILT (non-Windows host)",
+    "real_ollama_cloud": "NOT RUN (services and credentials unavailable)",
+    "STT model and microphones": "NOT RUN (optional model and audio devices unavailable)",
+    "migration_v2_to_v4": "PASS (non-destructive test)",
+    "optional_STT_response_contract": "PASS with mocked decoder; real transcription NOT RUN"
+  },
+  "notes": "PASS means executed; omitted features are not presented as successes. API tests use isolated temporary SQLite databases. See BENCHMARK_V02.json and ADDON_COMPLETION_STATUS.md."
+}

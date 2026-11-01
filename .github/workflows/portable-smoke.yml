@@ -1,0 +1,51 @@
+name: Windows portable launch smoke
+on:
+  push:
+    branches: ['qa/windows-installer-v0.4.0']
+    paths: ['.github/workflows/portable-smoke.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  portable:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: installer-smoke-and-portable-v04
+          run-id: 41349033077
+          github-token: ${{ github.token }}
+          path: downloaded
+      - name: Extract portable package and launch without installation
+        run: |
+          $ErrorActionPreference='Stop'
+          $bundle='downloaded/AI-Interview-Studio-Portable-v0.4.0.zip'
+          if (-not (Test-Path $bundle)) {throw "Portable artifact missing: $bundle"}
+          $target=Join-Path $env:RUNNER_TEMP 'PortableStudio'
+          Expand-Archive $bundle $target -Force
+          $exe=Join-Path $target 'ai-interview-studio.exe'
+          $worker=Join-Path $target 'ai-studio-worker.exe'
+          if (-not (Test-Path $exe) -or -not (Test-Path $worker)) {throw 'Executable or worker missing'}
+          $env:STUDIO_DATA_DIR=Join-Path $env:RUNNER_TEMP 'PortableStudioData'
+          $proc=Start-Process -FilePath $exe -WorkingDirectory $target -PassThru
+          try {
+            Start-Sleep -Seconds 12
+            $proc.Refresh()
+            if ($proc.HasExited) {throw "Portable desktop exited immediately: $($proc.ExitCode)"}
+            $workers=@(Get-CimInstance Win32_Process -Filter "Name='ai-studio-worker.exe'")
+            if ($workers.Count -eq 0) {throw 'Portable desktop worker did not start'}
+            Write-Host "Portable desktop launched successfully with embedded worker"
+          } finally {
+            if (-not $proc.HasExited) {
+              $null=$proc.CloseMainWindow()
+              Start-Sleep -Seconds 3
+              $proc.Refresh()
+              if (-not $proc.HasExited) {$proc.Kill();$proc.WaitForExit()}
+            }
+          }

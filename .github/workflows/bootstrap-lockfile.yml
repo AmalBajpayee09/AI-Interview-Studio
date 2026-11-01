@@ -1,0 +1,54 @@
+name: Generate and verify frontend lockfile
+on:
+  push:
+    branches: ['import/v0.4.0']
+    paths:
+      - '.github/workflows/bootstrap-lockfile.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  frontend-lock:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify source tree
+        run: |
+          if (-not (Test-Path apps/desktop/package.json)) { throw 'Frontend source not imported' }
+      - name: Resolve dependency lock and test production build
+        working-directory: apps/desktop
+        run: |
+          npm install --package-lock-only --ignore-scripts
+          if ($LASTEXITCODE -ne 0) { throw 'Lockfile resolution failed' }
+          npm ci
+          if ($LASTEXITCODE -ne 0) { throw 'npm ci failed' }
+          npm run build
+          if ($LASTEXITCODE -ne 0) { throw 'Production React build failed' }
+      - name: Commit reproducible package-lock.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add apps/desktop/package-lock.json
+          if (-not (git diff --cached --quiet)) {
+            git commit -m "Lock validated React dependencies for Windows build"
+            if ($LASTEXITCODE -ne 0) { throw 'Lockfile commit failed' }
+            git push origin HEAD:import/v0.4.0
+            if ($LASTEXITCODE -ne 0) { throw 'Lockfile push failed' }
+          }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frontend-bootstrap-evidence
+          path: |
+            apps/desktop/package-lock.json
+            apps/desktop/dist/
+          if-no-files-found: warn

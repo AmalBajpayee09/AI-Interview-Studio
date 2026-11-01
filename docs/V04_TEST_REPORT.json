@@ -1,0 +1,42 @@
+{
+  "version": "0.4.0",
+  "executed_utc": "2026-11-01T20:25:48.830534+00:00",
+  "python_tests": {
+    "status": "PASS",
+    "passed": 51,
+    "failed": 0,
+    "command": "PYTHONPATH=services/ai_worker pytest services/ai_worker/tests -q --disable-warnings --junitxml=docs/V04_PYTEST.xml",
+    "junit": "docs/V04_PYTEST.xml"
+  },
+  "typescript_syntax": {
+    "status": "PASS",
+    "files": 9,
+    "diagnostics": 0,
+    "method": "TypeScript transpileModule global compiler 5.8.3; NOT a full typecheck or build"
+  },
+  "frontend_production_build": {
+    "status": "BLOCKED",
+    "blocker": "No package-lock.json in imported v0.3; npm registry DNS EAI_AGAIN"
+  },
+  "native_rust_build": {
+    "status": "BLOCKED",
+    "blocker": "rustc/cargo unavailable in Linux container"
+  },
+  "windows_installer": {
+    "status": "BLOCKED",
+    "blocker": "Windows toolchain unavailable; GitHub CI has an import gate until full sources are pushed"
+  },
+  "genuine_docker_execution": {
+    "status": "BLOCKED",
+    "blocker": "Docker CLI and engine unavailable; tests mock CLI behavior"
+  },
+  "genuine_audio_hardware": {
+    "status": "BLOCKED",
+    "blocker": "No suitable audio hardware / SoundCard in container"
+  },
+  "genuine_ai_provider": {
+    "status": "NOT_EXECUTED",
+    "blocker": "No live model server or cloud credentials configured"
+  },
+  "performance": "docs/V04_BENCHMARK.json"
+}

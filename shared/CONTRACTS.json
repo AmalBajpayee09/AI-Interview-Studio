@@ -1,0 +1,9 @@
+{
+  "version":1,
+  "Session":{"id":"uuid","title":"string","created":"unixSeconds","updated":"unixSeconds"},
+  "AskBody":{"session_id":"uuid","question":"string(max:10000)","mode":"hint|short|detailed|code|diagram|verify|follow-up","provider":"ollama|cloud","model":"optional string"},
+  "StreamEvent":{"type":"meta|token|done|error","text":"optional string","message":"optional string","elapsed_ms":"optional integer"},
+  "Question":{"id":"string","stem":"string","options":"Option[]","correct":"string|string[] private until submission"},
+  "TranscriptEvent":{"event_id":"uuid","session_id":"uuid","text":"string","is_partial":"boolean","speaker_label":"not implemented"},
+  "Privacy":{"allow_cloud":"false by default","audio_storage":"none","retention_days":30}
+}
