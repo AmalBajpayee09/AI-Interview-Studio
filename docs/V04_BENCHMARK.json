@@ -1,0 +1,35 @@
+{
+  "version": "0.4.0",
+  "timestamp_utc": "2026-11-01T20:23:17.771221+00:00",
+  "host": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.13.5",
+  "cpu_count": 5,
+  "python_worker_rss_mb": 117.32,
+  "worker_process_startup_to_health_ms": 1012.0,
+  "measured_routes": {
+    "health": {
+      "samples": 100,
+      "p50_ms": 0.473,
+      "p95_ms": 0.872
+    },
+    "sql_read": {
+      "samples": 60,
+      "p50_ms": 0.951,
+      "p95_ms": 1.755
+    },
+    "session_create": {
+      "samples": 30,
+      "p50_ms": 2.631,
+      "p95_ms": 3.335
+    }
+  },
+  "not_measured": [
+    "React UI",
+    "Rust/Tauri",
+    "Windows installer",
+    "Ollama inference",
+    "cloud inference",
+    "microphone-to-transcript",
+    "real Docker execution"
+  ]
+}

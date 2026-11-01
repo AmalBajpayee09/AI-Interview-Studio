@@ -1,0 +1,9 @@
+# Security changes and unresolved risks
+
+- **Packaged worker:** Rust selects ephemeral port and 2 random UUIDs; worker receives `STUDIO_PORT` and `STUDIO_WORKER_TOKEN` via environment variables; the React client retrieves connection data using the narrow `worker_connection` Tauri command, attaching `X-Studio-Token` to API requests. Python compares secrets using constant-time `secrets.compare_digest`. The frontend has no unrestricted shell permissions.
+- **Development companion:** The standalone local worker remains loopback-only and unauthenticated when `STUDIO_WORKER_TOKEN` is not set, to preserve local browser access. It is **not safe for multi-user/shared-host deployments**. Applications running with the same local user privileges can still inspect its process environment or files; this is not privilege isolation.
+- **Code execution:** See `CODE_EXECUTION_V03.md`. Docker engine is an optional user-approved dependency and requires trusted local configuration. Without it execution is blocked. This design is not a certified sandbox.
+- **Audio:** User-controlled start/stop. No raw audio persisted. Speaker labels are unknown. Optional cloud inference still requires `ALLOW_CLOUD=true` and configured keys.
+- **CSP:** Dynamic ephemeral loopback ports are permitted by the native connect policy; no arbitrary remote service added. Loopback HTTP must still be protected by random tokens in packaged mode.
+- **Credentials:** Current cloud key is read from an environment file, not stored in SQLite, but is **not yet integrated with Windows Credential Manager**. User-supplied `.env` must not be committed. Keys can be visible to local processes with sufficient privileges.
+- **Remaining:** Windows packaged process-tree cleanup, secure installer code signing, third-party dependency audit, permission testing and real-container escape testing remain open. Do not claim full production security review.
