@@ -1,0 +1,62 @@
+{
+  "version": "0.4.0",
+  "ci_run": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41347725338",
+  "ci_conclusion": "success",
+  "platform": "GitHub Actions Windows runner windows-latest",
+  "source_repository": "https://github.com/AmalBajpayee09/AI-Interview-Studio",
+  "source_files_committed_and_byte_verified": 102,
+  "npm_lockfile": "PASS: generated on Windows, npm ci and production bundle succeeded",
+  "react_production": "PASS",
+  "rust_cargo_check": "PASS",
+  "rust_cargo_test": "PASS",
+  "python_windows": {
+    "status": "PASS",
+    "tests": 51,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "source": "python-test-results.xml in Windows CI artifact"
+  },
+  "windows_worker_packaging": "PASS: PyInstaller and Tauri bundle stage completed successfully",
+  "nsis_installer": {
+    "status": "PASS: generated, downloaded, PE/NSIS identified and SHA256 verified",
+    "bytes": 123684738,
+    "sha256": "bfcdeb9d232e4bd02119bdc5b39f0913f1421607334ee07a65116a6eacbdc8f9"
+  },
+  "installation_smoke": {
+    "status": "PASS",
+    "ci_run": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41349033077",
+    "checks": [
+      "actual NSIS download and hash",
+      "silent Windows installation",
+      "installed desktop and worker present",
+      "desktop process with running worker",
+      "uninstall step succeeded"
+    ],
+    "limits": "Does not exercise upgrade or all GUI workflows"
+  },
+  "not_validated": [
+    "GUI end-to-end assessment, coding, and session journeys after Windows installation",
+    "Upgrade/migration between installed desktop versions",
+    "Real multi-speaker diarization",
+    "Real device microphone/loopback transcription",
+    "Real Docker execution",
+    "Real Ollama/cloud inference",
+    "Target Intel i5 hardware latency and total RAM",
+    "Signed release and auto-update"
+  ],
+  "github_import_pr": {
+    "url": "https://github.com/AmalBajpayee09/AI-Interview-Studio/pull/1",
+    "merged": true
+  },
+  "portable_smoke": {
+    "status": "PASS",
+    "ci_run": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41349336117",
+    "checks": [
+      "Extract distributed portable ZIP",
+      "desktop process alive",
+      "bundled AI worker process alive"
+    ],
+    "locally_cleaned_zip_sha256": "d91f4c51b1d8b8261eb30d2e8a60ec36e9a193dc10a23108fc3d3d3b2e361e33"
+  }
+}

@@ -38,5 +38,24 @@
     "status": "NOT_EXECUTED",
     "blocker": "No live model server or cloud credentials configured"
   },
-  "performance": "docs/V04_BENCHMARK.json"
+  "performance": "docs/V04_BENCHMARK.json",
+  "windows_ci": {
+    "status": "PASS",
+    "run": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41347725338",
+    "python_tests_passed": 51,
+    "python_tests_failed": 0,
+    "react_bundle": "PASS",
+    "rust_cargo_check": "PASS",
+    "rust_tests": "PASS",
+    "nsis_build": "PASS"
+  },
+  "installer_smoke": {
+    "status": "PASS",
+    "run": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41349033077"
+  },
+  "portable_smoke": {
+    "status": "PASS",
+    "run": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41349336117"
+  },
+  "original_linux_notes": "The older frontend/Rust blocked results apply only to the Linux build environment; Windows GitHub Actions passed those stages later."
 }
