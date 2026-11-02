@@ -24,7 +24,7 @@ async def lifespan(app: FastAPI):
 ACTIVE_GENERATIONS:dict[str,object]={}
 INFERENCE_LIMIT=asyncio.Semaphore(2)
 
-app=FastAPI(title='AI Interview Studio',version='0.6.0',lifespan=lifespan,docs_url=None,redoc_url=None)
+app=FastAPI(title='AI Interview Studio',version='0.7.0',lifespan=lifespan,docs_url=None,redoc_url=None)
 ALLOWED_ORIGINS=['http://localhost:1420','http://127.0.0.1:1420','http://127.0.0.1:8765','http://localhost:8765','tauri://localhost','http://tauri.localhost','https://tauri.localhost']
 app.add_middleware(TrustedHostMiddleware, allowed_hosts=['127.0.0.1','localhost','testserver'])
 app.add_middleware(CORSMiddleware,allow_origins=ALLOWED_ORIGINS,allow_methods=['GET','POST','DELETE'],allow_headers=['Content-Type','X-Studio-Token'],allow_credentials=False)
@@ -48,8 +48,7 @@ def safe_has_cloud_key():
 class CloudConsent(BaseModel):
     enabled: bool
 
-class CloudCredential(BaseModel):
-    api_key: str=Field(min_length=12,max_length=1024)
+
 
 class AskBody(BaseModel):
     session_id:str
@@ -129,7 +128,7 @@ async def companion():
 
 @app.get('/api/health')
 async def health():
-    return {'status':'ok','version':'0.6.0','cloud_enabled':cloud_consent() and safe_has_cloud_key(),'retention_days':config.RETENTION_DAYS}
+    return {'status':'ok','version':'0.7.0','cloud_enabled':cloud_consent() and safe_has_cloud_key(),'retention_days':config.RETENTION_DAYS}
 
 @app.get('/api/diagnostics')
 async def diagnostics():
@@ -152,11 +151,19 @@ async def cloud_consent_update(body:CloudConsent):
     return await cloud_status()
 
 @app.post('/api/cloud/credential')
-async def cloud_credential_save(body:CloudCredential):
+async def cloud_credential_save(request:Request):
+    # Pydantic's 422 validation errors include rejected input values. Never echo keys.
+    raw=await request.body()
+    if len(raw)>4096: raise HTTPException(413,'Credential request too large.')
     try:
-        credentials.save_api_key(body.api_key)
-    except ValueError as e:raise HTTPException(400,str(e))
-    except credentials.CredentialUnavailable as e:raise HTTPException(503,str(e))
+        payload=json.loads(raw)
+        key=payload.get('api_key') if isinstance(payload,dict) else None
+        if not isinstance(key,str): raise ValueError()
+        credentials.save_api_key(key)
+    except (ValueError,TypeError,KeyError):
+        raise HTTPException(400,'Invalid credential format or length.')
+    except credentials.CredentialUnavailable:
+        raise HTTPException(503,'Windows Credential Manager unavailable; key not stored.')
     return {'saved':True, 'masked':'••••••••', 'credential_backend':'Windows Credential Manager'}
 
 @app.delete('/api/cloud/credential')
