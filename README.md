@@ -1,8 +1,20 @@
-# AI Interview Studio v0.5.0 (engineering source; Windows release pending)
+# AI Interview Studio v0.6.0 — development branch (not production approved)
 
 AI-assisted Windows desktop application for **authorized mock interviews and assessment practice**. Built with Tauri 2, Rust, React/TypeScript, a bundled Python AI worker, and SQLite. This repository preserves functionality from v0.1 through v0.3 and adds incremental v0.4 improvements.
 
-## Actual Windows release evidence (2026-11-02)
+
+## v0.6 implementation and release status
+
+- **Baseline:** v0.5.0 Windows installer, installed-app launch and packaging passed [v0.5.0 Windows smoke CI](https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41448935263). These historical artifacts **do not validate v0.6**.
+- **v0.6 additions:** Windows Credential Manager integration for OpenAI key storage (desktop Settings), opt-in cloud-consent toggle that overrides legacy environment opt-in, secret-free API status, sanitized Ollama/cloud errors, bounded retry for cloud 429/transient 5xx before streamed output, explicit cancel endpoint, first-token timing and output-character usage history, additive SQLite migration 5→6.
+- **Local tests:** 74 passed, 1 Windows-specific credential-vault test skipped on Linux; real localhost HTTP smoke 14/14, nine TS/TSX source files passed syntax checks, **not** a production UI build.
+- **Unverified:** new Windows binary, installer, live Ollama/OpenAI provider, OS vault, real audio devices, diarization and isolated Docker execution until CI or hardware testing runs.
+- **Requirements:** 144 tracked items (130 previous IDs plus 14 original-master gaps), with conservative statuses in [Feature completion matrix](docs/FEATURE_COMPLETION_MATRIX.md).
+- **Privacy:** Windows credential write/read/delete runs under the user's OS account; keys are not stored in SQLite or exports. On Linux there is no in-app secure credential vault, so use a development environment variable only. Cloud is never silently selected. Disable cloud via Settings even when legacy environment opt-in exists.
+
+For this development branch, run [Windows v0.6 validation](.github/workflows/windows-v06-validation.yml) on a real Windows CI runner after publishing the branch. It performs the real OS credential-vault regression in a temporary CI account and checks that an NSIS installer is produced. **This workflow is not installation, upgrade, hardware, or security certification.**
+
+## Historical v0.4/v0.5 Windows release evidence (not v0.6)
 
 - **Windows application and NSIS installer:** generated successfully by [Windows CI run 41347725338](https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41347725338). The installer was downloaded and independently SHA-256 verified (`bfcdeb9d232e4bd02119bdc5b39f0913f1421607334ee07a65116a6eacbdc8f9`).
 - **Windows build tests:** Python 51/51 tests passed, real `npm ci` and React/TypeScript production build passed, Cargo check and tests passed, and the Python worker was packaged via PyInstaller.
@@ -24,7 +36,7 @@ AI-assisted Windows desktop application for **authorized mock interviews and ass
 
 The original 58-page specification and prior add-on are retained as local documentation in the **downloadable source ZIP**, but excluded from the public GitHub repository. The Safe Exam Browser third-party code is not packaged or modified to bypass exam/proctoring controls.
 
-## Use the Windows installer
+## Historical v0.4 preview installer (not v0.6)
 
 Download `AI-Interview-Studio-Setup-v0.4.0.exe` from the ChatGPT conversation and verify its SHA-256:
 
@@ -63,7 +75,7 @@ The development-only local browser companion is available via `scripts/run-brows
 
 ## Architecture and privacy
 
-React/Tauri UI → scoped Rust command / authenticated local worker API → Python worker → SQLite and user-chosen providers. The standalone browser companion uses local loopback access and should not be exposed beyond a trusted machine. Cloud inference is explicitly disabled by default. API keys are never included in the source archive or Windows binaries. OS credential vault integration and signed update distribution remain pending.
+React/Tauri UI → scoped Rust command / authenticated local worker API → Python worker → SQLite and user-chosen providers. The standalone browser companion uses local loopback access and should not be exposed beyond a trusted machine. Cloud inference is explicitly disabled by default. API keys are never included in the source archive or Windows binaries. OS credential vault code is integrated in v0.6; Windows acceptance testing and signed update distribution remain pending.
 
 See [architecture](docs/ARCHITECTURE.md), [security notes](docs/SECURITY.md), [troubleshooting](docs/TROUBLESHOOTING.md), [v0.4 release report](docs/V04_RELEASE_GATE.md) and [test results](docs/V04_TEST_REPORT.json). Project source is MIT licensed. This application must not be used to bypass proctoring or recording restrictions.
 
@@ -74,3 +86,9 @@ See [architecture](docs/ARCHITECTURE.md), [security notes](docs/SECURITY.md), [t
 - Session-bound transcript **text** can optionally be saved, exported, recovered and deleted; no raw audio is retained. Live audio still does not provide validated speaker diarization.
 - Local Python regression suite and source syntax checks are documented in `docs/TESTING_AND_ACCEPTANCE.md`.
 - **Release gate:** this v0.5.0 source has not yet been compiled or acceptance-tested as a Windows installer. The earlier v0.4.0 installer is not a v0.5.0 installer. See `docs/FEATURE_COMPLETION_MATRIX.md`.
+
+## v0.6 cloud key setup (Windows)
+
+Launch the Tauri desktop app, open **Settings → Cloud AI**, save an OpenAI key into **Windows Credential Manager**, then click **Enable cloud**. In Live Practice, explicitly select Cloud as the provider. A local Ollama model remains the default. Keys are masked in Settings and never returned by an API, copied into export data, or included in distributed source.
+
+If a key already exists in the `OPENAI_API_KEY` environment variable, it remains supported for developer compatibility, but cannot be deleted through the in-app Windows vault control; remove it manually from the development environment. The native `STUDIO_WORKER_TOKEN` protects its worker API; never expose the worker externally.

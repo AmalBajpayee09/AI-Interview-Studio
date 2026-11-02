@@ -29,7 +29,7 @@ export async function extractFile(file:File):Promise<{filename:string;text:strin
  if(!r.ok){const e=await r.json();throw new Error(e.detail||'Extraction failed')}
  return r.json();
 }
-export async function* streamAnswer(body:object,signal:AbortSignal):AsyncGenerator<{type:string;text?:string;message?:string;elapsed_ms?:number;category?:string;model?:string}>{
+export async function* streamAnswer(body:object,signal:AbortSignal):AsyncGenerator<{type:string;text?:string;message?:string;elapsed_ms?:number;first_token_ms?:number;category?:string;model?:string}>{
  const r=await apiFetch('/api/ask/stream',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal});
  if(!r.ok)throw new Error((await r.json()).detail||`HTTP ${r.status}`);
  if(!r.body)throw new Error('Streaming unsupported by this runtime');

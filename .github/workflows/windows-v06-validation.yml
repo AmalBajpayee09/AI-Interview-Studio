@@ -1,0 +1,63 @@
+name: v0.6 Windows CI — native build, secure vault and NSIS
+on:
+  push:
+    branches: ['feature/v0.6.0-provider-security']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    timeout-minutes: 120
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Assert complete source and lockfile
+        run: |
+          @('apps/desktop/package.json','apps/desktop/package-lock.json','apps/desktop/src-tauri/Cargo.toml','services/ai_worker/app/credentials.py','services/ai_worker/requirements.txt','scripts/build.ps1') | ForEach-Object { if (-not (Test-Path $_)) { throw "Missing required file: $_" } }
+      - name: Python 3.11 dependencies and actual Windows credential vault regression
+        run: |
+          py -3.11 -m venv services/ai_worker/.venv
+          & services/ai_worker/.venv/Scripts/python.exe -m pip install -r services/ai_worker/requirements.txt
+          & services/ai_worker/.venv/Scripts/python.exe -m pip install -r services/ai_worker/requirements-stt.txt
+          $env:PYTHONPATH='services/ai_worker'
+          $env:STUDIO_WINDOWS_VAULT_TEST='1'
+          & services/ai_worker/.venv/Scripts/python.exe -m pytest services/ai_worker/tests -q --junitxml=v06-python-tests.xml
+      - name: Install frontend from committed lockfile
+        working-directory: apps/desktop
+        run: npm ci
+      - name: Verify TypeScript and production React bundle
+        working-directory: apps/desktop
+        run: npm run build
+      - name: Rust native compilation and tests
+        working-directory: apps/desktop/src-tauri
+        run: |
+          cargo check
+          cargo test
+      - name: Bundle Python worker and Tauri installer
+        run: .\scripts\build.ps1
+      - name: Installer artifact integrity gate
+        run: |
+          $exes=@(Get-ChildItem 'apps/desktop/src-tauri/target/release/bundle/nsis/*.exe' -ErrorAction SilentlyContinue)
+          if ($exes.Count -ne 1) { throw "Expected one NSIS installer but found $($exes.Count)" }
+          if ($exes[0].Length -lt 1000000) { throw 'Installer too small for a packaged application.' }
+          Get-FileHash $exes[0].FullName -Algorithm SHA256 | Format-List
+      - name: Archive evidence regardless of failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-studio-v06-windows-evidence
+          path: |
+            v06-python-tests.xml
+            apps/desktop/dist/
+            apps/desktop/src-tauri/target/release/bundle/nsis/*.exe
+          if-no-files-found: warn
