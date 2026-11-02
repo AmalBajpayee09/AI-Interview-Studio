@@ -36,10 +36,15 @@ class Ollama(Provider):
                         raise ProviderError(f'Ollama HTTP {r.status_code}. Verify the selected model is installed.')
                     async for line in r.aiter_lines():
                         if not line: continue
-                        try: data=json.loads(line)
-                        except ValueError: raise ProviderError('Ollama sent invalid streaming data.')
+                        try:
+                            data=json.loads(line)
+                            if not isinstance(data,dict): raise ValueError()
+                            message=data.get('message') or {}
+                            if not isinstance(message,dict): raise ValueError()
+                        except (ValueError,TypeError,AttributeError):
+                            raise ProviderError('Ollama sent invalid streaming data.')
                         if data.get('error'): raise ProviderError('Ollama reported a generation error.')
-                        token=data.get('message',{}).get('content','')
+                        token=message.get('content','')
                         if token: yield token
         except (httpx.RequestError, httpx.TimeoutException) as e:
             raise ProviderError('Local Ollama unavailable or timed out. Check Ollama and model installation.') from e
@@ -75,8 +80,10 @@ class OpenAICompatible(Provider):
                             if not line.startswith('data: '): continue
                             payload=line[6:]
                             if payload=='[DONE]': return
-                            try: item=json.loads(payload)
-                            except ValueError: raise ProviderError('Cloud streaming response was malformed.')
+                            try:
+                                item=json.loads(payload)
+                                if not isinstance(item,dict): raise ValueError()
+                            except (ValueError,TypeError): raise ProviderError('Cloud streaming response was malformed.')
                             if item.get('error'): raise ProviderError('Cloud provider reported a generation error.')
                             choices=item.get('choices') or []
                             token=(choices[0].get('delta',{}).get('content') or '') if choices else ''
