@@ -19,7 +19,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: windows-installers-and-test-evidence
-          run-id: 41446339669
+          run-id: 41446895798
           github-token: ${{ github.token }}
           path: downloaded
       - name: Verify NSIS setup artifact and silently install
@@ -28,7 +28,7 @@ jobs:
           $exes = @(Get-ChildItem downloaded -Recurse -Filter '*setup.exe')
           if ($exes.Count -ne 1) { throw "Expected exactly one setup.exe, found $($exes.Count)" }
           $digest = (Get-FileHash -LiteralPath $exes[0].FullName -Algorithm SHA256).Hash.ToLowerInvariant()
-          if ($digest -ne '223d4bc2b1ccef5ec4d439da4ebd48f9d81fa7c7c7e178e13bd218dbb94733dc') { throw "Unexpected setup checksum $digest" }
+          if ($digest -ne '4b0a4c7ac2eb72eb27ddc668d7cbd4d8d6557fd936d636282bd72801450b6e54') { throw "Unexpected setup checksum $digest" }
           $dest = Join-Path $env:RUNNER_TEMP 'AIStudioV05Smoke'
           "STUDIO_INSTALL_DIR=$dest" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
           $p = Start-Process -FilePath $exes[0].FullName -ArgumentList @('/S',"/D=$dest") -Wait -PassThru
