@@ -1,0 +1,21 @@
+{
+  "environment": {
+    "OS": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "cpu_count": 5,
+    "system_total_ram_gb": 5.81
+  },
+  "scope": "local Linux standalone Python worker over loopback HTTP only",
+  "worker_rss_mb": 117.29,
+  "api_health_samples": 70,
+  "api_health_p50_ms": 1.892,
+  "api_health_p95_ms": 3.65,
+  "unauthorized_status": 401,
+  "wrong_token_status": 401,
+  "sqlite_user_version": 5,
+  "session_created_and_recovered": true,
+  "live_ollama_ai_latency": "not measured; no configured running Ollama",
+  "cloud_ai_latency": "not measured; no credentials or consent",
+  "docker_execution_latency": "not measured; Docker unavailable",
+  "windows_ui_latency": "not measured; running Linux"
+}

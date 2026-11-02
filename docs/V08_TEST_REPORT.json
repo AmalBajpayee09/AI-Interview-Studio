@@ -1,0 +1,39 @@
+{
+  "version": "0.8.0",
+  "baseline": "uploaded v0.7 source archive; GitHub feature/v0.7 branch separately inspected and its newer retry/usage implementation preserved on v0.8 branch",
+  "python_regression": {
+    "passed": 80,
+    "failed": 0,
+    "skipped": 3,
+    "skipped_reasons": [
+      "Windows Credential Manager not present on Linux",
+      "STUDIO_LIVE_OLLAMA_TEST not enabled; Ollama not configured",
+      "STUDIO_LIVE_CLOUD_TEST not enabled; no authorized cloud credentials"
+    ]
+  },
+  "actual_http_smoke": {
+    "passed": true,
+    "authorization": {
+      "no_token": 401,
+      "wrong_token": 401
+    },
+    "database_schema": 5,
+    "version": "0.8.0",
+    "local_worker_process": true
+  },
+  "react_production_build": "awaiting GitHub Windows Actions",
+  "rust_check": "awaiting GitHub Windows Actions",
+  "windows_installer": "not verified for v0.8",
+  "real_provider_inference": "not tested",
+  "real_docker": "not tested",
+  "windows_audio": "not tested",
+  "requirements": {
+    "PARTIALLY IMPLEMENTED": 78,
+    "NOT IMPLEMENTED": 23,
+    "TESTED \u2014 DEFINED CODE-PATH": 19,
+    "INTEGRATION TESTED": 2,
+    "BLOCKED": 8
+  },
+  "tests_qualification": "Mock provider tests verify HTTP/SQLite logic, not live model or device functionality",
+  "benchmark_file": "docs/V08_BENCHMARK.json"
+}

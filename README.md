@@ -92,3 +92,7 @@ See [architecture](docs/ARCHITECTURE.md), [security notes](docs/SECURITY.md), [t
 Launch the Tauri desktop app, open **Settings → Cloud AI**, save an OpenAI key into **Windows Credential Manager**, then click **Enable cloud**. In Live Practice, explicitly select Cloud as the provider. A local Ollama model remains the default. Keys are masked in Settings and never returned by an API, copied into export data, or included in distributed source.
 
 If a key already exists in the `OPENAI_API_KEY` environment variable, it remains supported for developer compatibility, but cannot be deleted through the in-app Windows vault control; remove it manually from the development environment. The native `STUDIO_WORKER_TOKEN` protects its worker API; never expose the worker externally.
+
+## v0.8 engineering status
+
+This is a development branch, not a fully accepted Windows product. See docs/V08_RELEASE_STATUS.md, docs/V08_TEST_REPORT.json and docs/V08_ACCEPTANCE_AND_BLOCKERS.md for evidence. Live AI providers, Windows audio hardware and Docker execution require opt-in validation.
