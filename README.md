@@ -1,4 +1,4 @@
-# AI Interview Studio v0.4.0
+# AI Interview Studio v0.5.0 (engineering source; Windows release pending)
 
 AI-assisted Windows desktop application for **authorized mock interviews and assessment practice**. Built with Tauri 2, Rust, React/TypeScript, a bundled Python AI worker, and SQLite. This repository preserves functionality from v0.1 through v0.3 and adds incremental v0.4 improvements.
 
@@ -66,3 +66,11 @@ The development-only local browser companion is available via `scripts/run-brows
 React/Tauri UI → scoped Rust command / authenticated local worker API → Python worker → SQLite and user-chosen providers. The standalone browser companion uses local loopback access and should not be exposed beyond a trusted machine. Cloud inference is explicitly disabled by default. API keys are never included in the source archive or Windows binaries. OS credential vault integration and signed update distribution remain pending.
 
 See [architecture](docs/ARCHITECTURE.md), [security notes](docs/SECURITY.md), [troubleshooting](docs/TROUBLESHOOTING.md), [v0.4 release report](docs/V04_RELEASE_GATE.md) and [test results](docs/V04_TEST_REPORT.json). Project source is MIT licensed. This application must not be used to bypass proctoring or recording restrictions.
+
+
+## v0.5.0 engineering changes
+
+- Assessment API and desktop controls now accept single-choice, multiple-choice and numerical questions, with numerical tolerance, negative marking and section scores.
+- Session-bound transcript **text** can optionally be saved, exported, recovered and deleted; no raw audio is retained. Live audio still does not provide validated speaker diarization.
+- Local Python regression suite and source syntax checks are documented in `docs/TESTING_AND_ACCEPTANCE.md`.
+- **Release gate:** this v0.5.0 source has not yet been compiled or acceptance-tested as a Windows installer. The earlier v0.4.0 installer is not a v0.5.0 installer. See `docs/FEATURE_COMPLETION_MATRIX.md`.

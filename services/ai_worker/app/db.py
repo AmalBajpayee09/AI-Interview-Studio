@@ -52,6 +52,21 @@ def initialize():
         if version < 4:
             db.execute('CREATE TABLE IF NOT EXISTS settings (name TEXT PRIMARY KEY, value TEXT NOT NULL)')
             db.execute('PRAGMA user_version=4')
+        if version < 5:
+            db.execute("""CREATE TABLE IF NOT EXISTS transcript_segments (
+                id TEXT PRIMARY KEY,
+                session_id TEXT NOT NULL REFERENCES sessions(id) ON DELETE CASCADE,
+                text TEXT NOT NULL,
+                source_id TEXT NOT NULL,
+                speaker TEXT NOT NULL DEFAULT 'unknown',
+                speaker_confidence REAL,
+                language TEXT,
+                started_at REAL,
+                ended_at REAL,
+                created REAL NOT NULL
+            )""")
+            db.execute('CREATE INDEX IF NOT EXISTS transcripts_by_session ON transcript_segments(session_id,created,id)')
+            db.execute('PRAGMA user_version=5')
 
 def session_create(title='Practice session'):
     sid = str(uuid.uuid4()); now = time.time()
@@ -187,3 +202,36 @@ def setting(name, default=None):
 def set_setting(name,value):
     with connect() as database:
         database.execute('INSERT INTO settings (name,value) VALUES (?,?) ON CONFLICT(name) DO UPDATE SET value=excluded.value',(name,value))
+
+
+def save_transcript(sid, text, source_id, speaker='unknown', confidence=None,
+                    language=None, started_at=None, ended_at=None):
+    """Consent-based transcript persistence; no raw audio is written."""
+    now=time.time()
+    tid=str(uuid.uuid4())
+    with connect() as database:
+        if not database.execute('SELECT 1 FROM sessions WHERE id=?',(sid,)).fetchone():
+            raise ValueError('Unknown session')
+        database.execute("INSERT INTO transcript_segments VALUES (?,?,?,?,?,?,?,?,?,?)",
+            (tid,sid,text,source_id,speaker,confidence,language,started_at,ended_at,now))
+        # Keep only latest 500 segments per session; older events are removed.
+        database.execute("""DELETE FROM transcript_segments WHERE session_id=? AND id NOT IN
+            (SELECT id FROM transcript_segments WHERE session_id=? ORDER BY created DESC, rowid DESC LIMIT 500)""",(sid,sid))
+        database.execute('UPDATE sessions SET updated=? WHERE id=?',(now,sid))
+    return {'id':tid,'saved':True}
+
+
+def transcripts(sid, limit=100):
+    with connect() as database:
+        if not database.execute('SELECT 1 FROM sessions WHERE id=?',(sid,)).fetchone():
+            raise ValueError('Unknown session')
+        rows=database.execute("""SELECT * FROM transcript_segments WHERE session_id=?
+            ORDER BY created DESC,rowid DESC LIMIT ?""",(sid,limit)).fetchall()
+    return [dict(row) for row in reversed(rows)]
+
+
+def clear_transcripts(sid):
+    with connect() as database:
+        if not database.execute('SELECT 1 FROM sessions WHERE id=?',(sid,)).fetchone():
+            raise ValueError('Unknown session')
+        return database.execute('DELETE FROM transcript_segments WHERE session_id=?',(sid,)).rowcount

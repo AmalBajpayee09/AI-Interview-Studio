@@ -1,0 +1,42 @@
+{
+  "date_utc": "2026-11-02",
+  "environment": "Linux x86_64, Python 3.13.5, Node 22.16.0",
+  "baseline_python": {
+    "passed": 51,
+    "failed": 0
+  },
+  "v05_python": {
+    "passed": 60,
+    "failed": 0,
+    "new_tests": 9,
+    "junit": "docs/V05_PYTEST.xml",
+    "note": "Includes mock providers and mocked Docker command tests; not real AI/Docker tests"
+  },
+  "typescript_syntax": {
+    "files": 9,
+    "parse_errors": 0,
+    "scope": "transpile only; no typecheck or React production build"
+  },
+  "npm_ci_offline": {
+    "status": "BLOCKED",
+    "reason": "vite 6.4.5 tarball absent from npm cache; no package-registry access"
+  },
+  "cargo": {
+    "status": "NOT RUN",
+    "reason": "Rust/Cargo toolchain unavailable"
+  },
+  "real_docker": {
+    "status": "NOT RUN",
+    "reason": "Docker CLI/engine unavailable"
+  },
+  "windows_v05": {
+    "status": "NOT RUN"
+  },
+  "performance_report": "docs/V05_BENCHMARK.json",
+  "v05_live_worker_http": {
+    "passed": 12,
+    "failed": 0,
+    "type": "Live localhost Uvicorn worker subprocess, real HTTP; no AI/audio/Docker",
+    "evidence": "docs/V05_LIVE_HTTP_SMOKE.json"
+  }
+}

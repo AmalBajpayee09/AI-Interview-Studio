@@ -36,3 +36,26 @@ flowchart TD
 ## Planned hardening
 
 Authenticated worker IPC, Windows key vault, signed installer, resource governor, true streaming STT, continuous dual audio, mature model feature negotiation, offline embedding retrieval, sandboxed verification, multi-monitor/capture compatibility testing.
+
+
+## v0.5 delta — assessment and transcript persistence
+
+```
+Tauri 2 / React (typed worker fetch)
+  → Rust scoped worker_connection (ephemeral token + loopback port)
+    → FastAPI worker
+       ├─ provider adapters (Ollama / opt-in cloud; streamed SSE)
+       ├─ assessment type validation + deterministic scorer (single/multiple/numerical)
+       ├─ SQL lab (in-memory, read-only SQLite)
+       ├─ Docker-only coding runner (disabled without isolation)
+       ├─ consented audio → voice gate → optional STT → unknown speaker events
+       └─ SQLite (schema v5)
+          ├─ sessions / turns / documents
+          ├─ assessments / drafts / attempts
+          ├─ settings
+          └─ transcript_segments (opt-in text, FK to session, capped 500/session)
+```
+
+API additions: `GET/POST/DELETE /api/sessions/{sid}/transcripts`. Only an explicit checkbox causes frontend persistence of finalized text; `GET /api/export` includes saved transcript text. Context inclusion of prior saved transcript is bounded to 8 events / 2,500 characters and scoped by session. Raw audio is never stored in SQLite. Backward migration is non-destructive for schema v4. Source identification is NOT diarization.
+
+The desktop frontend uses the existing Tauri 2 shell; v0.5 Windows packaging has not yet been executed.

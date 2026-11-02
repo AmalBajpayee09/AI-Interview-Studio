@@ -1,0 +1,6 @@
+{
+  "files": 9,
+  "parse_errors": 0,
+  "errors": [],
+  "limitation": "Syntax transpilation only, does not perform full typecheck or bundling"
+}
