@@ -1,0 +1,46 @@
+{
+  "environment": {
+    "date_utc": "2026-11-02",
+    "system": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "machine": "x86_64",
+    "python": "3.13.5",
+    "cpu_logical": 5,
+    "ram_total_gb": 5.81,
+    "scope": "Linux host FastAPI TestClient; not Windows desktop, network, audio, or model inference"
+  },
+  "measurements": {
+    "in_process_http_health": {
+      "count": 120,
+      "p50_ms": 0.956,
+      "p95_ms": 2.149,
+      "max_ms": 28.602
+    },
+    "in_process_sql_select": {
+      "count": 50,
+      "p50_ms": 2.234,
+      "p95_ms": 5.147,
+      "max_ms": 6.03
+    },
+    "in_process_sql_join": {
+      "count": 50,
+      "p50_ms": 3.211,
+      "p95_ms": 12.91,
+      "max_ms": 19.959
+    },
+    "in_process_db_session_create": {
+      "count": 30,
+      "p50_ms": 4.991,
+      "p95_ms": 6.532,
+      "max_ms": 14.109
+    }
+  },
+  "python_process_rss_mb_after_tests": 113.3,
+  "not_measured": [
+    "Windows cold/warm startup",
+    "Tauri/React UI CPU and RAM",
+    "Ollama or cloud model TTFT",
+    "STT audio latency",
+    "Docker real execution performance",
+    "target i5 laptop"
+  ]
+}

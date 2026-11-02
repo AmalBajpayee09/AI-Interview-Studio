@@ -2,7 +2,8 @@ import {invoke,isTauri} from '@tauri-apps/api/core';
 export interface Turn {id:string;session_id:string;question:string;answer:string;mode:string;provider:string;created:number;elapsed_ms:number}
 export interface Session {id:string;title:string;created:number;updated:number}
 export interface Option {label:string;text:string}
-export interface Question {id:string;stem:string;options:Option[];section?:string;points?:number}
+export type QuizAnswer=string|string[];
+export interface Question {id:string;stem:string;options?:Option[];kind?:'single'|'multiple'|'numerical';section?:string;points?:number;tolerance?:number}
 export interface Assessment {id:string;title:string;questions:Question[];duration_seconds:number}
 export interface Stats {sessions:number;questions:number;average_answer_ms:number;assessments_completed:number;average_score_pct:number|null}
 interface WorkerConnection {base:string;token:string}
