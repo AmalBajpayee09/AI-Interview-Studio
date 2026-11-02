@@ -13,7 +13,7 @@ from fastapi.responses import StreamingResponse, JSONResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from pydantic import BaseModel, Field
-from . import db,config,logic,providers,sql_lab,resources,code_runner,audio_live
+from . import db,config,logic,providers,sql_lab,resources,code_runner,audio_live,credentials
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -24,7 +24,7 @@ async def lifespan(app: FastAPI):
 ACTIVE_GENERATIONS:dict[str,object]={}
 INFERENCE_LIMIT=asyncio.Semaphore(2)
 
-app=FastAPI(title='AI Interview Studio',version='0.5.0',lifespan=lifespan,docs_url=None,redoc_url=None)
+app=FastAPI(title='AI Interview Studio',version='0.6.0',lifespan=lifespan,docs_url=None,redoc_url=None)
 ALLOWED_ORIGINS=['http://localhost:1420','http://127.0.0.1:1420','http://127.0.0.1:8765','http://localhost:8765','tauri://localhost','http://tauri.localhost','https://tauri.localhost']
 app.add_middleware(TrustedHostMiddleware, allowed_hosts=['127.0.0.1','localhost','testserver'])
 app.add_middleware(CORSMiddleware,allow_origins=ALLOWED_ORIGINS,allow_methods=['GET','POST','DELETE'],allow_headers=['Content-Type','X-Studio-Token'],allow_credentials=False)
@@ -37,6 +37,19 @@ async def origin_filter(request: Request,call_next):
     origin=request.headers.get('origin')
     if origin and origin not in ALLOWED_ORIGINS: return JSONResponse({'detail':'Origin not permitted'},status_code=403)
     return await call_next(request)
+
+def cloud_consent():
+    return db.setting('cloud_consent',None) == 'true' if db.setting('cloud_consent',None) is not None else config.ALLOW_CLOUD
+
+def safe_has_cloud_key():
+    try:return credentials.has_api_key()
+    except credentials.CredentialUnavailable:return False
+
+class CloudConsent(BaseModel):
+    enabled: bool
+
+class CloudCredential(BaseModel):
+    api_key: str=Field(min_length=12,max_length=1024)
 
 class AskBody(BaseModel):
     session_id:str
@@ -116,7 +129,7 @@ async def companion():
 
 @app.get('/api/health')
 async def health():
-    return {'status':'ok','version':'0.5.0','cloud_enabled':config.ALLOW_CLOUD and bool(config.CLOUD_KEY),'retention_days':config.RETENTION_DAYS}
+    return {'status':'ok','version':'0.6.0','cloud_enabled':cloud_consent() and safe_has_cloud_key(),'retention_days':config.RETENTION_DAYS}
 
 @app.get('/api/diagnostics')
 async def diagnostics():
@@ -125,7 +138,46 @@ async def diagnostics():
     return {'platform':platform.platform(),'cpu_count':psutil.cpu_count(logical=True),'memory_total_gb':round(psutil.virtual_memory().total/2**30,1),'memory_available_gb':round(psutil.virtual_memory().available/2**30,1),'cpu_percent':psutil.cpu_percent(interval=0.05),'process_rss_mb':round(psutil.Process().memory_info().rss/2**20,1),'gpu_execution':'not measured','profile':'constrained' if psutil.virtual_memory().total<8*2**30 else 'mainstream' if psutil.virtual_memory().total<24*2**30 else 'high-performance'}
 
 @app.get('/api/models')
-async def models(): return {**await providers.list_local_models(),'default_local':config.OLLAMA_MODEL,'cloud_enabled':config.ALLOW_CLOUD and bool(config.CLOUD_KEY),'default_cloud':config.CLOUD_MODEL}
+async def models(): return {**await providers.list_local_models(),'default_local':config.OLLAMA_MODEL,'cloud_enabled':cloud_consent() and safe_has_cloud_key(),'default_cloud':config.CLOUD_MODEL}
+
+@app.get('/api/cloud/status')
+async def cloud_status():
+    return {'consent':cloud_consent(), 'has_key':safe_has_cloud_key(),
+            'credential_backend':'Windows Credential Manager' if os.name=='nt' else 'environment-only (no in-app vault)',
+            'cloud_requests':'only explicitly selected cloud provider; no automatic fallback'}
+
+@app.post('/api/cloud/consent')
+async def cloud_consent_update(body:CloudConsent):
+    db.set_setting('cloud_consent','true' if body.enabled else 'false')
+    return await cloud_status()
+
+@app.post('/api/cloud/credential')
+async def cloud_credential_save(body:CloudCredential):
+    try:
+        credentials.save_api_key(body.api_key)
+    except ValueError as e:raise HTTPException(400,str(e))
+    except credentials.CredentialUnavailable as e:raise HTTPException(503,str(e))
+    return {'saved':True, 'masked':'••••••••', 'credential_backend':'Windows Credential Manager'}
+
+@app.delete('/api/cloud/credential')
+async def cloud_credential_delete():
+    try:return {'deleted':credentials.delete_api_key()}
+    except credentials.CredentialUnavailable as e:raise HTTPException(503,str(e))
+
+@app.get('/api/ai/usage')
+async def ai_usage():
+    return {'entries':db.ai_usage(), 'token_usage':'not available; output characters recorded, not billed tokens'}
+
+@app.get('/api/sessions/{sid}/ai/usage')
+async def session_ai_usage(sid:str):
+    try:return {'entries':db.ai_usage(sid)}
+    except ValueError as e:raise HTTPException(404,str(e))
+
+@app.post('/api/ask/{sid}/cancel')
+async def cancel_ask(sid:str):
+    # Stops persistence of the superseded answer. The frontend also aborts its HTTP stream.
+    token=ACTIVE_GENERATIONS.pop(sid,None)
+    return {'cancelled':token is not None}
 
 @app.post('/api/sessions')
 async def create_session(body:dict|None=None): return db.session_create(str((body or {}).get('title','Practice session')))
@@ -179,7 +231,7 @@ async def ask_stream(body:AskBody):
     token_id=object()
     ACTIVE_GENERATIONS[body.session_id]=token_id
     async def events():
-        started=time.perf_counter(); text=[]; token_length=0
+        started=time.perf_counter(); text=[]; token_length=0; first_token_ms=None
         def event(kind,data): return 'data: '+json.dumps({'type':kind,**data},ensure_ascii=False)+'\n\n'
         yield event('meta',{'category':logic.classify(body.question),'verification':'not independently verified','model':model})
         try:
@@ -190,6 +242,7 @@ async def ask_stream(body:AskBody):
                     if ACTIVE_GENERATIONS.get(body.session_id) is not token_id:
                         raise providers.ProviderError('Superseded by a newer question; stale answer discarded.')
                     text.append(token); token_length+=len(token)
+                    if first_token_ms is None: first_token_ms=int((time.perf_counter()-started)*1000)
                     if token_length>60000: raise providers.ProviderError('Answer exceeded configured limit')
                     yield event('token',{'text':token})
             if ACTIVE_GENERATIONS.get(body.session_id) is not token_id:
@@ -198,7 +251,9 @@ async def ask_stream(body:AskBody):
             if not answer: raise providers.ProviderError('Selected model returned no answer')
             elapsed=int((time.perf_counter()-started)*1000)
             db.save_turn(body.session_id,body.question,answer,body.mode,body.provider,elapsed)
-            yield event('done',{'elapsed_ms':elapsed})
+            db.save_ai_usage(body.session_id,body.provider,model,first_token_ms,elapsed,len(answer))
+            yield event('done',{'elapsed_ms':elapsed,'first_token_ms':first_token_ms,
+                                'output_characters':len(answer), 'token_usage':'unavailable'})
         except (providers.ProviderError,ValueError) as exc:
             yield event('error',{'message':str(exc)})
         except (asyncio.CancelledError,GeneratorExit):

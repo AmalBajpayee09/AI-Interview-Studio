@@ -1,0 +1,14 @@
+{
+  "version": "0.6.0",
+  "audited_total": 144,
+  "previous_130_ids_preserved": true,
+  "master_gap_added": 14,
+  "status_counts": {
+    "BLOCKED": 8,
+    "IMPLEMENTED \u2014 NOT VERIFIED": 1,
+    "NOT IMPLEMENTED": 33,
+    "PARTIALLY IMPLEMENTED": 82,
+    "TESTED \u2014 DEFINED CODE-PATH": 20
+  },
+  "release": "development preview; Windows v0.6 not yet compiled"
+}
