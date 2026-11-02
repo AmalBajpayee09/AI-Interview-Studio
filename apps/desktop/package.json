@@ -1,5 +1,5 @@
 {
-  "name":"ai-interview-studio-desktop", "version":"0.6.0", "private":true, "type":"module",
+  "name":"ai-interview-studio-desktop", "version":"0.7.0", "private":true, "type":"module",
   "scripts":{"dev":"vite --host 127.0.0.1 --port 1420 --strictPort","build":"tsc -b && vite build","preview":"vite preview --host 127.0.0.1","tauri":"tauri"},
   "dependencies":{"@tauri-apps/api":"^2.4.0","react":"^19.0.0","react-dom":"^19.0.0"},
   "devDependencies":{"@tauri-apps/cli":"^2.4.0","@types/react":"^19.0.12","@types/react-dom":"^19.0.4","typescript":"~5.8.3","vite":"^6.3.0"}
