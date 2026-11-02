@@ -76,6 +76,63 @@ jobs:
             if ($_.Length -lt 1000000) { throw "Suspiciously small installer: $($_.FullName)" }
             Get-FileHash $_.FullName -Algorithm SHA256 | Format-List
           }
+      - name: Install and launch Windows desktop and bundled worker (smoke test)
+        run: |
+          $ErrorActionPreference='Stop'
+          $installer=@(Get-ChildItem 'apps/desktop/src-tauri/target/release/bundle/nsis/*.exe' | Select-Object -First 1)[0]
+          if(-not $installer){throw 'NSIS installer missing'}
+          $dest=Join-Path $env:RUNNER_TEMP 'AIStudioV07Install'
+          $p=Start-Process -FilePath $installer.FullName -ArgumentList @('/S',"/D=$dest") -Wait -PassThru
+          if($p.ExitCode -ne 0){throw "NSIS install failed ($($p.ExitCode))"}
+          $locations=@($dest,(Join-Path $env:LOCALAPPDATA 'Programs/AI Interview Studio'),(Join-Path $env:ProgramFiles 'AI Interview Studio'))
+          $desktop=$null;$installed=$null
+          foreach($loc in $locations){
+            if(Test-Path $loc){
+              $exes=@(Get-ChildItem $loc -Filter 'ai-interview-studio.exe' -Recurse -ErrorAction SilentlyContinue)
+              $workers=@(Get-ChildItem $loc -Filter 'ai-studio-worker.exe' -Recurse -ErrorAction SilentlyContinue)
+              if($exes.Count -gt 0 -and $workers.Count -gt 0){$desktop=$exes[0].FullName;$installed=$loc;break}
+            }
+          }
+          if(-not $desktop){throw 'Installed desktop or worker missing'}
+          "STUDIO_V07_INSTALL_DIR=$installed" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+          $env:STUDIO_DATA_DIR=Join-Path $env:RUNNER_TEMP 'AIStudioV07Data'
+          $app=Start-Process -FilePath $desktop -PassThru
+          try {
+            Start-Sleep -Seconds 12
+            $app.Refresh()
+            if($app.HasExited){throw "Installed desktop exited early ($($app.ExitCode))"}
+            $workers=@(Get-CimInstance Win32_Process -Filter "Name='ai-studio-worker.exe'")
+            if($workers.Count -lt 1){throw 'Bundled Python worker not started'}
+            $db=Join-Path $env:STUDIO_DATA_DIR 'studio.sqlite3'
+            if(-not (Test-Path $db)){throw 'First-run SQLite database was not created'}
+            $env:AI_STUDIO_TEST_DB=$db
+            & py -3.11 -c "import sqlite3,os; db=sqlite3.connect(os.environ['AI_STUDIO_TEST_DB']); version=db.execute('PRAGMA user_version').fetchone()[0]; print('SQLite version',version); assert version>=6; db.close()"
+            if($LASTEXITCODE -ne 0){throw 'SQLite migration verification failed'}
+          } finally {
+            if(-not $app.HasExited){
+              $null=$app.CloseMainWindow(); Start-Sleep -Seconds 2; $app.Refresh()
+              if(-not $app.HasExited){$app.Kill();$app.WaitForExit()}
+            }
+          }
+      - name: Create portable package from installed binaries
+        run: |
+          $ErrorActionPreference='Stop'
+          if(-not (Test-Path $env:STUDIO_V07_INSTALL_DIR)){throw 'Installer smoke test has not produced an install directory'}
+          New-Item -ItemType Directory -Force 'portable' | Out-Null
+          Copy-Item (Join-Path $env:STUDIO_V07_INSTALL_DIR '*') 'portable/' -Recurse -Force
+          Compress-Archive -Path 'portable/*' -DestinationPath 'AI-Interview-Studio-Portable-v0.7.0.zip' -CompressionLevel Optimal -Force
+          if((Get-Item 'AI-Interview-Studio-Portable-v0.7.0.zip').Length -lt 1000000){throw 'Portable package too small'}
+          Get-FileHash 'AI-Interview-Studio-Portable-v0.7.0.zip' -Algorithm SHA256 | Format-List
+      - name: Attempt silent uninstall (non-gating)
+        if: always()
+        run: |
+          if($env:STUDIO_V07_INSTALL_DIR -and (Test-Path $env:STUDIO_V07_INSTALL_DIR)){
+            $uninstaller=@(Get-ChildItem $env:STUDIO_V07_INSTALL_DIR -Filter '*uninstall*.exe' -Recurse -ErrorAction SilentlyContinue)
+            if($uninstaller.Count -gt 0){
+              $p=Start-Process -FilePath $uninstaller[0].FullName -ArgumentList '/S' -Wait -PassThru
+              if($p.ExitCode -ne 0){Write-Warning "Uninstall exited $($p.ExitCode)"}
+            }else{Write-Warning 'No uninstaller found'}
+          }
       - name: Upload installer, test results and build output
         if: always()
         uses: actions/upload-artifact@v4
@@ -85,4 +142,5 @@ jobs:
             python-test-results.xml
             apps/desktop/dist/
             apps/desktop/src-tauri/target/release/bundle/nsis/*.exe
+            AI-Interview-Studio-Portable-v0.7.0.zip
           if-no-files-found: warn
