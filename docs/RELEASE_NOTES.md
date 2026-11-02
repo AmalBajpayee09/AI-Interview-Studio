@@ -22,3 +22,13 @@ Not a general-availability Windows installer. Windows packaging, frontend compil
 - Expanded Python tests; see `TEST_REPORT.json` for actual counts and test environment.
 
 **Not shipped:** Windows `.exe` installer or portable binary; fully functional two-speaker STT, restricted code execution, real provider benchmarks, compiled React or Rust binaries. See `ADDON_COMPLETION_STATUS.md`.
+
+
+## v0.5.0 (2026-11-02) — source engineering update, not a Windows release
+
+- Added multiple-choice (multiple selections), numerical tolerance scoring, section breakdown and UI inputs; preserved legacy quiz behavior.
+- Added schema v5 optional transcript-text storage and session-scoped API, explicit opt-in in live audio UI, export and deletion, plus context inclusion.
+- Moved resume/transcript references into user-level messages and warned providers against obeying embedded instructions.
+- Added 9 Python tests (51→60), type/TSX parse check, measured in-process backend benchmark and 130-row requirement audit.
+- Updated frontend and shell version metadata, lockfile package version, and committed-lockfile CI gate.
+- **Not yet compiled on Windows**. No v0.5 installer, portable ZIP or real speaker diarization verification. v0.4 installer is not relabeled.

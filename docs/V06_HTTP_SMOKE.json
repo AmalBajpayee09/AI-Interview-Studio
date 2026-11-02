@@ -1,0 +1,82 @@
+{
+  "version": "0.6.0",
+  "environment": "linux",
+  "test_type": "real localhost HTTP, not desktop or live AI",
+  "checks": [
+    {
+      "name": "unauthenticated request rejected",
+      "pass_status": true,
+      "details": ""
+    },
+    {
+      "name": "origin restriction",
+      "pass_status": true,
+      "details": ""
+    },
+    {
+      "name": "worker health",
+      "pass_status": true,
+      "details": ""
+    },
+    {
+      "name": "Windows-only credential storage fails closed",
+      "pass_status": true,
+      "details": "Linux-specific test"
+    },
+    {
+      "name": "cloud privacy default",
+      "pass_status": true,
+      "details": ""
+    },
+    {
+      "name": "cloud consent enables explicitly",
+      "pass_status": true,
+      "details": ""
+    },
+    {
+      "name": "cloud consent disable",
+      "pass_status": true,
+      "details": ""
+    },
+    {
+      "name": "persistent session created",
+      "pass_status": true,
+      "details": ""
+    },
+    {
+      "name": "AI usage initially empty",
+      "pass_status": true,
+      "details": ""
+    },
+    {
+      "name": "SQL read-only query",
+      "pass_status": true,
+      "details": ""
+    },
+    {
+      "name": "SQL write blocked",
+      "pass_status": true,
+      "details": ""
+    },
+    {
+      "name": "nonexistent AI usage 404",
+      "pass_status": true,
+      "details": ""
+    },
+    {
+      "name": "cancellation endpoint idempotent",
+      "pass_status": true,
+      "details": ""
+    },
+    {
+      "name": "delete session",
+      "pass_status": true,
+      "details": ""
+    }
+  ],
+  "pass_count": 14,
+  "total_count": 14,
+  "health_p50_ms": 1.483,
+  "health_p95_ms": 2.174,
+  "health_samples": 30
+}

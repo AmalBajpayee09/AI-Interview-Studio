@@ -52,6 +52,34 @@ def initialize():
         if version < 4:
             db.execute('CREATE TABLE IF NOT EXISTS settings (name TEXT PRIMARY KEY, value TEXT NOT NULL)')
             db.execute('PRAGMA user_version=4')
+        if version < 5:
+            db.execute("""CREATE TABLE IF NOT EXISTS transcript_segments (
+                id TEXT PRIMARY KEY,
+                session_id TEXT NOT NULL REFERENCES sessions(id) ON DELETE CASCADE,
+                text TEXT NOT NULL,
+                source_id TEXT NOT NULL,
+                speaker TEXT NOT NULL DEFAULT 'unknown',
+                speaker_confidence REAL,
+                language TEXT,
+                started_at REAL,
+                ended_at REAL,
+                created REAL NOT NULL
+            )""")
+            db.execute('CREATE INDEX IF NOT EXISTS transcripts_by_session ON transcript_segments(session_id,created,id)')
+            db.execute('PRAGMA user_version=5')
+        if version < 6:
+            db.execute("""CREATE TABLE IF NOT EXISTS ai_usage (
+                id TEXT PRIMARY KEY,
+                session_id TEXT NOT NULL REFERENCES sessions(id) ON DELETE CASCADE,
+                provider TEXT NOT NULL,
+                model TEXT NOT NULL,
+                first_token_ms INTEGER,
+                total_ms INTEGER NOT NULL,
+                output_characters INTEGER NOT NULL,
+                created REAL NOT NULL
+            )""")
+            db.execute('CREATE INDEX IF NOT EXISTS ai_usage_by_session ON ai_usage(session_id,created)')
+            db.execute('PRAGMA user_version=6')
 
 def session_create(title='Practice session'):
     sid = str(uuid.uuid4()); now = time.time()
@@ -187,3 +215,53 @@ def setting(name, default=None):
 def set_setting(name,value):
     with connect() as database:
         database.execute('INSERT INTO settings (name,value) VALUES (?,?) ON CONFLICT(name) DO UPDATE SET value=excluded.value',(name,value))
+
+
+def save_transcript(sid, text, source_id, speaker='unknown', confidence=None,
+                    language=None, started_at=None, ended_at=None):
+    """Consent-based transcript persistence; no raw audio is written."""
+    now=time.time()
+    tid=str(uuid.uuid4())
+    with connect() as database:
+        if not database.execute('SELECT 1 FROM sessions WHERE id=?',(sid,)).fetchone():
+            raise ValueError('Unknown session')
+        database.execute("INSERT INTO transcript_segments VALUES (?,?,?,?,?,?,?,?,?,?)",
+            (tid,sid,text,source_id,speaker,confidence,language,started_at,ended_at,now))
+        # Keep only latest 500 segments per session; older events are removed.
+        database.execute("""DELETE FROM transcript_segments WHERE session_id=? AND id NOT IN
+            (SELECT id FROM transcript_segments WHERE session_id=? ORDER BY created DESC, rowid DESC LIMIT 500)""",(sid,sid))
+        database.execute('UPDATE sessions SET updated=? WHERE id=?',(now,sid))
+    return {'id':tid,'saved':True}
+
+
+def transcripts(sid, limit=100):
+    with connect() as database:
+        if not database.execute('SELECT 1 FROM sessions WHERE id=?',(sid,)).fetchone():
+            raise ValueError('Unknown session')
+        rows=database.execute("""SELECT * FROM transcript_segments WHERE session_id=?
+            ORDER BY created DESC,rowid DESC LIMIT ?""",(sid,limit)).fetchall()
+    return [dict(row) for row in reversed(rows)]
+
+
+def clear_transcripts(sid):
+    with connect() as database:
+        if not database.execute('SELECT 1 FROM sessions WHERE id=?',(sid,)).fetchone():
+            raise ValueError('Unknown session')
+        return database.execute('DELETE FROM transcript_segments WHERE session_id=?',(sid,)).rowcount
+
+
+def save_ai_usage(sid, provider, model, first_token_ms, total_ms, output_characters):
+    with connect() as database:
+        database.execute('INSERT INTO ai_usage VALUES(?,?,?,?,?,?,?,?)',
+                         (str(uuid.uuid4()),sid,provider,model,first_token_ms,total_ms,
+                          output_characters,time.time()))
+
+def ai_usage(sid=None):
+    with connect() as database:
+        if sid is not None:
+            if not database.execute('SELECT 1 FROM sessions WHERE id=?',(sid,)).fetchone():
+                raise ValueError('Unknown session')
+            rows=database.execute('SELECT session_id,provider,model,first_token_ms,total_ms,output_characters,created FROM ai_usage WHERE session_id=? ORDER BY created DESC LIMIT 200',(sid,))
+        else:
+            rows=database.execute('SELECT session_id,provider,model,first_token_ms,total_ms,output_characters,created FROM ai_usage ORDER BY created DESC LIMIT 200')
+        return [dict(r) for r in rows]

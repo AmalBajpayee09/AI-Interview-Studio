@@ -71,12 +71,12 @@ def test_sqlite_online_backup(client,tmp_path):
     with sqlite3.connect(target) as con:
         assert con.execute('SELECT COUNT(*) FROM sessions').fetchone()[0]==1
         assert con.execute('PRAGMA integrity_check').fetchone()[0]=='ok'
-        assert con.execute('PRAGMA user_version').fetchone()[0]==4
+        assert con.execute('PRAGMA user_version').fetchone()[0]==6
 
 
 def test_schema_compatibility_existing_v2(client):
     with db.connect() as con:
-        assert con.execute('PRAGMA user_version').fetchone()[0]==4
+        assert con.execute('PRAGMA user_version').fetchone()[0]==6
         assert con.execute("SELECT COUNT(*) FROM sqlite_master WHERE name='turns'").fetchone()[0]==1
 
 
@@ -127,7 +127,7 @@ def test_existing_schema_v2_migrates_non_destructively(tmp_path,monkeypatch):
     db.initialize()
     assert db.sessions()[0]['title']=='Original practice'
     with db.connect() as con:
-        assert con.execute('PRAGMA user_version').fetchone()[0]==4
+        assert con.execute('PRAGMA user_version').fetchone()[0]==6
         assert con.execute("SELECT name FROM sqlite_master WHERE name='assessment_drafts'").fetchone()
         assert con.execute("SELECT name FROM sqlite_master WHERE name='settings'").fetchone()
 
