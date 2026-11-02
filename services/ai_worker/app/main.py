@@ -24,7 +24,7 @@ async def lifespan(app: FastAPI):
 ACTIVE_GENERATIONS:dict[str,object]={}
 INFERENCE_LIMIT=asyncio.Semaphore(2)
 
-app=FastAPI(title='AI Interview Studio',version='0.7.0',lifespan=lifespan,docs_url=None,redoc_url=None)
+app=FastAPI(title='AI Interview Studio',version='0.8.0',lifespan=lifespan,docs_url=None,redoc_url=None)
 ALLOWED_ORIGINS=['http://localhost:1420','http://127.0.0.1:1420','http://127.0.0.1:8765','http://localhost:8765','tauri://localhost','http://tauri.localhost','https://tauri.localhost']
 app.add_middleware(TrustedHostMiddleware, allowed_hosts=['127.0.0.1','localhost','testserver'])
 app.add_middleware(CORSMiddleware,allow_origins=ALLOWED_ORIGINS,allow_methods=['GET','POST','DELETE'],allow_headers=['Content-Type','X-Studio-Token'],allow_credentials=False)
@@ -128,7 +128,7 @@ async def companion():
 
 @app.get('/api/health')
 async def health():
-    return {'status':'ok','version':'0.7.0','cloud_enabled':cloud_consent() and safe_has_cloud_key(),'retention_days':config.RETENTION_DAYS}
+    return {'status':'ok','version':'0.8.0','cloud_enabled':cloud_consent() and safe_has_cloud_key(),'retention_days':config.RETENTION_DAYS}
 
 @app.get('/api/diagnostics')
 async def diagnostics():
@@ -235,6 +235,8 @@ async def ask_stream(body:AskBody):
     except providers.ProviderError as e: raise HTTPException(400,str(e))
     model=body.model or default_model
     if len(model)>90 or not model.strip(): raise HTTPException(400,'Invalid model name')
+    if body.session_id in ACTIVE_GENERATIONS:
+        raise HTTPException(409,'An answer for this session is already generating. Cancel it before retrying.')
     token_id=object()
     ACTIVE_GENERATIONS[body.session_id]=token_id
     async def events():
@@ -247,13 +249,13 @@ async def ask_stream(body:AskBody):
             async with INFERENCE_LIMIT:
                 async for token in provider.stream(messages,model):
                     if ACTIVE_GENERATIONS.get(body.session_id) is not token_id:
-                        raise providers.ProviderError('Superseded by a newer question; stale answer discarded.')
+                        raise providers.ProviderError('Generation cancelled; no answer saved.' if body.session_id not in ACTIVE_GENERATIONS else 'Superseded by a newer question; stale answer discarded.')
                     text.append(token); token_length+=len(token)
                     if first_token_ms is None: first_token_ms=int((time.perf_counter()-started)*1000)
                     if token_length>60000: raise providers.ProviderError('Answer exceeded configured limit')
                     yield event('token',{'text':token})
             if ACTIVE_GENERATIONS.get(body.session_id) is not token_id:
-                raise providers.ProviderError('Superseded by a newer question; stale answer discarded.')
+                raise providers.ProviderError('Generation cancelled; no answer saved.' if body.session_id not in ACTIVE_GENERATIONS else 'Superseded by a newer question; stale answer discarded.')
             answer=''.join(text)
             if not answer: raise providers.ProviderError('Selected model returned no answer')
             elapsed=int((time.perf_counter()-started)*1000)
