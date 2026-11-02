@@ -27,7 +27,7 @@ def test_completed_stream_includes_measured_first_token_latency(client, monkeypa
     done = frames[-1]
     assert isinstance(done['first_token_ms'], int) and done['first_token_ms'] >= 0
     assert done['first_token_ms'] <= done['elapsed_ms']
-    assert done['characters'] == len('Measured output')
+    assert done.get('output_characters',done.get('characters')) == len('Measured output')
     assert len(client.get(f'/api/sessions/{sid}/turns').json()) == 1
 
 
