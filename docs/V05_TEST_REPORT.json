@@ -32,5 +32,11 @@
   "windows_v05": {
     "status": "NOT RUN"
   },
-  "performance_report": "docs/V05_BENCHMARK.json"
+  "performance_report": "docs/V05_BENCHMARK.json",
+  "v05_live_worker_http": {
+    "passed": 12,
+    "failed": 0,
+    "type": "Live localhost Uvicorn worker subprocess, real HTTP; no AI/audio/Docker",
+    "evidence": "docs/V05_LIVE_HTTP_SMOKE.json"
+  }
 }

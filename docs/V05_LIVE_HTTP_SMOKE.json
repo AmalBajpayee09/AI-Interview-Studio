@@ -1,0 +1,81 @@
+{
+  "environment": "Linux localhost Uvicorn subprocess; no AI/Docker/audio device",
+  "result": "PASS",
+  "passed": 12,
+  "total": 12,
+  "steps": [
+    {
+      "test": "worker requires token",
+      "http_status": 401,
+      "expected": 401,
+      "pass": true
+    },
+    {
+      "test": "worker health",
+      "http_status": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "test": "create session",
+      "http_status": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "test": "save transcript",
+      "http_status": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "test": "retrieve transcript",
+      "http_status": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "test": "create numeric assessment",
+      "http_status": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "test": "submit numeric assessment",
+      "http_status": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "test": "SQL read-only query",
+      "http_status": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "test": "SQL mutation rejected",
+      "http_status": 400,
+      "expected": 400,
+      "pass": true
+    },
+    {
+      "test": "data export",
+      "http_status": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "test": "session deletion",
+      "http_status": 200,
+      "expected": 200,
+      "pass": true
+    },
+    {
+      "test": "deleted transcript inaccessible",
+      "http_status": 404,
+      "expected": 404,
+      "pass": true
+    }
+  ],
+  "note": "Real HTTP and worker process, no real Windows UI or provider inference tested"
+}

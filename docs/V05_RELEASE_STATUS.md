@@ -6,6 +6,7 @@ The initial v0.4 Windows release (`main` commit b4a9d2b449122a29fa7b874652473648
 |---|---|
 | Complete local v0.5 source | PASS; ZIP assembled and verified separately |
 | Python backend tests | PASS; 60/60 |
+| Localhost worker HTTP smoke | PASS; 12/12 |
 | Source TS/TSX syntax | PASS; 9 files; not a React production build |
 | npm ci / React bundle | BLOCKED; registry cache does not have required Vite archive |
 | Cargo/Tauri v0.5 compile | BLOCKED; no Rust/Cargo toolchain on Linux host |

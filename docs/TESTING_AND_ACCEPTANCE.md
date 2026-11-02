@@ -5,6 +5,7 @@
 - Baseline: **51/51 Python tests passed** before modifications.
 - v0.5: **60/60 Python tests passed** (`PYTHONPATH=services/ai_worker python -m pytest services/ai_worker/tests -q`). Test log: `docs/V05_PYTEST.xml`.
 - TypeScript/TSX **syntax transpilation**: 9/9 source files, 0 parse diagnostics using globally available TypeScript (this does **not** check types, execute React, or build Vite assets).
+- A live Uvicorn subprocess passed **12/12 localhost HTTP checks**, including dynamic-port token authentication, session transcript save/retrieve, numerical assessment, SQL rejection, export and deletion. Evidence: `docs/V05_LIVE_HTTP_SMOKE.json`.
 - `npm ci --offline` failed (`ENOTCACHED` on Vite archive); `npm run build` was therefore not executed here.
 - Rust/Cargo compilation: **not run**, toolchain unavailable on this Linux host.
 - Docker execution: **not run**, Docker CLI/engine unavailable (tests use mocked subprocess interfaces).
