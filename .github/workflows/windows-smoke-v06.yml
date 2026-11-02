@@ -1,0 +1,106 @@
+name: v0.6 Windows installation and portable launch smoke
+on:
+  push:
+    branches: ['qa/v0.6.0-windows-smoke']
+    paths: ['.github/workflows/windows-smoke-v06.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  smoke:
+    runs-on: windows-latest
+    timeout-minutes: 40
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          name: ai-studio-v06-windows-evidence
+          run-id: 41465967823
+          github-token: ${{ github.token }}
+          path: downloaded
+      - name: Verify NSIS installer and silently install on clean runner
+        run: |
+          $ErrorActionPreference='Stop'
+          $exes=@(Get-ChildItem downloaded -Filter '*.exe' -Recurse)
+          if($exes.Count -ne 1){throw "Expected exactly one NSIS installer; found $($exes.Count)"}
+          if($exes[0].Length -lt 1000000){throw 'Installer too small'}
+          Get-FileHash -LiteralPath $exes[0].FullName -Algorithm SHA256 | Format-List
+          $dest=Join-Path $env:RUNNER_TEMP 'AIStudioV06Installed'
+          "STUDIO_INSTALL_DIR=$dest" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+          $proc=Start-Process -FilePath $exes[0].FullName -ArgumentList @('/S',"/D=$dest") -Wait -PassThru
+          if($proc.ExitCode -ne 0){throw "Silent installation failed: $($proc.ExitCode)"}
+      - name: Locate desktop and bundled worker
+        run: |
+          $ErrorActionPreference='Stop'
+          $dirs=@($env:STUDIO_INSTALL_DIR,(Join-Path $env:LOCALAPPDATA 'Programs/AI Interview Studio'),(Join-Path $env:ProgramFiles 'AI Interview Studio'))
+          $dir=$null
+          foreach($candidate in $dirs){
+            if(Test-Path $candidate){
+              $exe=@(Get-ChildItem $candidate -Filter 'ai-interview-studio.exe' -Recurse -ErrorAction SilentlyContinue)
+              $worker=@(Get-ChildItem $candidate -Filter 'ai-studio-worker.exe' -Recurse -ErrorAction SilentlyContinue)
+              if($exe.Count -gt 0 -and $worker.Count -gt 0){$dir=$candidate;break}
+            }
+          }
+          if(-not $dir){throw 'Installed desktop or worker executable missing'}
+          $desktop=@(Get-ChildItem $dir -Filter 'ai-interview-studio.exe' -Recurse | Select-Object -First 1)
+          "STUDIO_DESKTOP_EXE=$($desktop[0].FullName)" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+          "STUDIO_INSTALLED_DIR=$dir" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
+      - name: Launch installed app, check worker and database schema v6
+        run: |
+          $ErrorActionPreference='Stop'
+          $env:STUDIO_DATA_DIR=Join-Path $env:RUNNER_TEMP 'AIStudioV06UserData'
+          $proc=Start-Process -FilePath $env:STUDIO_DESKTOP_EXE -PassThru
+          try{
+            Start-Sleep -Seconds 12
+            $proc.Refresh()
+            if($proc.HasExited){throw "Desktop exited early ($($proc.ExitCode))"}
+            $worker=@(Get-CimInstance Win32_Process -Filter "Name='ai-studio-worker.exe'")
+            if($worker.Count -eq 0){throw 'Bundled worker did not start'}
+            $env:AI_STUDIO_DB=Join-Path $env:STUDIO_DATA_DIR 'studio.sqlite3'
+            & py -3.11 -c "import sqlite3,os; c=sqlite3.connect(os.environ['AI_STUDIO_DB']); v=c.execute('PRAGMA user_version').fetchone()[0]; print('SQLite schema',v); assert v==6; c.close()"
+            if($LASTEXITCODE -ne 0){throw 'Installed worker SQLite migration failed'}
+          }finally{
+            if(-not $proc.HasExited){$null=$proc.CloseMainWindow();Start-Sleep -Seconds 3;$proc.Refresh();if(-not $proc.HasExited){$proc.Kill();$proc.WaitForExit()}}
+          }
+      - name: Package and launch portable distribution
+        run: |
+          $ErrorActionPreference='Stop'
+          New-Item -ItemType Directory -Force 'portable' | Out-Null
+          Copy-Item (Join-Path $env:STUDIO_INSTALLED_DIR '*') 'portable/' -Recurse -Force
+          Compress-Archive -Path 'portable/*' -DestinationPath 'AI-Interview-Studio-Portable-v0.6.0.zip' -CompressionLevel Optimal -Force
+          if((Get-Item 'AI-Interview-Studio-Portable-v0.6.0.zip').Length -lt 1000000){throw 'Portable archive too small'}
+          $desktop=@(Get-ChildItem portable -Recurse -Filter 'ai-interview-studio.exe' | Select-Object -First 1)
+          if($desktop.Count -ne 1){throw 'Portable executable missing'}
+          $env:STUDIO_DATA_DIR=Join-Path $env:RUNNER_TEMP 'AIStudioV06PortableData'
+          $proc=Start-Process -FilePath $desktop[0].FullName -PassThru
+          try{
+            Start-Sleep -Seconds 12
+            $proc.Refresh()
+            if($proc.HasExited){throw "Portable app exited early ($($proc.ExitCode))"}
+            $worker=@(Get-CimInstance Win32_Process -Filter "Name='ai-studio-worker.exe'")
+            if($worker.Count -eq 0){throw 'Portable bundled worker did not start'}
+          }finally{
+            if(-not $proc.HasExited){$null=$proc.CloseMainWindow();Start-Sleep -Seconds 3;$proc.Refresh();if(-not $proc.HasExited){$proc.Kill();$proc.WaitForExit()}}
+          }
+      - name: Attempt silent uninstall
+        if: always()
+        run: |
+          if($env:STUDIO_INSTALLED_DIR -and (Test-Path $env:STUDIO_INSTALLED_DIR)){
+            $uninstall=@(Get-ChildItem $env:STUDIO_INSTALLED_DIR -Filter '*uninstall*.exe' -Recurse -ErrorAction SilentlyContinue)
+            if($uninstall.Count -gt 0){
+              $proc=Start-Process -FilePath $uninstall[0].FullName -ArgumentList '/S' -Wait -PassThru
+              if($proc.ExitCode -ne 0){Write-Warning "Silent uninstall returned $($proc.ExitCode)"}
+            }else{Write-Warning 'No uninstaller found'}
+          }
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ai-studio-v06-portable-and-smoke
+          path: 'AI-Interview-Studio-Portable-v0.6.0.zip'
+          if-no-files-found: warn
