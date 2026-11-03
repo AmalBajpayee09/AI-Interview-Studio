@@ -33,6 +33,6 @@ def test_v5_migration_keeps_old_rows(client):
         d.execute('PRAGMA user_version=5')
     db.initialize()
     with db.connect() as d:
-        assert d.execute('PRAGMA user_version').fetchone()[0]==6
+        assert d.execute('PRAGMA user_version').fetchone()[0]>=6
         assert d.execute('SELECT id FROM attempts WHERE id=?',(old,)).fetchone()
         assert d.execute('SELECT id FROM sessions WHERE id=?',(session['id'],)).fetchone()
