@@ -13,7 +13,7 @@ from fastapi.responses import StreamingResponse, JSONResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from pydantic import BaseModel, Field
-from . import db,config,logic,providers,sql_lab,resources,code_runner,code_jobs,audio_live,credentials,startup_events
+from . import db,config,logic,providers,sql_lab,resources,code_runner,code_jobs,audio_live,audio_offline,credentials,startup_events
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -367,6 +367,14 @@ async def backup_database():
     return StreamingResponse(iter([content]),media_type='application/vnd.sqlite3',headers={
         'Content-Disposition':'attachment; filename="ai-studio-backup.sqlite3"',
         'Cache-Control':'no-store','X-Content-Type-Options':'nosniff'})
+
+@app.post('/api/audio/analyze-wav')
+async def inspect_wav(file:UploadFile=File(...)):
+    # The recording is explicitly uploaded; the endpoint never saves raw bytes.
+    data=await file.read(audio_offline.MAX_WAV_BYTES+1)
+    if len(data)>audio_offline.MAX_WAV_BYTES:raise HTTPException(413,'WAV exceeds 8 MB')
+    try:return await asyncio.to_thread(audio_offline.analyze_wav,data)
+    except audio_offline.InvalidAudio as exc:raise HTTPException(422,str(exc))
 
 @app.get('/api/audio/devices')
 async def audio_devices(): return await asyncio.to_thread(audio_live.live_audio.device_list)
