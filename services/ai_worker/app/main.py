@@ -305,13 +305,26 @@ async def submit_attempt(aid:str,body:AttemptBody):
     try: assessment=db.assessment_by_id(aid)
     except ValueError as e: raise HTTPException(404,str(e))
     now=time.time()
-    # Server-side timing: limit stored submitted duration, disclose client clock is not proctored.
     if body.started > now+120 or body.started < now-30*86400: raise HTTPException(400,'Invalid start time')
-    result=logic.score(assessment['questions'],body.answers,body.negative_marking)
+    draft=db.get_assessment_draft(aid)
+    expired=False
+    answers=body.answers
+    if draft is not None:
+        # The draft start timestamp was issued or accepted when the draft began.
+        # It is immutable for the lifetime of the active attempt.
+        if abs(float(body.started)-float(draft['started']))>0.001:
+            raise HTTPException(409,'Assessment start timestamp mismatch; reload the saved assessment')
+        expired=now>float(draft['started'])+float(assessment['duration_seconds'])
+        # Requests arriving after the deadline may only submit autosaved data.
+        # A late UI tab cannot add answers after the clock expires.
+        if expired: answers=draft['answers']
+    result=logic.score(assessment['questions'],answers,body.negative_marking)
     result['explanations']=[{'id':q['id'],'correct':q['correct'],'explanation':q.get('explanation','')} for q in assessment['questions']]
-    result['elapsed_seconds']=max(0,round(now-body.started))
-    scored=db.finalize_attempt(aid,body.answers,result,body.started)
-    db.remove_assessment_draft(aid)
+    result['elapsed_seconds']=max(0,round(now-(float(draft['started']) if draft else body.started)))
+    result['timed_out']=expired
+    result['timing_enforcement']='server_started_draft' if draft is not None else 'legacy_unstarted_practice'
+    scored=db.finalize_attempt(aid,answers,result,float(draft['started']) if draft else body.started)
+    if draft is not None: db.remove_assessment_draft(aid)
     return scored
 
 @app.get('/api/resource')
@@ -356,7 +369,8 @@ async def put_draft(aid:str, body:DraftBody):
     if not set(body.answers).issubset(valid_ids) or not set(body.review).issubset(valid_ids):
         raise HTTPException(400,'Draft contains unknown question IDs')
     if len(body.review)>len(valid_ids): raise HTTPException(400,'Invalid review count')
-    return db.save_assessment_draft(aid,body.answers,body.review,body.started)
+    try:return db.save_assessment_draft(aid,body.answers,body.review,body.started)
+    except ValueError as exc:raise HTTPException(409,str(exc))
 
 @app.delete('/api/assessments/{aid}/draft')
 async def delete_draft(aid:str): return {'deleted':db.remove_assessment_draft(aid)}
