@@ -71,13 +71,14 @@ function Close-And-Assert([System.Diagnostics.Process]$app,[int]$workerPid,[stri
   }
   Record $stage 'PASS' @{graceful_desktop_shutdown=$true;worker_exited=$true;worker_pid=$workerPid}
 }
-function Assert-Database([string]$stage) {
+function Assert-Database([string]$stage,[int]$minimumSchema=7) {
   $file=Join-Path $env:STUDIO_DATA_DIR 'studio.sqlite3'
   Require-File $file
   $env:RC2_VERIFY_DB=$file
-  & py -3.11 -c "import sqlite3,os; c=sqlite3.connect(os.environ['RC2_VERIFY_DB']); version=c.execute('PRAGMA user_version').fetchone()[0]; assert version>=7,(version,'schema not migrated'); c.close()"
+  $env:RC2_MIN_SCHEMA=[string]$minimumSchema
+  & py -3.11 -c "import sqlite3,os; c=sqlite3.connect(os.environ['RC2_VERIFY_DB']); version=c.execute('PRAGMA user_version').fetchone()[0]; minimum=int(os.environ['RC2_MIN_SCHEMA']); assert version>=minimum,(version,minimum,'schema not migrated'); c.close()"
   if($LASTEXITCODE -ne 0){throw "$stage SQLite schema not initialized"}
-  Record $stage 'PASS' @{sqlite_version_at_least=7;database_present=$true}
+  Record $stage 'PASS' @{sqlite_version_at_least=$minimumSchema;database_present=$true}
   return $file
 }
 try {
@@ -100,7 +101,7 @@ try {
   $oldApp=Start-Process -FilePath $oldDesktop -PassThru
   try {
     $oldReady=Wait-Ready $oldApp $oldVersion
-    $db=Assert-Database 'pre-upgrade-database'
+    $db=Assert-Database 'pre-upgrade-database' 6
     $env:RC2_VERIFY_DB=$db
     & py -3.11 -c "import sqlite3,os,time; c=sqlite3.connect(os.environ['RC2_VERIFY_DB']); now=time.time(); c.execute('INSERT INTO sessions(id,title,created,updated) VALUES(?,?,?,?)',('rc2-upgrade-preservation','RC2 preserved session',now,now)); c.commit(); c.close()"
     if($LASTEXITCODE -ne 0){throw 'Could not write pre-upgrade session fixture'}
