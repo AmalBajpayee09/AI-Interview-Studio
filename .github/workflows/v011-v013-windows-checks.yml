@@ -2,7 +2,7 @@ name: v0.11–v1.0 Windows code-path validation
 on:
   workflow_dispatch:
   push:
-    branches: ['feature/v0.13.0-resume-intelligence', 'feature/v1.0-assessment-audio-hardening']
+    branches: ['feature/v0.13.0-resume-intelligence', 'feature/v1.0-assessment-audio-hardening', 'feature/v1.0-rc1-timed-assessment-integrity']
 permissions:
   contents: read
 jobs:
