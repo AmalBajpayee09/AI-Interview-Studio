@@ -2,7 +2,7 @@ name: Windows v0.9 authenticated worker and release acceptance
 on:
   workflow_dispatch:
   push:
-    branches: ["feature/v0.10.0-docker-execution"]
+    branches: ["feature/v0.10.0-docker-execution", "feature/v1.0-rc1-timed-assessment-integrity"]
 permissions:
   contents: read
 jobs:
@@ -92,6 +92,28 @@ jobs:
             $events=Get-Content (Join-Path $env:STUDIO_DIAGNOSTIC_DIR 'worker-startup.jsonl') -Raw
             if($events -notmatch 'database_initialized'){throw 'No worker database initialization event'}
             if($events -match [regex]::Escape($env:STUDIO_WORKER_TOKEN)){throw 'Worker diagnostics leaked auth token'}
+            # Execute the actual packaged worker API against its real SQLite database.
+            # This verifies a scoped assessment workflow, not automated WebView interaction.
+            $headers=@{'X-Studio-Token'=$env:STUDIO_WORKER_TOKEN}
+            $base="http://127.0.0.1:$port"
+            $quiz=@{title='Windows packaged assessment smoke';duration_seconds=120;require_start=$true;negative_marking=0.5;cutoff_pct=75;
+              questions=@(
+                @{id='a';stem='First choice';kind='single';correct='B';options=@(@{label='A';text='Wrong'},@{label='B';text='Right'})},
+                @{id='b';stem='Second choice';kind='single';correct='A';options=@(@{label='A';text='Right'},@{label='B';text='Wrong'})}
+              )} | ConvertTo-Json -Depth 8
+            $created=Invoke-RestMethod -Method Post -Uri "$base/api/assessments" -Headers $headers -ContentType 'application/json' -Body $quiz
+            $aid=$created.id
+            if(-not $aid){throw 'Cannot create packaged-worker assessment'}
+            $clock=(Invoke-RestMethod -Method Post -Uri "$base/api/assessments/$aid/start" -Headers $headers).draft.started
+            if(-not $clock){throw 'No server-owned assessment start'}
+            $draft=@{started=$clock;answers=@{a='B'};review=@('b')} | ConvertTo-Json -Depth 5
+            $null=Invoke-RestMethod -Method Post -Uri "$base/api/assessments/$aid/draft" -Headers $headers -ContentType 'application/json' -Body $draft
+            $submit=@{started=$clock;answers=@{a='B';b='B'};negative_marking=0} | ConvertTo-Json -Depth 5
+            $graded=Invoke-RestMethod -Method Post -Uri "$base/api/assessments/$aid/submit" -Headers $headers -ContentType 'application/json' -Body $submit
+            if([double]$graded.score -ne 0.5 -or [double]$graded.negative_marking -ne 0.5 -or $graded.passed_cutoff -ne $false){throw 'Packaged assessment grading policy failed'}
+            $retry=Invoke-RestMethod -Method Post -Uri "$base/api/assessments/$aid/submit" -Headers $headers -ContentType 'application/json' -Body $submit
+            if(-not $retry.duplicate_submission -or $retry.attempt_id -ne $graded.attempt_id){throw 'Packaged assessment receipt was not idempotent'}
+            "Windows packaged-worker strict timed assessment API: PASS (real SQLite)" | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
             "Packaged worker authenticated readiness: $($stopwatch.ElapsedMilliseconds) ms" | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
           }finally {
             if(-not $proc.HasExited){$proc.Kill($true);$proc.WaitForExit()}
