@@ -4,7 +4,7 @@ export interface Session {id:string;title:string;created:number;updated:number}
 export interface Option {label:string;text:string}
 export type QuizAnswer=string|string[];
 export interface Question {id:string;stem:string;options?:Option[];kind?:'single'|'multiple'|'numerical';section?:string;points?:number;tolerance?:number}
-export interface Assessment {id:string;title:string;questions:Question[];duration_seconds:number}
+export interface Assessment {id:string;title:string;questions:Question[];duration_seconds:number;require_start?:number|boolean;negative_marking?:number;cutoff_pct?:number|null}
 export interface Stats {sessions:number;questions:number;average_answer_ms:number;assessments_completed:number;average_score_pct:number|null}
 interface WorkerConnection {base:string;token:string}
 let conn:Promise<WorkerConnection>|undefined;
