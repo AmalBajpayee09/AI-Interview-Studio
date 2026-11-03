@@ -10,7 +10,7 @@ export function Assessments(){
  const start=async(a:Assessment)=>{
   setError('');setSaveMessage('Loading saved progress…');
   try{
-   const x=await request<{draft:{answers:Record<string,QuizAnswer>;review:string[];started:number}|null}>(`/api/assessments/${a.id}/draft`);
+   const x=await request<{draft:{answers:Record<string,QuizAnswer>;review:string[];started:number;recovered:boolean}|null}>(`/api/assessments/${a.id}/start`,'POST');
    const at=x.draft?.started??Date.now()/1000;
    setCurrent(a);setIndex(0);setAnswers(x.draft?.answers??{});setResult(null);setReview(x.draft?.review??[]);
    submitting.current=false;setStarted(at);deadline.current=at*1000+a.duration_seconds*1000;

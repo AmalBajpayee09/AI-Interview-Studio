@@ -68,6 +68,15 @@ def initialize():
             db.execute('CREATE INDEX IF NOT EXISTS transcripts_by_session ON transcript_segments(session_id,created,id)')
             db.execute('PRAGMA user_version=5')
         if version < 6:
+            # Preserve historical submissions; new requests carry idempotency receipts.
+            db.execute("""CREATE TABLE IF NOT EXISTS attempt_receipts (
+                assessment_id TEXT NOT NULL REFERENCES assessments(id) ON DELETE CASCADE,
+                started REAL NOT NULL,
+                attempt_id TEXT NOT NULL REFERENCES attempts(id) ON DELETE CASCADE,
+                PRIMARY KEY (assessment_id, started))""")
+            db.execute('CREATE INDEX IF NOT EXISTS receipts_by_attempt ON attempt_receipts(attempt_id)')
+            db.execute('PRAGMA user_version=6')
+        if version < 6:
             db.execute("""CREATE TABLE IF NOT EXISTS ai_usage (
                 id TEXT PRIMARY KEY,
                 session_id TEXT NOT NULL REFERENCES sessions(id) ON DELETE CASCADE,
@@ -155,6 +164,35 @@ def save_attempt(aid, answers, result, started):
     with connect() as db:
         db.execute('INSERT INTO attempts VALUES (?,?,?,?,?,?)',(attempt_id,aid,json.dumps(answers),started,now,json.dumps(result)))
     return attempt_id
+
+def start_assessment(aid):
+    """Store a server start time once and preserve recoverable quiz drafts."""
+    with connect() as database:
+        if not database.execute('SELECT 1 FROM assessments WHERE id=?',(aid,)).fetchone():
+            raise ValueError('Unknown assessment')
+        existing=database.execute('SELECT * FROM assessment_drafts WHERE assessment_id=?',(aid,)).fetchone()
+        if existing:
+            return {'assessment_id':aid,'answers':json.loads(existing['answers_json']),
+                    'review':json.loads(existing['review_json']),'started':existing['started'],
+                    'updated':existing['updated'],'recovered':True}
+        started=time.time()
+        database.execute('INSERT INTO assessment_drafts VALUES (?,?,?,?,?)',(aid,'{}','[]',started,started))
+        return {'assessment_id':aid,'answers':{},'review':[],'started':started,
+                'updated':started,'recovered':False}
+
+def finalize_attempt(aid,answers,result,started):
+    """One transaction prevents duplicate retries from inflating quiz results."""
+    with connect() as database:
+        previous=database.execute("""SELECT a.id,a.result_json FROM attempt_receipts r
+            JOIN attempts a ON a.id=r.attempt_id WHERE r.assessment_id=? AND r.started=?""",
+            (aid,started)).fetchone()
+        if previous:
+            return {**json.loads(previous['result_json']),'attempt_id':previous['id'],'duplicate_submission':True}
+        attempt_id=str(uuid.uuid4());finished=time.time()
+        database.execute('INSERT INTO attempts VALUES (?,?,?,?,?,?)',
+                         (attempt_id,aid,json.dumps(answers),started,finished,json.dumps(result)))
+        database.execute('INSERT INTO attempt_receipts VALUES (?,?,?)',(aid,started,attempt_id))
+    return {**result,'attempt_id':attempt_id,'duplicate_submission':False}
 
 def stats():
     with connect() as db:

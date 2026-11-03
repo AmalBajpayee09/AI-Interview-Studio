@@ -310,9 +310,9 @@ async def submit_attempt(aid:str,body:AttemptBody):
     result=logic.score(assessment['questions'],body.answers,body.negative_marking)
     result['explanations']=[{'id':q['id'],'correct':q['correct'],'explanation':q.get('explanation','')} for q in assessment['questions']]
     result['elapsed_seconds']=max(0,round(now-body.started))
-    result['attempt_id']=db.save_attempt(aid,body.answers,result,body.started)
+    scored=db.finalize_attempt(aid,body.answers,result,body.started)
     db.remove_assessment_draft(aid)
-    return result
+    return scored
 
 @app.get('/api/resource')
 async def resource():
@@ -333,6 +333,11 @@ async def sql_query(body:SQLBody):
         return await asyncio.to_thread(sql_lab.execute_readonly,body.query,body.max_rows)
     except sql_lab.SQLPracticeError as e:
         raise HTTPException(400,str(e))
+
+@app.post('/api/assessments/{aid}/start')
+async def start_assessment(aid:str):
+    try:return {'draft':db.start_assessment(aid)}
+    except ValueError as exc:raise HTTPException(404,str(exc))
 
 @app.get('/api/assessments/{aid}/draft')
 async def get_draft(aid:str):
