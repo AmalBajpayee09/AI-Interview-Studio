@@ -1,11 +1,17 @@
 {
   "status": "PARTIAL",
-  "environment": "Linux Python 3.13",
-  "backend_api_latency": "not benchmarked in this cycle",
+  "environment": "Linux-6.18.57-x86_64, Python 3.13.5",
+  "backend_api_latency": "Real localhost Python worker; 80 authenticated health requests",
   "windows_cold_start_ms": null,
   "windows_warm_start_ms": null,
   "ollama_first_token_ms": null,
   "ollama_complete_latency_ms": null,
   "transcription_ms": null,
-  "note": "No model or Windows host; do not reuse v0.8 Linux benchmark as v0.9 evidence"
+  "note": "No model or Windows host; do not reuse v0.8 Linux benchmark as v0.9 evidence",
+  "authenticated_python_worker_startup_ms": 1302.2,
+  "http_health_p50_ms": 1.101,
+  "http_health_p95_ms": 1.689,
+  "worker_rss_mb": 117.2,
+  "samples": 80,
+  "measurement_scope": "Python worker only; no desktop shell or model inference"
 }

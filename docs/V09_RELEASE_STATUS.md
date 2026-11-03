@@ -10,3 +10,7 @@
 - Security: tokens not written to logs or exports; Python events allowlist, log rotation; no code execution scope expansion.
 - All 130 requirement IDs retained in `V09_FEATURES.json`; statuses preserved without unsupported promotions.
 - Full install → real Ollama → follow-up → restart workflow: NOT VERIFIED. Production readiness NOT APPROVED.
+
+## First Windows compiler finding
+
+Windows run 41638649607 failed in Rust `cargo check` with E0618: the window event callback parameter shadowed the lifecycle log function. The callback variable was renamed. That run did **not** produce or verify a v0.9 installer; the follow-up commit requires a fresh exact-commit build.

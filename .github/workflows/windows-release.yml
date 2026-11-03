@@ -122,6 +122,7 @@ jobs:
           $marker=Join-Path $env:LOCALAPPDATA 'com.interviewstudio.desktop/logs/worker-readiness.json'
           $env:V09_MARKER=$marker
           $env:V09_INSTALL_DIR=$dest
+          "V09_INSTALL_DIR=$dest" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
           $originalPid=0
           for($relaunch=0;$relaunch -lt 2;$relaunch++){
             Remove-Item $marker -Force -ErrorAction SilentlyContinue

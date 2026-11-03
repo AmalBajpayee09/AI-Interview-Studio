@@ -316,8 +316,8 @@ pub fn run() {
         })
         .invoke_handler(tauri::generate_handler![worker_connection,worker_status,restart_worker,
             export_worker_diagnostics,set_compact,app_version])
-        .on_window_event(|window,event| {
-            if let tauri::WindowEvent::Destroyed=event {
+        .on_window_event(|window,win_event| {
+            if let tauri::WindowEvent::Destroyed=win_event {
                 if let Some(state)=window.try_state::<WorkerState>() {
                     state.stopping.store(true,Ordering::SeqCst);
                     if let Ok(mut rt)=state.runtime.lock() {

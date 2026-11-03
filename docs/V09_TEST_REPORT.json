@@ -37,8 +37,19 @@
   "feature_counts": {
     "PARTIALLY IMPLEMENTED": 78,
     "NOT IMPLEMENTED": 23,
-    "TESTED \u2014 DEFINED CODE-PATH": 19,
+    "TESTED — DEFINED CODE-PATH": 19,
     "INTEGRATION TESTED": 2,
     "BLOCKED": 8
+  },
+  "first_windows_attempt": {
+    "run_id": 41638649607,
+    "sha": "8eedeab43169908162bb18b50adb1c5e572ad17e",
+    "result": "FAIL",
+    "reason": "Rust E0618: window-event parameter shadowed diagnostic event function",
+    "passed_stages": [
+      "Python regression",
+      "React production build"
+    ],
+    "installer": false
   }
 }
