@@ -1,0 +1,44 @@
+name: v0.10 real Docker execution and isolation acceptance
+on:
+  workflow_dispatch:
+  push:
+    branches: ['feature/v0.10.0-docker-execution']
+permissions:
+  contents: read
+jobs:
+  linux-docker-isolation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify genuine Docker engine
+        run: |
+          docker version
+          docker info
+      - name: Install backend test dependencies
+        run: python -m pip install -r services/ai_worker/requirements.txt
+      - name: Pull selected language images
+        run: |
+          docker pull python:3.11-alpine
+          docker pull node:22-alpine
+          docker pull gcc:14
+          docker pull eclipse-temurin:21-jdk
+      - name: Run genuine four-language and isolation tests
+        env:
+          PYTHONPATH: services/ai_worker
+          AI_STUDIO_REAL_DOCKER_TESTS: '1'
+        run: python -m pytest services/ai_worker/tests/test_v010.py -q --junitxml=v010-docker-real.xml
+      - name: Check for orphan practice containers
+        if: always()
+        run: |
+          docker ps -a --filter 'name=studio-practice-' --format '{{.Names}} {{.Status}}'
+          if [ -n "$(docker ps -a --filter 'name=studio-practice-' -q)" ]; then echo 'Orphan container detected'; exit 1; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v010-real-docker-evidence
+          path: v010-docker-real.xml
+          if-no-files-found: warn

@@ -13,7 +13,7 @@ from fastapi.responses import StreamingResponse, JSONResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from pydantic import BaseModel, Field
-from . import db,config,logic,providers,sql_lab,resources,code_runner,audio_live,credentials,startup_events
+from . import db,config,logic,providers,sql_lab,resources,code_runner,code_jobs,audio_live,credentials,startup_events
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -28,6 +28,7 @@ async def lifespan(app: FastAPI):
     finally:
         startup_events.record('worker_stopping')
         await asyncio.to_thread(audio_live.live_audio.stop)
+        await asyncio.to_thread(code_jobs.shutdown_jobs)
 
 ACTIVE_GENERATIONS:dict[str,object]={}
 INFERENCE_LIMIT=asyncio.Semaphore(2)
@@ -425,6 +426,26 @@ async def code_test_suite(body:CodeSuiteBody):
                         'stderr_truncated':result['stderr_truncated']})
     return {'passed':sum(x['status']=='passed' for x in results),'total':len(results),
             'cases':results,'verification':'Executed in isolated Docker container per case'}
+
+@app.post('/api/code/jobs',status_code=202)
+async def submit_code_job(body:RunCodeBody):
+    try:
+        return await asyncio.to_thread(code_jobs.get_queue().submit,body.code,body.language,
+                                      body.stdin,body.expected,body.timeout_seconds)
+    except code_runner.ExecutionUnavailable as exc:
+        raise HTTPException(503,str(exc))
+    except code_runner.InvalidCode as exc:
+        raise HTTPException(400,str(exc))
+
+@app.get('/api/code/jobs/{job_id}')
+async def read_code_job(job_id:str):
+    try:return code_jobs.get_queue().get(job_id)
+    except KeyError:raise HTTPException(404,'Unknown or expired execution job')
+
+@app.post('/api/code/jobs/{job_id}/cancel')
+async def cancel_code_job(job_id:str):
+    try:return code_jobs.get_queue().cancel(job_id)
+    except KeyError:raise HTTPException(404,'Unknown execution job')
 
 @app.get('/api/code/drafts/{language}')
 async def get_code_draft(language:Literal['python','javascript','cpp','java']):
