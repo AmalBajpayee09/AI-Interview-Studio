@@ -33,7 +33,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "A-02",
@@ -69,7 +73,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "A-03",
@@ -105,7 +113,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "A-04",
@@ -141,7 +153,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "A-05",
@@ -177,7 +193,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "A-06",
@@ -213,7 +233,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "A-07",
@@ -249,7 +273,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "A-08",
@@ -293,7 +321,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "B-01",
@@ -332,7 +364,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "B-02",
@@ -371,7 +407,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "B-03",
@@ -407,7 +447,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "B-04",
@@ -443,7 +487,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "B-05",
@@ -482,7 +530,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "B-06",
@@ -521,7 +573,11 @@
     "rc1_previous_status": "INTEGRATION TESTED",
     "rc1_current_status": "INTEGRATION TESTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "INTEGRATION TESTED",
+    "rc2_current_status": "INTEGRATION TESTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "B-07",
@@ -560,7 +616,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "B-08",
@@ -596,7 +656,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "B-09",
@@ -638,7 +702,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Run authorized local/cloud catalog and generation tests on Windows and record model/version, response time, logs without secrets."
+    "rc1_next_action": "Run authorized local/cloud catalog and generation tests on Windows and record model/version, response time, logs without secrets.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Run authorized local/cloud catalog and generation tests on Windows and record model/version, response time, logs without secrets."
   },
   {
     "id": "C-01",
@@ -683,7 +751,11 @@
     "rc1_previous_status": "INTEGRATION TESTED",
     "rc1_current_status": "INTEGRATION TESTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "INTEGRATION TESTED",
+    "rc2_current_status": "INTEGRATION TESTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "C-02",
@@ -728,7 +800,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "C-03",
@@ -764,7 +840,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "C-04",
@@ -800,7 +880,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "C-05",
@@ -836,7 +920,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "C-06",
@@ -872,7 +960,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "C-07",
@@ -908,7 +1000,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "C-08",
@@ -944,7 +1040,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "D-01",
@@ -980,7 +1080,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "D-02",
@@ -1016,7 +1120,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "D-03",
@@ -1052,7 +1160,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "D-04",
@@ -1088,7 +1200,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "D-05",
@@ -1124,7 +1240,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "D-06",
@@ -1160,7 +1280,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "D-07",
@@ -1196,7 +1320,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "D-08",
@@ -1232,7 +1360,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "D-09",
@@ -1268,7 +1400,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "D-10",
@@ -1304,7 +1440,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "D-11",
@@ -1340,7 +1480,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "D-12",
@@ -1376,7 +1520,11 @@
     "rc1_previous_status": "BLOCKED",
     "rc1_current_status": "BLOCKED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
+    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures.",
+    "rc2_previous_status": "BLOCKED",
+    "rc2_current_status": "BLOCKED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
   },
   {
     "id": "E-01",
@@ -1413,7 +1561,11 @@
     "rc1_previous_status": "INTEGRATION TESTED",
     "rc1_current_status": "INTEGRATION TESTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified"
+    "rc1_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified",
+    "rc2_previous_status": "INTEGRATION TESTED",
+    "rc2_current_status": "INTEGRATION TESTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified"
   },
   {
     "id": "E-02",
@@ -1449,7 +1601,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "E-03",
@@ -1486,7 +1642,11 @@
     "rc1_previous_status": "INTEGRATION TESTED",
     "rc1_current_status": "INTEGRATION TESTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified"
+    "rc1_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified",
+    "rc2_previous_status": "INTEGRATION TESTED",
+    "rc2_current_status": "INTEGRATION TESTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified"
   },
   {
     "id": "E-04",
@@ -1523,7 +1683,11 @@
     "rc1_previous_status": "INTEGRATION TESTED",
     "rc1_current_status": "INTEGRATION TESTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified"
+    "rc1_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified",
+    "rc2_previous_status": "INTEGRATION TESTED",
+    "rc2_current_status": "INTEGRATION TESTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified"
   },
   {
     "id": "E-05",
@@ -1560,7 +1724,11 @@
     "rc1_previous_status": "INTEGRATION TESTED",
     "rc1_current_status": "INTEGRATION TESTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified"
+    "rc1_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified",
+    "rc2_previous_status": "INTEGRATION TESTED",
+    "rc2_current_status": "INTEGRATION TESTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified"
   },
   {
     "id": "E-06",
@@ -1597,7 +1765,11 @@
     "rc1_previous_status": "INTEGRATION TESTED",
     "rc1_current_status": "INTEGRATION TESTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified"
+    "rc1_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified",
+    "rc2_previous_status": "INTEGRATION TESTED",
+    "rc2_current_status": "INTEGRATION TESTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified"
   },
   {
     "id": "E-07",
@@ -1633,7 +1805,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "E-08",
@@ -1669,7 +1845,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "E-09",
@@ -1706,7 +1886,11 @@
     "rc1_previous_status": "INTEGRATION TESTED",
     "rc1_current_status": "INTEGRATION TESTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified"
+    "rc1_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified",
+    "rc2_previous_status": "INTEGRATION TESTED",
+    "rc2_current_status": "INTEGRATION TESTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified"
   },
   {
     "id": "E-10",
@@ -1742,7 +1926,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "E-11",
@@ -1778,7 +1966,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "E-12",
@@ -1814,7 +2006,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "E-13",
@@ -1850,7 +2046,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "E-14",
@@ -1886,7 +2086,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "F-01",
@@ -1922,7 +2126,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "F-02",
@@ -1958,7 +2166,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "F-03",
@@ -1994,7 +2206,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "F-04",
@@ -2030,7 +2246,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "F-05",
@@ -2066,7 +2286,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "F-06",
@@ -2102,7 +2326,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "F-07",
@@ -2141,7 +2369,11 @@
     "rc1_implementation": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; apps/desktop/src/views/Assessments.tsx; apps/desktop/src/lib/api.ts",
     "rc1_limitations": "Local self-practice is not proctored; Windows installed UI/restart, sectional cutoff, host clock tampering still unverified.",
     "rc1_next_action": "Run Windows installed-app assessment recovery and timeout tests; implement sectional thresholds and explicit attempt policy.",
-    "rc1_description": "Server-owned attempt start, configurable duration and deadline behavior tested at API/SQLite level; Windows WebView still pending."
+    "rc1_description": "Server-owned attempt start, configurable duration and deadline behavior tested at API/SQLite level; Windows WebView still pending.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "F-08",
@@ -2177,7 +2409,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "F-09",
@@ -2216,7 +2452,11 @@
     "rc1_implementation": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; apps/desktop/src/views/Assessments.tsx; apps/desktop/src/lib/api.ts",
     "rc1_limitations": "Local self-practice is not proctored; Windows installed UI/restart, sectional cutoff, host clock tampering still unverified.",
     "rc1_next_action": "Run Windows installed-app assessment recovery and timeout tests; implement sectional thresholds and explicit attempt policy.",
-    "rc1_description": "Overall cutoff and persisted negative marking implemented; sectional cutoffs and full question rubric remain missing."
+    "rc1_description": "Overall cutoff and persisted negative marking implemented; sectional cutoffs and full question rubric remain missing.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "F-10",
@@ -2252,7 +2492,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "F-11",
@@ -2288,7 +2532,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "F-12",
@@ -2324,7 +2572,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "F-13",
@@ -2360,7 +2612,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-01",
@@ -2396,7 +2652,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-02",
@@ -2432,7 +2692,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-03",
@@ -2468,7 +2732,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-04",
@@ -2504,7 +2772,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-05",
@@ -2540,7 +2812,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "G-06",
@@ -2576,7 +2852,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-07",
@@ -2612,7 +2892,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-08",
@@ -2648,7 +2932,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-09",
@@ -2684,7 +2972,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-10",
@@ -2720,7 +3012,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-11",
@@ -2756,7 +3052,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "G-12",
@@ -2792,7 +3092,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-13",
@@ -2828,7 +3132,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-14",
@@ -2864,7 +3172,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "H-01",
@@ -2900,7 +3212,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "H-02",
@@ -2936,7 +3252,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "H-03",
@@ -2972,7 +3292,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "H-04",
@@ -3008,7 +3332,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "H-05",
@@ -3044,7 +3372,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "H-06",
@@ -3080,7 +3412,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "H-07",
@@ -3116,7 +3452,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "H-08",
@@ -3152,7 +3492,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "H-09",
@@ -3188,7 +3532,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "I-01",
@@ -3224,7 +3572,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "I-02",
@@ -3260,7 +3612,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "I-03",
@@ -3296,7 +3652,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "I-04",
@@ -3332,7 +3692,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "I-05",
@@ -3368,7 +3732,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "I-06",
@@ -3404,7 +3772,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "I-07",
@@ -3440,7 +3812,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "I-08",
@@ -3476,7 +3852,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "I-09",
@@ -3512,7 +3892,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "J-01",
@@ -3548,7 +3932,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "J-02",
@@ -3584,7 +3972,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "J-03",
@@ -3620,7 +4012,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "J-04",
@@ -3656,7 +4052,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "J-05",
@@ -3692,7 +4092,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "J-06",
@@ -3728,7 +4132,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "J-07",
@@ -3764,7 +4172,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "J-08",
@@ -3800,7 +4212,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "J-09",
@@ -3836,7 +4252,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "J-10",
@@ -3872,7 +4292,11 @@
     "rc1_previous_status": "BLOCKED",
     "rc1_current_status": "BLOCKED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
+    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures.",
+    "rc2_previous_status": "BLOCKED",
+    "rc2_current_status": "BLOCKED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
   },
   {
     "id": "J-11",
@@ -3908,7 +4332,11 @@
     "rc1_previous_status": "BLOCKED",
     "rc1_current_status": "BLOCKED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
+    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures.",
+    "rc2_previous_status": "BLOCKED",
+    "rc2_current_status": "BLOCKED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
   },
   {
     "id": "K-01",
@@ -3944,7 +4372,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Run Windows CI real CredMan test and installed app, then migrate legacy .env keys."
+    "rc1_next_action": "Run Windows CI real CredMan test and installed app, then migrate legacy .env keys.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Run Windows CI real CredMan test and installed app, then migrate legacy .env keys."
   },
   {
     "id": "K-02",
@@ -3980,7 +4412,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "K-03",
@@ -4016,7 +4452,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "K-04",
@@ -4052,7 +4492,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "K-05",
@@ -4088,7 +4532,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "K-06",
@@ -4124,7 +4572,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "K-07",
@@ -4160,7 +4612,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "K-08",
@@ -4196,7 +4652,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "K-09",
@@ -4232,7 +4692,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "K-10",
@@ -4268,7 +4732,11 @@
     "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
     "rc1_current_status": "TESTED — DEFINED CODE-PATH",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing.",
+    "rc2_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "K-11",
@@ -4304,7 +4772,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "K-12",
@@ -4340,7 +4812,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "K-13",
@@ -4376,7 +4852,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "L-01",
@@ -4412,7 +4892,11 @@
     "rc1_previous_status": "BLOCKED",
     "rc1_current_status": "BLOCKED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
+    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures.",
+    "rc2_previous_status": "BLOCKED",
+    "rc2_current_status": "BLOCKED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
   },
   {
     "id": "L-02",
@@ -4448,7 +4932,11 @@
     "rc1_previous_status": "BLOCKED",
     "rc1_current_status": "BLOCKED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
+    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures.",
+    "rc2_previous_status": "BLOCKED",
+    "rc2_current_status": "BLOCKED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
   },
   {
     "id": "L-03",
@@ -4484,7 +4972,11 @@
     "rc1_previous_status": "BLOCKED",
     "rc1_current_status": "BLOCKED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
+    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures.",
+    "rc2_previous_status": "BLOCKED",
+    "rc2_current_status": "BLOCKED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
   },
   {
     "id": "L-04",
@@ -4520,7 +5012,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "L-05",
@@ -4556,7 +5052,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "L-06",
@@ -4594,7 +5094,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "L-07",
@@ -4630,7 +5134,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "L-08",
@@ -4666,7 +5174,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "L-09",
@@ -4702,7 +5214,11 @@
     "rc1_previous_status": "BLOCKED",
     "rc1_current_status": "BLOCKED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
+    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures.",
+    "rc2_previous_status": "BLOCKED",
+    "rc2_current_status": "BLOCKED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
   },
   {
     "id": "L-10",
@@ -4738,7 +5254,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "V010-01",
@@ -4754,7 +5274,11 @@
     "rc1_previous_status": "INTEGRATION TESTED",
     "rc1_current_status": "INTEGRATION TESTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Windows Docker Desktop not validated"
+    "rc1_next_action": "Windows Docker Desktop not validated",
+    "rc2_previous_status": "INTEGRATION TESTED",
+    "rc2_current_status": "INTEGRATION TESTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Windows Docker Desktop not validated"
   },
   {
     "id": "V010-02",
@@ -4770,7 +5294,11 @@
     "rc1_previous_status": "INTEGRATION TESTED",
     "rc1_current_status": "INTEGRATION TESTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Windows end-user UI acceptance not run"
+    "rc1_next_action": "Windows end-user UI acceptance not run",
+    "rc2_previous_status": "INTEGRATION TESTED",
+    "rc2_current_status": "INTEGRATION TESTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Windows end-user UI acceptance not run"
   },
   {
     "id": "V010-03",
@@ -4786,7 +5314,11 @@
     "rc1_previous_status": "INTEGRATION TESTED",
     "rc1_current_status": "INTEGRATION TESTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Container isolation is not a full hostile multi-tenant boundary"
+    "rc1_next_action": "Container isolation is not a full hostile multi-tenant boundary",
+    "rc2_previous_status": "INTEGRATION TESTED",
+    "rc2_current_status": "INTEGRATION TESTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Container isolation is not a full hostile multi-tenant boundary"
   },
   {
     "id": "V010-04",
@@ -4802,7 +5334,11 @@
     "rc1_previous_status": "BLOCKED",
     "rc1_current_status": "BLOCKED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Requires actual Windows Docker Desktop Linux VM and test images"
+    "rc1_next_action": "Requires actual Windows Docker Desktop Linux VM and test images",
+    "rc2_previous_status": "BLOCKED",
+    "rc2_current_status": "BLOCKED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Requires actual Windows Docker Desktop Linux VM and test images"
   },
   {
     "id": "V011-01",
@@ -4818,7 +5354,11 @@
     "rc1_previous_status": "UNIT TESTED",
     "rc1_current_status": "UNIT TESTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Not Windows device capture or transcription"
+    "rc1_next_action": "Not Windows device capture or transcription",
+    "rc2_previous_status": "UNIT TESTED",
+    "rc2_current_status": "UNIT TESTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Not Windows device capture or transcription"
   },
   {
     "id": "V011-02",
@@ -4834,7 +5374,11 @@
     "rc1_previous_status": "BLOCKED",
     "rc1_current_status": "BLOCKED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Requires consented physical Windows audio devices"
+    "rc1_next_action": "Requires consented physical Windows audio devices",
+    "rc2_previous_status": "BLOCKED",
+    "rc2_current_status": "BLOCKED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Requires consented physical Windows audio devices"
   },
   {
     "id": "V011-03",
@@ -4850,7 +5394,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Speaker identity must remain unknown without evidence"
+    "rc1_next_action": "Speaker identity must remain unknown without evidence",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Speaker identity must remain unknown without evidence"
   },
   {
     "id": "V011-04",
@@ -4866,7 +5414,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Real permission and retention behavior not validated"
+    "rc1_next_action": "Real permission and retention behavior not validated",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Real permission and retention behavior not validated"
   },
   {
     "id": "V012-01",
@@ -4885,7 +5437,11 @@
     "rc1_implementation": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; apps/desktop/src/views/Assessments.tsx; apps/desktop/src/lib/api.ts",
     "rc1_limitations": "Local self-practice is not proctored; Windows installed UI/restart, sectional cutoff, host clock tampering still unverified.",
     "rc1_next_action": "Run Windows installed-app assessment recovery and timeout tests; implement sectional thresholds and explicit attempt policy.",
-    "rc1_description": "FastAPI/SQLite duplicate receipt prevents retries from changing final grades; Windows UI pending."
+    "rc1_description": "FastAPI/SQLite duplicate receipt prevents retries from changing final grades; Windows UI pending.",
+    "rc2_previous_status": "INTEGRATION TESTED",
+    "rc2_current_status": "INTEGRATION TESTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Legacy direct submit still accepted for compatibility"
   },
   {
     "id": "V012-02",
@@ -4901,7 +5457,11 @@
     "rc1_previous_status": "UNIT TESTED",
     "rc1_current_status": "UNIT TESTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Windows upgrade/install acceptance not run"
+    "rc1_next_action": "Windows upgrade/install acceptance not run",
+    "rc2_previous_status": "UNIT TESTED",
+    "rc2_current_status": "UNIT TESTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Windows upgrade/install acceptance not run"
   },
   {
     "id": "V012-03",
@@ -4917,7 +5477,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "No server auto-submit when app closed; legacy direct API is unstarted"
+    "rc1_next_action": "No server auto-submit when app closed; legacy direct API is unstarted",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "No server auto-submit when app closed; legacy direct API is unstarted"
   },
   {
     "id": "V012-04",
@@ -4933,7 +5497,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Assertion-reason/image/section cutoffs incomplete"
+    "rc1_next_action": "Assertion-reason/image/section cutoffs incomplete",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Assertion-reason/image/section cutoffs incomplete"
   },
   {
     "id": "V013-01",
@@ -4949,7 +5517,11 @@
     "rc1_previous_status": "UNIT TESTED",
     "rc1_current_status": "UNIT TESTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Only heading extraction; not verified employment facts"
+    "rc1_next_action": "Only heading extraction; not verified employment facts",
+    "rc2_previous_status": "UNIT TESTED",
+    "rc2_current_status": "UNIT TESTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Only heading extraction; not verified employment facts"
   },
   {
     "id": "V013-02",
@@ -4965,7 +5537,11 @@
     "rc1_previous_status": "PARTIALLY IMPLEMENTED",
     "rc1_current_status": "PARTIALLY IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Complete model-backed resume interview not run"
+    "rc1_next_action": "Complete model-backed resume interview not run",
+    "rc2_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Complete model-backed resume interview not run"
   },
   {
     "id": "V013-03",
@@ -4981,7 +5557,11 @@
     "rc1_previous_status": "NOT IMPLEMENTED",
     "rc1_current_status": "NOT IMPLEMENTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Requires live AI and evaluation criteria"
+    "rc1_next_action": "Requires live AI and evaluation criteria",
+    "rc2_previous_status": "NOT IMPLEMENTED",
+    "rc2_current_status": "NOT IMPLEMENTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Requires live AI and evaluation criteria"
   },
   {
     "id": "V100-01",
@@ -4997,7 +5577,11 @@
     "rc1_previous_status": "BLOCKED",
     "rc1_current_status": "BLOCKED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Clean Windows install, upgrade, real provider and security review required"
+    "rc1_next_action": "Clean Windows install, upgrade, real provider and security review required",
+    "rc2_previous_status": "BLOCKED",
+    "rc2_current_status": "BLOCKED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Clean Windows install, upgrade, real provider and security review required"
   },
   {
     "id": "V100-02",
@@ -5013,7 +5597,11 @@
     "rc1_previous_status": "BLOCKED",
     "rc1_current_status": "BLOCKED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Requires supported Windows hardware and actual AI/audio workloads"
+    "rc1_next_action": "Requires supported Windows hardware and actual AI/audio workloads",
+    "rc2_previous_status": "BLOCKED",
+    "rc2_current_status": "BLOCKED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Requires supported Windows hardware and actual AI/audio workloads"
   },
   {
     "id": "V100-03",
@@ -5032,7 +5620,11 @@
     "rc1_implementation": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; apps/desktop/src/views/Assessments.tsx; apps/desktop/src/lib/api.ts",
     "rc1_limitations": "Local self-practice is not proctored; Windows installed UI/restart, sectional cutoff, host clock tampering still unverified.",
     "rc1_next_action": "Run Windows installed-app assessment recovery and timeout tests; implement sectional thresholds and explicit attempt policy.",
-    "rc1_description": "Strict timed attempts reject forged start, draft deletion, and late answer changes; expiry scores persisted draft."
+    "rc1_description": "Strict timed attempts reject forged start, draft deletion, and late answer changes; expiry scores persisted draft.",
+    "rc2_previous_status": "INTEGRATION TESTED",
+    "rc2_current_status": "INTEGRATION TESTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Legacy unstarted practice and candidate-specified negative marking remain; Windows UI untested"
   },
   {
     "id": "V100-04",
@@ -5048,6 +5640,170 @@
     "rc1_previous_status": "UNIT TESTED",
     "rc1_current_status": "UNIT TESTED",
     "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
-    "rc1_next_action": "Not STT, diarization or a Windows device test"
+    "rc1_next_action": "Not STT, diarization or a Windows device test",
+    "rc2_previous_status": "UNIT TESTED",
+    "rc2_current_status": "UNIT TESTED",
+    "rc2_test_evidence": "RC2 acceptance not yet established. Historical evidence preserved.",
+    "rc2_next_action": "Not STT, diarization or a Windows device test"
+  },
+  {
+    "id": "RC2-WIN-01",
+    "category": "RC2",
+    "requirement": "Windows NSIS install, upgrade, Unicode path, authenticated readiness, restart, no orphan, uninstall",
+    "target_release": "v1.0 RC2",
+    "status": "PARTIALLY IMPLEMENTED",
+    "current_status": "PARTIALLY IMPLEMENTED",
+    "previous_status": "NEW",
+    "rc2_previous_status": "NEW",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "source": "scripts/rc2-windows-acceptance.ps1",
+    "implementation_location": "scripts/rc2-windows-acceptance.ps1",
+    "implementation": "Incremental integration or test harness, not yet a complete cross-layer user workflow.",
+    "acceptance_criteria": "Windows GitHub Actions must complete installer upgrade from checksum-verified 0.9.0, preserve SQLite and pass worker crash/recovery.",
+    "test_evidence": "RC2 Windows CI is pending; no claim of full acceptance.",
+    "rc2_test_evidence": "Pending or blocked",
+    "known_limitations": "Windows GitHub Actions must complete installer upgrade from checksum-verified 0.9.0, preserve SQLite and pass worker crash/recovery.",
+    "remaining_work": "Windows GitHub Actions must complete installer upgrade from checksum-verified 0.9.0, preserve SQLite and pass worker crash/recovery.",
+    "next_action": "Windows GitHub Actions must complete installer upgrade from checksum-verified 0.9.0, preserve SQLite and pass worker crash/recovery."
+  },
+  {
+    "id": "RC2-AI-01",
+    "category": "RC2",
+    "requirement": "Real local Ollama and user-consented cloud inference with cancellation and context",
+    "target_release": "v1.0 RC2",
+    "status": "BLOCKED",
+    "current_status": "BLOCKED",
+    "previous_status": "NEW",
+    "rc2_previous_status": "NEW",
+    "rc2_current_status": "BLOCKED",
+    "source": "services/ai_worker/app/providers.py;services/ai_worker/tests/test_v09.py",
+    "implementation_location": "services/ai_worker/app/providers.py;services/ai_worker/tests/test_v09.py",
+    "implementation": "Incremental integration or test harness, not yet a complete cross-layer user workflow.",
+    "acceptance_criteria": "Actual provider/model and user-authorized credentials required; controlled mock tests are insufficient.",
+    "test_evidence": "RC2 Windows CI is pending; no claim of full acceptance.",
+    "rc2_test_evidence": "Pending or blocked",
+    "known_limitations": "Actual provider/model and user-authorized credentials required; controlled mock tests are insufficient.",
+    "remaining_work": "Actual provider/model and user-authorized credentials required; controlled mock tests are insufficient.",
+    "next_action": "Actual provider/model and user-authorized credentials required; controlled mock tests are insufficient."
+  },
+  {
+    "id": "RC2-DKR-01",
+    "category": "RC2",
+    "requirement": "Real Docker Desktop Windows sandbox acceptance with malicious cases",
+    "target_release": "v1.0 RC2",
+    "status": "BLOCKED",
+    "current_status": "BLOCKED",
+    "previous_status": "NEW",
+    "rc2_previous_status": "NEW",
+    "rc2_current_status": "BLOCKED",
+    "source": "services/ai_worker/app/code_runner.py",
+    "implementation_location": "services/ai_worker/app/code_runner.py",
+    "implementation": "Incremental integration or test harness, not yet a complete cross-layer user workflow.",
+    "acceptance_criteria": "Run supported languages, timeout, network-denial, memory and cleanup on real Windows Docker Desktop.",
+    "test_evidence": "RC2 Windows CI is pending; no claim of full acceptance.",
+    "rc2_test_evidence": "Pending or blocked",
+    "known_limitations": "Run supported languages, timeout, network-denial, memory and cleanup on real Windows Docker Desktop.",
+    "remaining_work": "Run supported languages, timeout, network-denial, memory and cleanup on real Windows Docker Desktop.",
+    "next_action": "Run supported languages, timeout, network-denial, memory and cleanup on real Windows Docker Desktop."
+  },
+  {
+    "id": "RC2-AUD-01",
+    "category": "RC2",
+    "requirement": "Windows device capture/transcription and qualified speaker separation",
+    "target_release": "v1.0 RC2",
+    "status": "BLOCKED",
+    "current_status": "BLOCKED",
+    "previous_status": "NEW",
+    "rc2_previous_status": "NEW",
+    "rc2_current_status": "BLOCKED",
+    "source": "services/ai_worker/app/audio_live.py",
+    "implementation_location": "services/ai_worker/app/audio_live.py",
+    "implementation": "Incremental integration or test harness, not yet a complete cross-layer user workflow.",
+    "acceptance_criteria": "Require consented Windows devices, real voice samples and uncertainty/diarization measurements.",
+    "test_evidence": "RC2 Windows CI is pending; no claim of full acceptance.",
+    "rc2_test_evidence": "Pending or blocked",
+    "known_limitations": "Require consented Windows devices, real voice samples and uncertainty/diarization measurements.",
+    "remaining_work": "Require consented Windows devices, real voice samples and uncertainty/diarization measurements.",
+    "next_action": "Require consented Windows devices, real voice samples and uncertainty/diarization measurements."
+  },
+  {
+    "id": "RC2-ASM-01",
+    "category": "RC2",
+    "requirement": "Installed Windows timed assessment UI: autosave, restart, expiry and receipt",
+    "target_release": "v1.0 RC2",
+    "status": "PARTIALLY IMPLEMENTED",
+    "current_status": "PARTIALLY IMPLEMENTED",
+    "previous_status": "NEW",
+    "rc2_previous_status": "NEW",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "source": "apps/desktop/src/views/Assessments.tsx;services/ai_worker/app/db.py",
+    "implementation_location": "apps/desktop/src/views/Assessments.tsx;services/ai_worker/app/db.py",
+    "implementation": "Incremental integration or test harness, not yet a complete cross-layer user workflow.",
+    "acceptance_criteria": "Perform actual WebView UI and SQLite recovery test; only native and API layers tested so far.",
+    "test_evidence": "RC2 Windows CI is pending; no claim of full acceptance.",
+    "rc2_test_evidence": "Pending or blocked",
+    "known_limitations": "Perform actual WebView UI and SQLite recovery test; only native and API layers tested so far.",
+    "remaining_work": "Perform actual WebView UI and SQLite recovery test; only native and API layers tested so far.",
+    "next_action": "Perform actual WebView UI and SQLite recovery test; only native and API layers tested so far."
+  },
+  {
+    "id": "RC2-RES-01",
+    "category": "RC2",
+    "requirement": "Resume upload through contextual mock interview and report",
+    "target_release": "v1.0 RC2",
+    "status": "PARTIALLY IMPLEMENTED",
+    "current_status": "PARTIALLY IMPLEMENTED",
+    "previous_status": "NEW",
+    "rc2_previous_status": "NEW",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "source": "services/ai_worker/app/resume_intelligence.py;apps/desktop/src/views/Tools.tsx",
+    "implementation_location": "services/ai_worker/app/resume_intelligence.py;apps/desktop/src/views/Tools.tsx",
+    "implementation": "Incremental integration or test harness, not yet a complete cross-layer user workflow.",
+    "acceptance_criteria": "Exercise real uploaded resume, source-grounded questions and actual model follow-ups end-to-end.",
+    "test_evidence": "RC2 Windows CI is pending; no claim of full acceptance.",
+    "rc2_test_evidence": "Pending or blocked",
+    "known_limitations": "Exercise real uploaded resume, source-grounded questions and actual model follow-ups end-to-end.",
+    "remaining_work": "Exercise real uploaded resume, source-grounded questions and actual model follow-ups end-to-end.",
+    "next_action": "Exercise real uploaded resume, source-grounded questions and actual model follow-ups end-to-end."
+  },
+  {
+    "id": "RC2-SEC-01",
+    "category": "RC2",
+    "requirement": "Production security acceptance for IPC, cloud keys, Docker, content and installer",
+    "target_release": "v1.0 RC2",
+    "status": "PARTIALLY IMPLEMENTED",
+    "current_status": "PARTIALLY IMPLEMENTED",
+    "previous_status": "NEW",
+    "rc2_previous_status": "NEW",
+    "rc2_current_status": "PARTIALLY IMPLEMENTED",
+    "source": "apps/desktop/src-tauri/src/lib.rs;services/ai_worker/app/main.py",
+    "implementation_location": "apps/desktop/src-tauri/src/lib.rs;services/ai_worker/app/main.py",
+    "implementation": "Incremental integration or test harness, not yet a complete cross-layer user workflow.",
+    "acceptance_criteria": "Complete independent Windows security audit, dependency scan, credential handling and installer signing.",
+    "test_evidence": "RC2 Windows CI is pending; no claim of full acceptance.",
+    "rc2_test_evidence": "Pending or blocked",
+    "known_limitations": "Complete independent Windows security audit, dependency scan, credential handling and installer signing.",
+    "remaining_work": "Complete independent Windows security audit, dependency scan, credential handling and installer signing.",
+    "next_action": "Complete independent Windows security audit, dependency scan, credential handling and installer signing."
+  },
+  {
+    "id": "RC2-PERF-01",
+    "category": "RC2",
+    "requirement": "Target-laptop startup, peak/idle resource and actual model/audio latency benchmarks",
+    "target_release": "v1.0 RC2",
+    "status": "BLOCKED",
+    "current_status": "BLOCKED",
+    "previous_status": "NEW",
+    "rc2_previous_status": "NEW",
+    "rc2_current_status": "BLOCKED",
+    "source": "services/ai_worker/app/resources.py",
+    "implementation_location": "services/ai_worker/app/resources.py",
+    "implementation": "Incremental integration or test harness, not yet a complete cross-layer user workflow.",
+    "acceptance_criteria": "Record measured Windows hardware, model, device conditions and representative p50/p95.",
+    "test_evidence": "RC2 Windows CI is pending; no claim of full acceptance.",
+    "rc2_test_evidence": "Pending or blocked",
+    "known_limitations": "Record measured Windows hardware, model, device conditions and representative p50/p95.",
+    "remaining_work": "Record measured Windows hardware, model, device conditions and representative p50/p95.",
+    "next_action": "Record measured Windows hardware, model, device conditions and representative p50/p95."
   }
 ]
