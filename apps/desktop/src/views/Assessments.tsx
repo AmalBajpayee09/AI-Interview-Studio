@@ -3,7 +3,7 @@ import {request,type Assessment,type QuizAnswer} from '../lib/api';
 import {Panel,Empty,ErrorText} from '../components/Ui';
 export function Assessments(){
  const [items,setItems]=useState<Assessment[]>([]),[current,setCurrent]=useState<Assessment|null>(null),[answers,setAnswers]=useState<Record<string,QuizAnswer>>({}),[index,setIndex]=useState(0),[remaining,setRemaining]=useState(0),[started,setStarted]=useState(0),[result,setResult]=useState<any>(null),[error,setError]=useState(''),[review,setReview]=useState<string[]>([]),[saveMessage,setSaveMessage]=useState(''),[create,setCreate]=useState(false),[json,setJson]=useState(''),[title,setTitle]=useState('Custom quiz'),[minutes,setMinutes]=useState(5),[penalty,setPenalty]=useState(.25),[cutoff,setCutoff]=useState('');
- const deadline=useRef(0),submitting=useRef(false);
+ const deadline=useRef(0),submitting=useRef(false),autoSubmitted=useRef(false),saveChain=useRef<Promise<void>>(Promise.resolve());
  const refresh=()=>request<Assessment[]>('/api/assessments').then(setItems).catch(e=>setError(String(e)));
  useEffect(()=>{refresh()},[]);
  useEffect(()=>{if(!current||result)return;const id=window.setInterval(()=>{const s=Math.max(0,Math.ceil((deadline.current-Date.now())/1000));setRemaining(s);if(!s&&!submitting.current){finish(true)}},500);return()=>clearInterval(id)},[current,result,answers,started]);
@@ -13,18 +13,40 @@ export function Assessments(){
    const x=await request<{draft:{answers:Record<string,QuizAnswer>;review:string[];started:number;recovered:boolean}|null}>(`/api/assessments/${a.id}/start`,'POST');
    const at=x.draft?.started??Date.now()/1000;
    setCurrent(a);setIndex(0);setAnswers(x.draft?.answers??{});setResult(null);setReview(x.draft?.review??[]);
-   submitting.current=false;setStarted(at);deadline.current=at*1000+a.duration_seconds*1000;
+   submitting.current=false;autoSubmitted.current=false;saveChain.current=Promise.resolve();setStarted(at);deadline.current=at*1000+a.duration_seconds*1000;
    setRemaining(Math.max(0,Math.ceil((deadline.current-Date.now())/1000)));
    setSaveMessage(x.draft?.recovered?'Restored locally saved answers':'New assessment started');
   }catch(e){setError(String(e));setSaveMessage('')}
  };
  useEffect(()=>{
   if(!current||result||!started||submitting.current)return;
-  const timer=setTimeout(()=>request(`/api/assessments/${current.id}/draft`,'POST',{answers,review,started})
-   .then(()=>setSaveMessage('Answers saved locally')).catch(e=>setSaveMessage('Autosave error: '+String(e))),350);
+  // Serialize draft saves so a slow older response cannot overwrite newer answers.
+  const timer=setTimeout(()=>{
+   saveChain.current=saveChain.current.catch(()=>{}).then(async()=>{
+    await request(`/api/assessments/${current.id}/draft`,'POST',{answers,review,started});
+    setSaveMessage('Answers saved locally');
+   }).catch(e=>{setSaveMessage('Autosave error: '+String(e));});
+  },350);
   return ()=>clearTimeout(timer);
  },[current,answers,review,started,result]);
- const finish=async(auto=false)=>{if(!current||submitting.current)return; if(!auto&&!window.confirm('Submit your assessment now?'))return;submitting.current=true;try{setResult(await request(`/api/assessments/${current.id}/submit`,'POST',{answers,started}))}catch(e){setError(String(e));submitting.current=false}};
+ const finish=async(auto=false)=>{
+  if(!current||submitting.current||(auto&&autoSubmitted.current))return;
+  if(!auto&&!window.confirm('Submit your assessment now?'))return;
+  if(auto)autoSubmitted.current=true;
+  submitting.current=true;setError('');
+  try{
+   await saveChain.current;
+   // Persist latest answers before an on-time manual submission.
+   // At expiry the server grades only previously saved answers.
+   if(!auto&&Date.now()<deadline.current){
+    await request(`/api/assessments/${current.id}/draft`,'POST',{answers,review,started});
+   }
+   setResult(await request(`/api/assessments/${current.id}/submit`,'POST',{answers,started}));
+  }catch(e){
+   setError('Submission failed. Saved answers remain available for retry: '+String(e));
+   submitting.current=false;
+  }
+ };
  const make=async()=>{try{const q=JSON.parse(json);await request('/api/assessments','POST',{title,duration_seconds:Math.round(minutes*60),questions:q,require_start:true,negative_marking:penalty,cutoff_pct:cutoff===''?null:Number(cutoff)});setCreate(false);setJson('');refresh()}catch(e){setError('Check JSON question format: '+String(e))}};
  if(!current)return <div className="page"><div className="page-top"><div><div className="eyebrow">ASSESSMENT LAB</div><h1>Timed assessments</h1><p>Timed quizzes with automatic saving and transparent scoring.</p></div><button className="btn secondary" onClick={()=>setCreate(!create)}>＋ Create assessment</button></div><div className="cards-grid">{items.map(a=><Panel key={a.id}><span className="chip">{a.require_start?'SERVER-TIMED':'PRACTICE'}</span><h2>{a.title}</h2><p>{a.questions.length} questions · {Math.ceil(a.duration_seconds/60)} min · -{a.negative_marking??.25} penalty · {a.cutoff_pct===null||a.cutoff_pct===undefined?'No cutoff':a.cutoff_pct+'% cutoff'}</p><button className="btn primary" onClick={()=>start(a)}>Begin assessment →</button></Panel>)}</div>{items.length===0&&<Empty title="No assessments found" detail="Ensure the backend is online to load the sample assessment."/>}
  {create&&<Panel title="Custom assessment"><p>Provide a JSON array of questions with id, stem, kind (single/multiple/numerical), correct, and options for choice questions. Numerical questions may define tolerance.</p><input value={title} onChange={e=>setTitle(e.target.value)} placeholder="Title"/><div className="row wrap"><label>Duration (minutes)<input type="number" min={1} max={240} value={minutes} onChange={e=>setMinutes(Number(e.target.value))}/></label><label>Penalty per wrong answer (0–1)<input type="number" min={0} max={1} step={.05} value={penalty} onChange={e=>setPenalty(Number(e.target.value))}/></label><label>Pass cutoff % (optional)<input type="number" min={0} max={100} value={cutoff} onChange={e=>setCutoff(e.target.value)} placeholder="None"/></label></div><p className="muted">The server controls the clock, penalty and cutoff after the attempt begins. These are local practice assessments, not remote-proctored examinations.</p><textarea rows={9} value={json} onChange={e=>setJson(e.target.value)} placeholder='[{"id":"q1","stem":"Question?","options":[{"label":"A","text":"Yes"},{"label":"B","text":"No"}],"correct":"A"}]'/><button className="btn primary" onClick={make}>Save assessment</button></Panel>}<ErrorText message={error}/></div>;
