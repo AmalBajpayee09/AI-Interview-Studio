@@ -1257,10 +1257,11 @@
     "v09_limitations": "The complete user workflow or production integration is incomplete/unverified.",
     "v09_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
     "target_release": "original v0.9 audit",
-    "current_status": "PARTIALLY IMPLEMENTED",
+    "current_status": "INTEGRATION TESTED",
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
-    "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "test_evidence": "Real Docker Linux tests for Python, JavaScript, C++ and Java: run 41650879175",
+    "remaining_work": "Windows Docker Desktop isolation and installed UI acceptance remain unverified",
+    "v010_status_provenance": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175"
   },
   {
     "id": "E-02",
@@ -1321,10 +1322,11 @@
     "v09_limitations": "The complete user workflow or production integration is incomplete/unverified.",
     "v09_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
     "target_release": "original v0.9 audit",
-    "current_status": "PARTIALLY IMPLEMENTED",
+    "current_status": "INTEGRATION TESTED",
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
-    "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "test_evidence": "Real Docker stdin/stdout/exit and output capture: run 41650879175",
+    "remaining_work": "Windows Docker Desktop isolation and installed UI acceptance remain unverified",
+    "v010_status_provenance": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175"
   },
   {
     "id": "E-04",
@@ -1353,10 +1355,11 @@
     "v09_limitations": "The complete user workflow or production integration is incomplete/unverified.",
     "v09_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
     "target_release": "original v0.9 audit",
-    "current_status": "PARTIALLY IMPLEMENTED",
+    "current_status": "INTEGRATION TESTED",
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
-    "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "test_evidence": "Real Docker expected-output comparisons: run 41650879175",
+    "remaining_work": "Windows Docker Desktop isolation and installed UI acceptance remain unverified",
+    "v010_status_provenance": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175"
   },
   {
     "id": "E-05",
@@ -1385,10 +1388,11 @@
     "v09_limitations": "The complete user workflow or production integration is incomplete/unverified.",
     "v09_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
     "target_release": "original v0.9 audit",
-    "current_status": "PARTIALLY IMPLEMENTED",
+    "current_status": "INTEGRATION TESTED",
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
-    "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "test_evidence": "Real Docker CPU, memory, timeout and output-limit checks: run 41650879175",
+    "remaining_work": "Windows Docker Desktop isolation and installed UI acceptance remain unverified",
+    "v010_status_provenance": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175"
   },
   {
     "id": "E-06",
@@ -1417,10 +1421,11 @@
     "v09_limitations": "The complete user workflow or production integration is incomplete/unverified.",
     "v09_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
     "target_release": "original v0.9 audit",
-    "current_status": "PARTIALLY IMPLEMENTED",
+    "current_status": "INTEGRATION TESTED",
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
-    "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "test_evidence": "Real Docker compilation failure and runtime exception tests: run 41650879175",
+    "remaining_work": "Windows Docker Desktop isolation and installed UI acceptance remain unverified",
+    "v010_status_provenance": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175"
   },
   {
     "id": "E-07",
@@ -1513,10 +1518,11 @@
     "v09_limitations": "Docker CLI/engine unavailable on current Linux host; real container test not executed.",
     "v09_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures.",
     "target_release": "original v0.9 audit",
-    "current_status": "BLOCKED",
+    "current_status": "INTEGRATION TESTED",
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
-    "test_evidence": [],
-    "remaining_work": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
+    "test_evidence": "Real Docker Linux four-language and isolation acceptance: run 41650879175",
+    "remaining_work": "Windows Docker Desktop isolation and installed UI acceptance remain unverified",
+    "v010_status_provenance": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175"
   },
   {
     "id": "E-10",
