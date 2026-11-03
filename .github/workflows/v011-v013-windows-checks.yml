@@ -1,8 +1,8 @@
-name: v0.11–v0.13 Windows code-path validation
+name: v0.11–v1.0 Windows code-path validation
 on:
   workflow_dispatch:
   push:
-    branches: ['feature/v0.13.0-resume-intelligence']
+    branches: ['feature/v0.13.0-resume-intelligence', 'feature/v1.0-assessment-audio-hardening']
 permissions:
   contents: read
 jobs:
@@ -43,6 +43,6 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: milestone-v011-v013-test-results
+          name: milestone-v1-acceptance-test-results
           path: milestone-tests.xml
           if-no-files-found: warn

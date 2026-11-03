@@ -1,0 +1,24 @@
+{
+  "release": "v1.0 acceptance-hardening checkpoint",
+  "status": "NOT PRODUCTION READY",
+  "environment": {
+    "os": "Linux",
+    "python": "3.13.5",
+    "docker_available": false,
+    "windows_audio_devices_tested": false,
+    "real_ollama_tested": false
+  },
+  "local_tests": {
+    "passed": 106,
+    "skipped": 12,
+    "failed": 0,
+    "warning_count": 1,
+    "new_tests": 4,
+    "command": "PYTHONPATH=services/ai_worker pytest -q services/ai_worker/tests --disable-warnings --tb=short"
+  },
+  "existing_ci": {
+    "docker_linux": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175",
+    "windows_v013": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41651936422"
+  },
+  "installer_v1_verified": false
+}

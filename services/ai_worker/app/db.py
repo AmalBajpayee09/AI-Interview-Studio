@@ -217,17 +217,28 @@ def cleanup():
 
 
 def save_assessment_draft(aid, answers, review, started):
-    # Transactional upsert; never touches finalized attempt records.
+    """Autosave without allowing a client to rewrite a server-established start time.
+
+    Older clients can create a draft directly; an existing draft always owns
+    its original start. Late autosaves cannot modify its saved answers.
+    """
     with connect() as database:
-        if not database.execute('SELECT 1 FROM assessments WHERE id=?',(aid,)).fetchone():
-            raise ValueError('Unknown assessment')
+        row=database.execute('SELECT duration_seconds FROM assessments WHERE id=?',(aid,)).fetchone()
+        if not row: raise ValueError('Unknown assessment')
+        existing=database.execute('SELECT started FROM assessment_drafts WHERE assessment_id=?',(aid,)).fetchone()
+        if existing is not None:
+            if abs(float(existing['started'])-float(started))>0.001:
+                raise ValueError('Assessment start timestamp does not match the server record')
+            started=float(existing['started'])
+        if time.time()>started+float(row['duration_seconds']):
+            raise ValueError('Assessment time has expired; saved answers cannot be changed')
         database.execute('''INSERT INTO assessment_drafts
             (assessment_id,answers_json,review_json,started,updated) VALUES(?,?,?,?,?)
             ON CONFLICT(assessment_id) DO UPDATE SET
             answers_json=excluded.answers_json,review_json=excluded.review_json,
-            started=excluded.started,updated=excluded.updated''',
+            updated=excluded.updated''',
             (aid,json.dumps(answers),json.dumps(review),started,time.time()))
-    return {'saved':True,'updated':time.time()}
+        return {'saved':True,'updated':time.time(),'started':started}
 
 def get_assessment_draft(aid):
     with connect() as database:
