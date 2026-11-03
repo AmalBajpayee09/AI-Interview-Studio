@@ -60,3 +60,22 @@ def test_real_cancellation():
     thread=threading.Thread(target=lambda:out.append(code_runner.run('import time\ntime.sleep(100)','python',cancel_event=flag,timeout_seconds=10)))
     thread.start();time.sleep(1.5);flag.set();thread.join(10)
     assert not thread.is_alive() and out[0]['status']=='cancelled'
+
+@pytest.mark.skipif(not real,reason='Requires genuine Docker and pulled images')
+def test_real_compile_memory_and_output_limits():
+    assert code_runner.docker_available()['available']
+    bad=code_runner.run('int main( {','cpp',timeout_seconds=10)
+    assert bad['status']=='failed' and bad['exit_code']!=0 and bad['stderr']
+    memory=code_runner.run('b=bytearray(700*1024*1024)\nprint(len(b))','python',timeout_seconds=8)
+    assert memory['status']=='failed' and memory['exit_code']!=0
+    flooded=code_runner.run('print("X"*250000)','python',timeout_seconds=5)
+    assert flooded['status']=='failed' and flooded['stdout_truncated']
+    assert len(flooded['stdout'])<=32768
+
+@pytest.mark.skipif(not real,reason='Requires genuine Docker and pulled images')
+def test_real_concurrent_docker_runs():
+    from concurrent.futures import ThreadPoolExecutor
+    code='import time\ntime.sleep(.5)\nprint(42)'
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        results=list(executor.map(lambda _:code_runner.run(code,'python',expected='42',timeout_seconds=8),range(2)))
+    assert len(results)==2 and all(r['status']=='passed' for r in results)

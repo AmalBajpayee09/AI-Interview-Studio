@@ -126,8 +126,12 @@ def run(code: str, language: str, stdin: str = '', expected: str | None = None, 
         if cancelled:
             return {'status':'cancelled','exit_code':None,'stdout':'','stderr':'','elapsed_ms':round((time.perf_counter()-start)*1000,1),
                     'expected':expected,'matched':False,'isolation':'Docker Linux container (cancelled)'}
-        out_bytes=stdout_file.read_bytes()[:output_limit]
-        err_bytes=stderr_file.read_bytes()[:output_limit]
+        # Keep attacker-controlled stdout/stderr out of unbounded Python memory.
+        exceeded = exceeded or stdout_file.stat().st_size>output_limit or stderr_file.stat().st_size>output_limit
+        with stdout_file.open('rb') as result_stdout:
+            out_bytes=result_stdout.read(output_limit)
+        with stderr_file.open('rb') as result_stderr:
+            err_bytes=result_stderr.read(output_limit)
         stdout=out_bytes.decode('utf-8',errors='replace')
         stderr=err_bytes.decode('utf-8',errors='replace')
         if exceeded: stderr += '\nOutput limit exceeded; container stopped.'
