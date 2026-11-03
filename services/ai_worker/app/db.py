@@ -127,6 +127,12 @@ def documents(include_content=False):
     cols = "id,filename,content,created" if include_content else "id,filename,created,length(content) size"
     with connect() as db: return [dict(r) for r in db.execute(f"SELECT {cols} FROM documents ORDER BY created DESC")]
 
+def document_by_id(did):
+    with connect() as database:
+        item=database.execute('SELECT id,filename,content,created FROM documents WHERE id=?',(did,)).fetchone()
+    if not item:raise ValueError('Unknown document')
+    return dict(item)
+
 def delete_document(did):
     with connect() as db: return db.execute('DELETE FROM documents WHERE id=?',(did,)).rowcount > 0
 

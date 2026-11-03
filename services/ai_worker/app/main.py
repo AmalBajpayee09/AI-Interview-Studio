@@ -13,7 +13,7 @@ from fastapi.responses import StreamingResponse, JSONResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from pydantic import BaseModel, Field
-from . import db,config,logic,providers,sql_lab,resources,code_runner,code_jobs,audio_live,audio_offline,credentials,startup_events
+from . import db,config,logic,providers,sql_lab,resources,code_runner,code_jobs,audio_live,audio_offline,resume_intelligence,credentials,startup_events
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -519,6 +519,12 @@ async def add_document(body:dict):
     return {'id':db.save_document(name,content)}
 @app.get('/api/documents')
 async def list_documents(): return db.documents()
+@app.get('/api/documents/{did}/analyze')
+async def analyze_document(did:str):
+    try:item=db.document_by_id(did)
+    except ValueError as exc:raise HTTPException(404,str(exc))
+    return resume_intelligence.sections(item['content'],item['id'])
+
 @app.delete('/api/documents/{did}')
 async def delete_doc(did:str): return {'deleted':db.delete_document(did)}
 

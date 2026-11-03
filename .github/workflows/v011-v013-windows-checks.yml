@@ -1,0 +1,48 @@
+name: v0.11–v0.13 Windows code-path validation
+on:
+  workflow_dispatch:
+  push:
+    branches: ['feature/v0.13.0-resume-intelligence']
+permissions:
+  contents: read
+jobs:
+  windows-validation:
+    runs-on: windows-latest
+    timeout-minutes: 55
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Run real backend tests (Docker/device tests explicitly skipped)
+        run: |
+          py -3.11 -m pip install -r services/ai_worker/requirements.txt
+          $env:PYTHONPATH='services/ai_worker'
+          py -3.11 -m compileall -q services/ai_worker/app
+          py -3.11 -m pytest services/ai_worker/tests -q --junitxml=milestone-tests.xml
+          if($LASTEXITCODE -ne 0){throw 'Python regression failed'}
+      - name: Locked React build and TypeScript checks
+        working-directory: apps/desktop
+        run: |
+          npm ci
+          if($LASTEXITCODE -ne 0){throw 'npm ci failed'}
+          npm run build
+          if($LASTEXITCODE -ne 0){throw 'Frontend build failed'}
+      - name: Check Rust/Tauri desktop core
+        working-directory: apps/desktop/src-tauri
+        run: |
+          cargo check
+          if($LASTEXITCODE -ne 0){throw 'Rust compilation failed'}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: milestone-v011-v013-test-results
+          path: milestone-tests.xml
+          if-no-files-found: warn
