@@ -150,7 +150,7 @@ jobs:
           name: rc2-installer-source-and-windows-acceptance
           path: |
             python-test-results.xml
-            AI-Interview-Studio-RC1-Canonical-Source.zip
+            AI-Interview-Studio-RC2-Canonical-Source.zip
             apps/desktop/src-tauri/target/release/bundle/nsis/*.exe
             ${{ runner.temp }}/v09-worker-stderr.txt
             ${{ runner.temp }}/rc2-windows-acceptance.json
