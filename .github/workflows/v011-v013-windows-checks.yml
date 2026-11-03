@@ -2,7 +2,7 @@ name: v0.11–v1.0 Windows code-path validation
 on:
   workflow_dispatch:
   push:
-    branches: ['feature/v0.13.0-resume-intelligence', 'feature/v1.0-assessment-audio-hardening']
+    branches: ['feature/v0.13.0-resume-intelligence', 'feature/v1.0-assessment-audio-hardening', 'feature/v1.0-rc1-timed-assessment-integrity']
 permissions:
   contents: read
 jobs:
@@ -28,6 +28,8 @@ jobs:
           py -3.11 -m compileall -q services/ai_worker/app
           py -3.11 -m pytest services/ai_worker/tests -q --junitxml=milestone-tests.xml
           if($LASTEXITCODE -ne 0){throw 'Python regression failed'}
+          py -3.11 scripts/rc1_worker_acceptance.py
+          if($LASTEXITCODE -ne 0){throw 'RC1 real worker subprocess continuity failed'}
       - name: Locked React build and TypeScript checks
         working-directory: apps/desktop
         run: |

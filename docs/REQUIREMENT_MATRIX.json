@@ -29,7 +29,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "apps/desktop/src-tauri/src/lib.rs; apps/desktop/src/App.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "A-02",
@@ -61,7 +65,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "apps/desktop/src-tauri/src/lib.rs; apps/desktop/src/App.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "A-03",
@@ -93,7 +101,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "apps/desktop/src-tauri/src/lib.rs; apps/desktop/src/App.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "A-04",
@@ -125,7 +137,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "apps/desktop/src-tauri/src/lib.rs; apps/desktop/src/App.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "A-05",
@@ -157,7 +173,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "apps/desktop/src-tauri/src/lib.rs; apps/desktop/src/App.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "A-06",
@@ -189,7 +209,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "apps/desktop/src-tauri/src/lib.rs; apps/desktop/src/App.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "A-07",
@@ -221,7 +245,11 @@
     "current_status": "TESTED — DEFINED CODE-PATH",
     "implementation_location": "apps/desktop/src-tauri/src/lib.rs; apps/desktop/src/App.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "A-08",
@@ -261,7 +289,11 @@
       "services/ai_worker/tests/test_v09.py (defined code-path/real localhost process; mocked AI used in context tests)",
       "docs/V09_SESSION_CONTINUITY_REPORT.md"
     ],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "B-01",
@@ -296,7 +328,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/providers.py; services/ai_worker/app/main.py; services/ai_worker/app/config.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "B-02",
@@ -331,7 +367,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/providers.py; services/ai_worker/app/main.py; services/ai_worker/app/config.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "B-03",
@@ -363,7 +403,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/providers.py; services/ai_worker/app/main.py; services/ai_worker/app/config.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "B-04",
@@ -395,7 +439,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/providers.py; services/ai_worker/app/main.py; services/ai_worker/app/config.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "B-05",
@@ -430,7 +478,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/providers.py; services/ai_worker/app/main.py; services/ai_worker/app/config.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "B-06",
@@ -465,7 +517,11 @@
     "current_status": "INTEGRATION TESTED",
     "implementation_location": "services/ai_worker/app/providers.py; services/ai_worker/app/main.py; services/ai_worker/app/config.py",
     "test_evidence": [],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "INTEGRATION TESTED",
+    "rc1_current_status": "INTEGRATION TESTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "B-07",
@@ -500,7 +556,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/providers.py; services/ai_worker/app/main.py; services/ai_worker/app/config.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "B-08",
@@ -532,7 +592,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/providers.py; services/ai_worker/app/main.py; services/ai_worker/app/config.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "B-09",
@@ -570,7 +634,11 @@
       "services/ai_worker/tests/test_v09.py (defined code-path/real localhost process; mocked AI used in context tests)",
       "docs/V09_SESSION_CONTINUITY_REPORT.md"
     ],
-    "remaining_work": "Run authorized local/cloud catalog and generation tests on Windows and record model/version, response time, logs without secrets."
+    "remaining_work": "Run authorized local/cloud catalog and generation tests on Windows and record model/version, response time, logs without secrets.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Run authorized local/cloud catalog and generation tests on Windows and record model/version, response time, logs without secrets."
   },
   {
     "id": "C-01",
@@ -611,7 +679,11 @@
       "services/ai_worker/tests/test_v09.py (defined code-path/real localhost process; mocked AI used in context tests)",
       "docs/V09_SESSION_CONTINUITY_REPORT.md"
     ],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "INTEGRATION TESTED",
+    "rc1_current_status": "INTEGRATION TESTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "C-02",
@@ -652,7 +724,11 @@
       "services/ai_worker/tests/test_v09.py (defined code-path/real localhost process; mocked AI used in context tests)",
       "docs/V09_SESSION_CONTINUITY_REPORT.md"
     ],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "C-03",
@@ -684,7 +760,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; services/ai_worker/app/logic.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "C-04",
@@ -716,7 +796,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; services/ai_worker/app/logic.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "C-05",
@@ -748,7 +832,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; services/ai_worker/app/logic.py",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "C-06",
@@ -780,7 +868,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; services/ai_worker/app/logic.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "C-07",
@@ -812,7 +904,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; services/ai_worker/app/logic.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "C-08",
@@ -844,7 +940,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; services/ai_worker/app/logic.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "D-01",
@@ -876,7 +976,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/audio_live.py; apps/desktop/src/views/LiveAudioControls.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "D-02",
@@ -908,7 +1012,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/audio_live.py; apps/desktop/src/views/LiveAudioControls.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "D-03",
@@ -940,7 +1048,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/audio_live.py; apps/desktop/src/views/LiveAudioControls.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "D-04",
@@ -972,7 +1084,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/audio_live.py; apps/desktop/src/views/LiveAudioControls.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "D-05",
@@ -1004,7 +1120,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/audio_live.py; apps/desktop/src/views/LiveAudioControls.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "D-06",
@@ -1036,7 +1156,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/audio_live.py; apps/desktop/src/views/LiveAudioControls.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "D-07",
@@ -1068,7 +1192,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/audio_live.py; apps/desktop/src/views/LiveAudioControls.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "D-08",
@@ -1100,7 +1228,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/audio_live.py; apps/desktop/src/views/LiveAudioControls.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "D-09",
@@ -1132,7 +1264,11 @@
     "current_status": "TESTED — DEFINED CODE-PATH",
     "implementation_location": "services/ai_worker/app/audio_live.py; apps/desktop/src/views/LiveAudioControls.tsx",
     "test_evidence": [],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "D-10",
@@ -1164,7 +1300,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/audio_live.py; apps/desktop/src/views/LiveAudioControls.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "D-11",
@@ -1196,7 +1336,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/audio_live.py; apps/desktop/src/views/LiveAudioControls.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "D-12",
@@ -1228,7 +1372,11 @@
     "current_status": "BLOCKED",
     "implementation_location": "services/ai_worker/app/audio_live.py; apps/desktop/src/views/LiveAudioControls.tsx",
     "test_evidence": [],
-    "remaining_work": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
+    "remaining_work": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures.",
+    "rc1_previous_status": "BLOCKED",
+    "rc1_current_status": "BLOCKED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
   },
   {
     "id": "E-01",
@@ -1261,7 +1409,11 @@
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": "Real Docker Linux tests for Python, JavaScript, C++ and Java: run 41650879175",
     "remaining_work": "Windows Docker Desktop isolation and installed UI acceptance remain unverified",
-    "v010_status_provenance": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175"
+    "v010_status_provenance": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175",
+    "rc1_previous_status": "INTEGRATION TESTED",
+    "rc1_current_status": "INTEGRATION TESTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified"
   },
   {
     "id": "E-02",
@@ -1293,7 +1445,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "E-03",
@@ -1326,7 +1482,11 @@
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": "Real Docker stdin/stdout/exit and output capture: run 41650879175",
     "remaining_work": "Windows Docker Desktop isolation and installed UI acceptance remain unverified",
-    "v010_status_provenance": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175"
+    "v010_status_provenance": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175",
+    "rc1_previous_status": "INTEGRATION TESTED",
+    "rc1_current_status": "INTEGRATION TESTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified"
   },
   {
     "id": "E-04",
@@ -1359,7 +1519,11 @@
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": "Real Docker expected-output comparisons: run 41650879175",
     "remaining_work": "Windows Docker Desktop isolation and installed UI acceptance remain unverified",
-    "v010_status_provenance": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175"
+    "v010_status_provenance": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175",
+    "rc1_previous_status": "INTEGRATION TESTED",
+    "rc1_current_status": "INTEGRATION TESTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified"
   },
   {
     "id": "E-05",
@@ -1392,7 +1556,11 @@
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": "Real Docker CPU, memory, timeout and output-limit checks: run 41650879175",
     "remaining_work": "Windows Docker Desktop isolation and installed UI acceptance remain unverified",
-    "v010_status_provenance": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175"
+    "v010_status_provenance": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175",
+    "rc1_previous_status": "INTEGRATION TESTED",
+    "rc1_current_status": "INTEGRATION TESTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified"
   },
   {
     "id": "E-06",
@@ -1425,7 +1593,11 @@
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": "Real Docker compilation failure and runtime exception tests: run 41650879175",
     "remaining_work": "Windows Docker Desktop isolation and installed UI acceptance remain unverified",
-    "v010_status_provenance": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175"
+    "v010_status_provenance": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175",
+    "rc1_previous_status": "INTEGRATION TESTED",
+    "rc1_current_status": "INTEGRATION TESTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified"
   },
   {
     "id": "E-07",
@@ -1457,7 +1629,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "E-08",
@@ -1489,7 +1665,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "E-09",
@@ -1522,7 +1702,11 @@
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": "Real Docker Linux four-language and isolation acceptance: run 41650879175",
     "remaining_work": "Windows Docker Desktop isolation and installed UI acceptance remain unverified",
-    "v010_status_provenance": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175"
+    "v010_status_provenance": "https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41650879175",
+    "rc1_previous_status": "INTEGRATION TESTED",
+    "rc1_current_status": "INTEGRATION TESTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Windows Docker Desktop isolation and installed UI acceptance remain unverified"
   },
   {
     "id": "E-10",
@@ -1554,7 +1738,11 @@
     "current_status": "TESTED — DEFINED CODE-PATH",
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "E-11",
@@ -1586,7 +1774,11 @@
     "current_status": "TESTED — DEFINED CODE-PATH",
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "E-12",
@@ -1618,7 +1810,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "E-13",
@@ -1650,7 +1846,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "E-14",
@@ -1682,7 +1882,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/code_runner.py; services/ai_worker/app/sql_lab.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "F-01",
@@ -1714,7 +1918,11 @@
     "current_status": "TESTED — DEFINED CODE-PATH",
     "implementation_location": "services/ai_worker/app/logic.py; apps/desktop/src/views/Assessments.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "F-02",
@@ -1746,7 +1954,11 @@
     "current_status": "TESTED — DEFINED CODE-PATH",
     "implementation_location": "services/ai_worker/app/logic.py; apps/desktop/src/views/Assessments.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "F-03",
@@ -1778,7 +1990,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/logic.py; apps/desktop/src/views/Assessments.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "F-04",
@@ -1810,7 +2026,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/logic.py; apps/desktop/src/views/Assessments.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "F-05",
@@ -1842,7 +2062,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/logic.py; apps/desktop/src/views/Assessments.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "F-06",
@@ -1874,13 +2098,17 @@
     "current_status": "TESTED — DEFINED CODE-PATH",
     "implementation_location": "services/ai_worker/app/logic.py; apps/desktop/src/views/Assessments.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "F-07",
     "category": "F. Assessment and MCQ Engine",
     "requirement": "Configurable timers.",
-    "status": "PARTIALLY IMPLEMENTED",
+    "status": "TESTED — DEFINED CODE-PATH",
     "source": "services/ai_worker/app/logic.py; apps/desktop/src/views/Assessments.tsx; services/ai_worker/app/db.py",
     "implementation": "A functional subset or adapter is present in the referenced module(s).",
     "missing": "The complete user workflow or production integration is incomplete/unverified.",
@@ -1903,10 +2131,17 @@
     "v09_limitations": "The complete user workflow or production integration is incomplete/unverified.",
     "v09_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
     "target_release": "original v0.9 audit",
-    "current_status": "PARTIALLY IMPLEMENTED",
+    "current_status": "TESTED — DEFINED CODE-PATH",
     "implementation_location": "services/ai_worker/app/logic.py; apps/desktop/src/views/Assessments.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "FastAPI TestClient + SQLite: services/ai_worker/tests/test_rc1_assessment_integrity.py (4 passing API/migration tests, Linux Python 3.13); Windows desktop not run.",
+    "rc1_implementation": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; apps/desktop/src/views/Assessments.tsx; apps/desktop/src/lib/api.ts",
+    "rc1_limitations": "Local self-practice is not proctored; Windows installed UI/restart, sectional cutoff, host clock tampering still unverified.",
+    "rc1_next_action": "Run Windows installed-app assessment recovery and timeout tests; implement sectional thresholds and explicit attempt policy.",
+    "rc1_description": "Server-owned attempt start, configurable duration and deadline behavior tested at API/SQLite level; Windows WebView still pending."
   },
   {
     "id": "F-08",
@@ -1938,13 +2173,17 @@
     "current_status": "TESTED — DEFINED CODE-PATH",
     "implementation_location": "services/ai_worker/app/logic.py; apps/desktop/src/views/Assessments.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "F-09",
     "category": "F. Assessment and MCQ Engine",
     "requirement": "Cutoff and scoring rules.",
-    "status": "NOT IMPLEMENTED",
+    "status": "PARTIALLY IMPLEMENTED",
     "source": "services/ai_worker/app/logic.py; apps/desktop/src/views/Assessments.tsx; services/ai_worker/app/db.py",
     "implementation": "No complete implementation found in the audited source.",
     "missing": "Negative marking and points supported; cutoff and sectional pass thresholds missing.",
@@ -1967,10 +2206,17 @@
     "v09_limitations": "Negative marking and points supported; cutoff and sectional pass thresholds missing.",
     "v09_next_action": "Implement a scoped feature and automated test before exposing it as supported.",
     "target_release": "original v0.9 audit",
-    "current_status": "NOT IMPLEMENTED",
+    "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/logic.py; apps/desktop/src/views/Assessments.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "FastAPI TestClient + SQLite: services/ai_worker/tests/test_rc1_assessment_integrity.py (4 passing API/migration tests, Linux Python 3.13); Windows desktop not run.",
+    "rc1_implementation": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; apps/desktop/src/views/Assessments.tsx; apps/desktop/src/lib/api.ts",
+    "rc1_limitations": "Local self-practice is not proctored; Windows installed UI/restart, sectional cutoff, host clock tampering still unverified.",
+    "rc1_next_action": "Run Windows installed-app assessment recovery and timeout tests; implement sectional thresholds and explicit attempt policy.",
+    "rc1_description": "Overall cutoff and persisted negative marking implemented; sectional cutoffs and full question rubric remain missing."
   },
   {
     "id": "F-10",
@@ -2002,7 +2248,11 @@
     "current_status": "TESTED — DEFINED CODE-PATH",
     "implementation_location": "services/ai_worker/app/logic.py; apps/desktop/src/views/Assessments.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "F-11",
@@ -2034,7 +2284,11 @@
     "current_status": "TESTED — DEFINED CODE-PATH",
     "implementation_location": "services/ai_worker/app/logic.py; apps/desktop/src/views/Assessments.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "F-12",
@@ -2066,7 +2320,11 @@
     "current_status": "TESTED — DEFINED CODE-PATH",
     "implementation_location": "services/ai_worker/app/logic.py; apps/desktop/src/views/Assessments.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "F-13",
@@ -2098,7 +2356,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/logic.py; apps/desktop/src/views/Assessments.tsx; services/ai_worker/app/db.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-01",
@@ -2130,7 +2392,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "apps/desktop/src/App.tsx; apps/desktop/src/views/Live.tsx; services/ai_worker/app/providers.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-02",
@@ -2162,7 +2428,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "apps/desktop/src/App.tsx; apps/desktop/src/views/Live.tsx; services/ai_worker/app/providers.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-03",
@@ -2194,7 +2464,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "apps/desktop/src/App.tsx; apps/desktop/src/views/Live.tsx; services/ai_worker/app/providers.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-04",
@@ -2226,7 +2500,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "apps/desktop/src/App.tsx; apps/desktop/src/views/Live.tsx; services/ai_worker/app/providers.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-05",
@@ -2258,7 +2536,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "apps/desktop/src/App.tsx; apps/desktop/src/views/Live.tsx; services/ai_worker/app/providers.py",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "G-06",
@@ -2290,7 +2572,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "apps/desktop/src/App.tsx; apps/desktop/src/views/Live.tsx; services/ai_worker/app/providers.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-07",
@@ -2322,7 +2608,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "apps/desktop/src/App.tsx; apps/desktop/src/views/Live.tsx; services/ai_worker/app/providers.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-08",
@@ -2354,7 +2644,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "apps/desktop/src/App.tsx; apps/desktop/src/views/Live.tsx; services/ai_worker/app/providers.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-09",
@@ -2386,7 +2680,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "apps/desktop/src/App.tsx; apps/desktop/src/views/Live.tsx; services/ai_worker/app/providers.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-10",
@@ -2418,7 +2716,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "apps/desktop/src/App.tsx; apps/desktop/src/views/Live.tsx; services/ai_worker/app/providers.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-11",
@@ -2450,7 +2752,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "apps/desktop/src/App.tsx; apps/desktop/src/views/Live.tsx; services/ai_worker/app/providers.py",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "G-12",
@@ -2482,7 +2788,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "apps/desktop/src/App.tsx; apps/desktop/src/views/Live.tsx; services/ai_worker/app/providers.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-13",
@@ -2514,7 +2824,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "apps/desktop/src/App.tsx; apps/desktop/src/views/Live.tsx; services/ai_worker/app/providers.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "G-14",
@@ -2546,7 +2860,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "apps/desktop/src/App.tsx; apps/desktop/src/views/Live.tsx; services/ai_worker/app/providers.py",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "H-01",
@@ -2578,7 +2896,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "H-02",
@@ -2610,7 +2932,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "H-03",
@@ -2642,7 +2968,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "H-04",
@@ -2674,7 +3004,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "H-05",
@@ -2706,7 +3040,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "H-06",
@@ -2738,7 +3076,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "H-07",
@@ -2770,7 +3112,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "H-08",
@@ -2802,7 +3148,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "H-09",
@@ -2834,7 +3184,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "I-01",
@@ -2866,7 +3220,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/db.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "I-02",
@@ -2898,7 +3256,11 @@
     "current_status": "TESTED — DEFINED CODE-PATH",
     "implementation_location": "services/ai_worker/app/db.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "I-03",
@@ -2930,7 +3292,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/db.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "I-04",
@@ -2962,7 +3328,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/db.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "I-05",
@@ -2994,7 +3364,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/db.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "I-06",
@@ -3026,7 +3400,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/db.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "I-07",
@@ -3058,7 +3436,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/db.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "I-08",
@@ -3090,7 +3472,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/db.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "I-09",
@@ -3122,7 +3508,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/db.py; apps/desktop/src/views/Tools.tsx",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "J-01",
@@ -3154,7 +3544,11 @@
     "current_status": "TESTED — DEFINED CODE-PATH",
     "implementation_location": "services/ai_worker/app/resources.py; services/ai_worker/app/main.py",
     "test_evidence": [],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "J-02",
@@ -3186,7 +3580,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/resources.py; services/ai_worker/app/main.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "J-03",
@@ -3218,7 +3616,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/resources.py; services/ai_worker/app/main.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "J-04",
@@ -3250,7 +3652,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/resources.py; services/ai_worker/app/main.py",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "J-05",
@@ -3282,7 +3688,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/resources.py; services/ai_worker/app/main.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "J-06",
@@ -3314,7 +3724,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/resources.py; services/ai_worker/app/main.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "J-07",
@@ -3346,7 +3760,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/resources.py; services/ai_worker/app/main.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "J-08",
@@ -3378,7 +3796,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/resources.py; services/ai_worker/app/main.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "J-09",
@@ -3410,7 +3832,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/resources.py; services/ai_worker/app/main.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "J-10",
@@ -3442,7 +3868,11 @@
     "current_status": "BLOCKED",
     "implementation_location": "services/ai_worker/app/resources.py; services/ai_worker/app/main.py",
     "test_evidence": [],
-    "remaining_work": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
+    "remaining_work": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures.",
+    "rc1_previous_status": "BLOCKED",
+    "rc1_current_status": "BLOCKED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
   },
   {
     "id": "J-11",
@@ -3474,7 +3904,11 @@
     "current_status": "BLOCKED",
     "implementation_location": "services/ai_worker/app/resources.py; services/ai_worker/app/main.py",
     "test_evidence": [],
-    "remaining_work": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
+    "remaining_work": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures.",
+    "rc1_previous_status": "BLOCKED",
+    "rc1_current_status": "BLOCKED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
   },
   {
     "id": "K-01",
@@ -3506,7 +3940,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; apps/desktop/src-tauri/src/lib.rs; services/ai_worker/app/code_runner.py",
     "test_evidence": [],
-    "remaining_work": "Run Windows CI real CredMan test and installed app, then migrate legacy .env keys."
+    "remaining_work": "Run Windows CI real CredMan test and installed app, then migrate legacy .env keys.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Run Windows CI real CredMan test and installed app, then migrate legacy .env keys."
   },
   {
     "id": "K-02",
@@ -3538,7 +3976,11 @@
     "current_status": "TESTED — DEFINED CODE-PATH",
     "implementation_location": "services/ai_worker/app/main.py; apps/desktop/src-tauri/src/lib.rs; services/ai_worker/app/code_runner.py",
     "test_evidence": [],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "K-03",
@@ -3570,7 +4012,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; apps/desktop/src-tauri/src/lib.rs; services/ai_worker/app/code_runner.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "K-04",
@@ -3602,7 +4048,11 @@
     "current_status": "TESTED — DEFINED CODE-PATH",
     "implementation_location": "services/ai_worker/app/main.py; apps/desktop/src-tauri/src/lib.rs; services/ai_worker/app/code_runner.py",
     "test_evidence": [],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "K-05",
@@ -3634,7 +4084,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; apps/desktop/src-tauri/src/lib.rs; services/ai_worker/app/code_runner.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "K-06",
@@ -3666,7 +4120,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; apps/desktop/src-tauri/src/lib.rs; services/ai_worker/app/code_runner.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "K-07",
@@ -3698,7 +4156,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; apps/desktop/src-tauri/src/lib.rs; services/ai_worker/app/code_runner.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "K-08",
@@ -3730,7 +4192,11 @@
     "current_status": "TESTED — DEFINED CODE-PATH",
     "implementation_location": "services/ai_worker/app/main.py; apps/desktop/src-tauri/src/lib.rs; services/ai_worker/app/code_runner.py",
     "test_evidence": [],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "K-09",
@@ -3762,7 +4228,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; apps/desktop/src-tauri/src/lib.rs; services/ai_worker/app/code_runner.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "K-10",
@@ -3794,7 +4264,11 @@
     "current_status": "TESTED — DEFINED CODE-PATH",
     "implementation_location": "services/ai_worker/app/main.py; apps/desktop/src-tauri/src/lib.rs; services/ai_worker/app/code_runner.py",
     "test_evidence": [],
-    "remaining_work": "Complete full cross-layer and Windows acceptance testing."
+    "remaining_work": "Complete full cross-layer and Windows acceptance testing.",
+    "rc1_previous_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_current_status": "TESTED — DEFINED CODE-PATH",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete full cross-layer and Windows acceptance testing."
   },
   {
     "id": "K-11",
@@ -3826,7 +4300,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; apps/desktop/src-tauri/src/lib.rs; services/ai_worker/app/code_runner.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "K-12",
@@ -3858,7 +4336,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; apps/desktop/src-tauri/src/lib.rs; services/ai_worker/app/code_runner.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "K-13",
@@ -3890,7 +4372,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": "services/ai_worker/app/main.py; apps/desktop/src-tauri/src/lib.rs; services/ai_worker/app/code_runner.py",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "L-01",
@@ -3922,7 +4408,11 @@
     "current_status": "BLOCKED",
     "implementation_location": ".github/workflows/windows-release.yml; scripts/build.ps1; docs/V04_WINDOWS_CI_RESULTS.json",
     "test_evidence": [],
-    "remaining_work": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
+    "remaining_work": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures.",
+    "rc1_previous_status": "BLOCKED",
+    "rc1_current_status": "BLOCKED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
   },
   {
     "id": "L-02",
@@ -3954,7 +4444,11 @@
     "current_status": "BLOCKED",
     "implementation_location": ".github/workflows/windows-release.yml; scripts/build.ps1; docs/V04_WINDOWS_CI_RESULTS.json",
     "test_evidence": [],
-    "remaining_work": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
+    "remaining_work": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures.",
+    "rc1_previous_status": "BLOCKED",
+    "rc1_current_status": "BLOCKED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
   },
   {
     "id": "L-03",
@@ -3986,7 +4480,11 @@
     "current_status": "BLOCKED",
     "implementation_location": ".github/workflows/windows-release.yml; scripts/build.ps1; docs/V04_WINDOWS_CI_RESULTS.json",
     "test_evidence": [],
-    "remaining_work": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
+    "remaining_work": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures.",
+    "rc1_previous_status": "BLOCKED",
+    "rc1_current_status": "BLOCKED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
   },
   {
     "id": "L-04",
@@ -4018,7 +4516,11 @@
     "current_status": "NOT IMPLEMENTED",
     "implementation_location": ".github/workflows/windows-release.yml; scripts/build.ps1; docs/V04_WINDOWS_CI_RESULTS.json",
     "test_evidence": [],
-    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported."
+    "remaining_work": "Implement a scoped feature and automated test before exposing it as supported.",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement a scoped feature and automated test before exposing it as supported."
   },
   {
     "id": "L-05",
@@ -4050,7 +4552,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": ".github/workflows/windows-release.yml; scripts/build.ps1; docs/V04_WINDOWS_CI_RESULTS.json",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "L-06",
@@ -4084,7 +4590,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": ".github/workflows/windows-release.yml; scripts/build.ps1; docs/V04_WINDOWS_CI_RESULTS.json",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "L-07",
@@ -4116,7 +4626,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": ".github/workflows/windows-release.yml; scripts/build.ps1; docs/V04_WINDOWS_CI_RESULTS.json",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "L-08",
@@ -4148,7 +4662,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": ".github/workflows/windows-release.yml; scripts/build.ps1; docs/V04_WINDOWS_CI_RESULTS.json",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "L-09",
@@ -4180,7 +4698,11 @@
     "current_status": "BLOCKED",
     "implementation_location": ".github/workflows/windows-release.yml; scripts/build.ps1; docs/V04_WINDOWS_CI_RESULTS.json",
     "test_evidence": [],
-    "remaining_work": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
+    "remaining_work": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures.",
+    "rc1_previous_status": "BLOCKED",
+    "rc1_current_status": "BLOCKED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Run on compatible Windows/runner or hardware with required dependencies, record evidence and fix failures."
   },
   {
     "id": "L-10",
@@ -4212,7 +4734,11 @@
     "current_status": "PARTIALLY IMPLEMENTED",
     "implementation_location": ".github/workflows/windows-release.yml; scripts/build.ps1; docs/V04_WINDOWS_CI_RESULTS.json",
     "test_evidence": [],
-    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests."
+    "remaining_work": "Implement missing behavior, connect UI/backend, and add acceptance tests.",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Implement missing behavior, connect UI/backend, and add acceptance tests."
   },
   {
     "id": "V010-01",
@@ -4224,7 +4750,11 @@
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "genuine four-language Docker isolation Linux CI run 41650879175",
     "known_limitations": "Windows Docker Desktop not validated",
-    "remaining_work": "Windows Docker Desktop not validated"
+    "remaining_work": "Windows Docker Desktop not validated",
+    "rc1_previous_status": "INTEGRATION TESTED",
+    "rc1_current_status": "INTEGRATION TESTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Windows Docker Desktop not validated"
   },
   {
     "id": "V010-02",
@@ -4236,7 +4766,11 @@
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "Linux Docker cancellation and concurrent runs: CI run 41650879175",
     "known_limitations": "Windows end-user UI acceptance not run",
-    "remaining_work": "Windows end-user UI acceptance not run"
+    "remaining_work": "Windows end-user UI acceptance not run",
+    "rc1_previous_status": "INTEGRATION TESTED",
+    "rc1_current_status": "INTEGRATION TESTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Windows end-user UI acceptance not run"
   },
   {
     "id": "V010-03",
@@ -4248,7 +4782,11 @@
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "Docker Linux tests read-only root, no network, nonroot, output limit: run 41650879175",
     "known_limitations": "Container isolation is not a full hostile multi-tenant boundary",
-    "remaining_work": "Container isolation is not a full hostile multi-tenant boundary"
+    "remaining_work": "Container isolation is not a full hostile multi-tenant boundary",
+    "rc1_previous_status": "INTEGRATION TESTED",
+    "rc1_current_status": "INTEGRATION TESTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Container isolation is not a full hostile multi-tenant boundary"
   },
   {
     "id": "V010-04",
@@ -4260,7 +4798,11 @@
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "Not run",
     "known_limitations": "Requires actual Windows Docker Desktop Linux VM and test images",
-    "remaining_work": "Requires actual Windows Docker Desktop Linux VM and test images"
+    "remaining_work": "Requires actual Windows Docker Desktop Linux VM and test images",
+    "rc1_previous_status": "BLOCKED",
+    "rc1_current_status": "BLOCKED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Requires actual Windows Docker Desktop Linux VM and test images"
   },
   {
     "id": "V011-01",
@@ -4272,7 +4814,11 @@
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "test_v011.py; test_v1_acceptance.py",
     "known_limitations": "Not Windows device capture or transcription",
-    "remaining_work": "Not Windows device capture or transcription"
+    "remaining_work": "Not Windows device capture or transcription",
+    "rc1_previous_status": "UNIT TESTED",
+    "rc1_current_status": "UNIT TESTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Not Windows device capture or transcription"
   },
   {
     "id": "V011-02",
@@ -4284,7 +4830,11 @@
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "Not run",
     "known_limitations": "Requires consented physical Windows audio devices",
-    "remaining_work": "Requires consented physical Windows audio devices"
+    "remaining_work": "Requires consented physical Windows audio devices",
+    "rc1_previous_status": "BLOCKED",
+    "rc1_current_status": "BLOCKED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Requires consented physical Windows audio devices"
   },
   {
     "id": "V011-03",
@@ -4296,7 +4846,11 @@
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "No real multi-speaker test",
     "known_limitations": "Speaker identity must remain unknown without evidence",
-    "remaining_work": "Speaker identity must remain unknown without evidence"
+    "remaining_work": "Speaker identity must remain unknown without evidence",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Speaker identity must remain unknown without evidence"
   },
   {
     "id": "V011-04",
@@ -4308,19 +4862,30 @@
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "Existing UI and API code paths",
     "known_limitations": "Real permission and retention behavior not validated",
-    "remaining_work": "Real permission and retention behavior not validated"
+    "remaining_work": "Real permission and retention behavior not validated",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Real permission and retention behavior not validated"
   },
   {
     "id": "V012-01",
     "requirement": "Idempotent assessment submission receipts",
     "target_release": "v0.12",
     "previous_status": "UNIT TESTED",
-    "current_status": "UNIT TESTED",
+    "current_status": "INTEGRATION TESTED",
     "implementation_location": "services/ai_worker/app/db.py; services/ai_worker/tests/test_v012.py",
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "test_v012.py, test_v1_acceptance.py",
     "known_limitations": "Legacy direct submit still accepted for compatibility",
-    "remaining_work": "Legacy direct submit still accepted for compatibility"
+    "remaining_work": "Legacy direct submit still accepted for compatibility",
+    "rc1_previous_status": "UNIT TESTED",
+    "rc1_current_status": "INTEGRATION TESTED",
+    "rc1_evidence": "FastAPI TestClient + SQLite: services/ai_worker/tests/test_rc1_assessment_integrity.py (4 passing API/migration tests, Linux Python 3.13); Windows desktop not run.",
+    "rc1_implementation": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; apps/desktop/src/views/Assessments.tsx; apps/desktop/src/lib/api.ts",
+    "rc1_limitations": "Local self-practice is not proctored; Windows installed UI/restart, sectional cutoff, host clock tampering still unverified.",
+    "rc1_next_action": "Run Windows installed-app assessment recovery and timeout tests; implement sectional thresholds and explicit attempt policy.",
+    "rc1_description": "FastAPI/SQLite duplicate receipt prevents retries from changing final grades; Windows UI pending."
   },
   {
     "id": "V012-02",
@@ -4332,7 +4897,11 @@
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "test_v012.py; test_upgrade.py",
     "known_limitations": "Windows upgrade/install acceptance not run",
-    "remaining_work": "Windows upgrade/install acceptance not run"
+    "remaining_work": "Windows upgrade/install acceptance not run",
+    "rc1_previous_status": "UNIT TESTED",
+    "rc1_current_status": "UNIT TESTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Windows upgrade/install acceptance not run"
   },
   {
     "id": "V012-03",
@@ -4344,7 +4913,11 @@
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "test_v1_acceptance.py checks late grading",
     "known_limitations": "No server auto-submit when app closed; legacy direct API is unstarted",
-    "remaining_work": "No server auto-submit when app closed; legacy direct API is unstarted"
+    "remaining_work": "No server auto-submit when app closed; legacy direct API is unstarted",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "No server auto-submit when app closed; legacy direct API is unstarted"
   },
   {
     "id": "V012-04",
@@ -4356,7 +4929,11 @@
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "Older single/multi/numerical scoring tests",
     "known_limitations": "Assertion-reason/image/section cutoffs incomplete",
-    "remaining_work": "Assertion-reason/image/section cutoffs incomplete"
+    "remaining_work": "Assertion-reason/image/section cutoffs incomplete",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Assertion-reason/image/section cutoffs incomplete"
   },
   {
     "id": "V013-01",
@@ -4368,7 +4945,11 @@
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "Windows CI 41651936422 and test_v013.py",
     "known_limitations": "Only heading extraction; not verified employment facts",
-    "remaining_work": "Only heading extraction; not verified employment facts"
+    "remaining_work": "Only heading extraction; not verified employment facts",
+    "rc1_previous_status": "UNIT TESTED",
+    "rc1_current_status": "UNIT TESTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Only heading extraction; not verified employment facts"
   },
   {
     "id": "V013-02",
@@ -4380,7 +4961,11 @@
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "test_v013.py",
     "known_limitations": "Complete model-backed resume interview not run",
-    "remaining_work": "Complete model-backed resume interview not run"
+    "remaining_work": "Complete model-backed resume interview not run",
+    "rc1_previous_status": "PARTIALLY IMPLEMENTED",
+    "rc1_current_status": "PARTIALLY IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Complete model-backed resume interview not run"
   },
   {
     "id": "V013-03",
@@ -4392,7 +4977,11 @@
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "No full end-to-end acceptance",
     "known_limitations": "Requires live AI and evaluation criteria",
-    "remaining_work": "Requires live AI and evaluation criteria"
+    "remaining_work": "Requires live AI and evaluation criteria",
+    "rc1_previous_status": "NOT IMPLEMENTED",
+    "rc1_current_status": "NOT IMPLEMENTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Requires live AI and evaluation criteria"
   },
   {
     "id": "V100-01",
@@ -4404,7 +4993,11 @@
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "No v1.0 end-to-end acceptance",
     "known_limitations": "Clean Windows install, upgrade, real provider and security review required",
-    "remaining_work": "Clean Windows install, upgrade, real provider and security review required"
+    "remaining_work": "Clean Windows install, upgrade, real provider and security review required",
+    "rc1_previous_status": "BLOCKED",
+    "rc1_current_status": "BLOCKED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Clean Windows install, upgrade, real provider and security review required"
   },
   {
     "id": "V100-02",
@@ -4416,19 +5009,30 @@
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "Not run",
     "known_limitations": "Requires supported Windows hardware and actual AI/audio workloads",
-    "remaining_work": "Requires supported Windows hardware and actual AI/audio workloads"
+    "remaining_work": "Requires supported Windows hardware and actual AI/audio workloads",
+    "rc1_previous_status": "BLOCKED",
+    "rc1_current_status": "BLOCKED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Requires supported Windows hardware and actual AI/audio workloads"
   },
   {
     "id": "V100-03",
     "requirement": "Prevent client start-time manipulation and post-deadline changes in server-started assessments",
     "target_release": "v1.0",
     "previous_status": "NOT IMPLEMENTED",
-    "current_status": "UNIT TESTED",
+    "current_status": "INTEGRATION TESTED",
     "implementation_location": "services/ai_worker/app/db.py; services/ai_worker/app/main.py; apps/desktop/src/views/Assessments.tsx",
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "test_v1_acceptance.py: start tamper, late autosave, saved-only scoring",
     "known_limitations": "Legacy unstarted practice and candidate-specified negative marking remain; Windows UI untested",
-    "remaining_work": "Legacy unstarted practice and candidate-specified negative marking remain; Windows UI untested"
+    "remaining_work": "Legacy unstarted practice and candidate-specified negative marking remain; Windows UI untested",
+    "rc1_previous_status": "UNIT TESTED",
+    "rc1_current_status": "INTEGRATION TESTED",
+    "rc1_evidence": "FastAPI TestClient + SQLite: services/ai_worker/tests/test_rc1_assessment_integrity.py (4 passing API/migration tests, Linux Python 3.13); Windows desktop not run.",
+    "rc1_implementation": "services/ai_worker/app/main.py; services/ai_worker/app/db.py; apps/desktop/src/views/Assessments.tsx; apps/desktop/src/lib/api.ts",
+    "rc1_limitations": "Local self-practice is not proctored; Windows installed UI/restart, sectional cutoff, host clock tampering still unverified.",
+    "rc1_next_action": "Run Windows installed-app assessment recovery and timeout tests; implement sectional thresholds and explicit attempt policy.",
+    "rc1_description": "Strict timed attempts reject forged start, draft deletion, and late answer changes; expiry scores persisted draft."
   },
   {
     "id": "V100-04",
@@ -4440,6 +5044,10 @@
     "acceptance_criteria": "Fulfill the complete requirement in its intended environment with reproducible evidence and no false verification.",
     "test_evidence": "test_v1_acceptance.py: equal-and-opposite stereo fixture",
     "known_limitations": "Not STT, diarization or a Windows device test",
-    "remaining_work": "Not STT, diarization or a Windows device test"
+    "remaining_work": "Not STT, diarization or a Windows device test",
+    "rc1_previous_status": "UNIT TESTED",
+    "rc1_current_status": "UNIT TESTED",
+    "rc1_evidence": "No additional rc1 acceptance evidence; preserve historical status.",
+    "rc1_next_action": "Not STT, diarization or a Windows device test"
   }
 ]

@@ -76,6 +76,17 @@ def initialize():
                 PRIMARY KEY (assessment_id, started))""")
             db.execute('CREATE INDEX IF NOT EXISTS receipts_by_attempt ON attempt_receipts(attempt_id)')
             db.execute('PRAGMA user_version=6')
+        if version < 7:
+            # Existing assessments remain legacy practice; new timed assessments
+            # explicitly opt in to server-owned clock and grading rules.
+            columns = {row['name'] for row in db.execute('PRAGMA table_info(assessments)')}
+            if 'require_start' not in columns:
+                db.execute('ALTER TABLE assessments ADD COLUMN require_start INTEGER NOT NULL DEFAULT 0')
+            if 'negative_marking' not in columns:
+                db.execute('ALTER TABLE assessments ADD COLUMN negative_marking REAL NOT NULL DEFAULT 0.25')
+            if 'cutoff_pct' not in columns:
+                db.execute('ALTER TABLE assessments ADD COLUMN cutoff_pct REAL')
+            db.execute('PRAGMA user_version=7')
         if version < 6:
             db.execute("""CREATE TABLE IF NOT EXISTS ai_usage (
                 id TEXT PRIMARY KEY,
@@ -149,10 +160,13 @@ def retrieved_context(query):
     scored.sort(reverse=True)
     return '\n'.join(f'{name}: {chunk}' for _,name,chunk in scored[:3])[:3500]
 
-def create_assessment(title,questions,duration_seconds):
+def create_assessment(title,questions,duration_seconds,*,require_start=False,negative_marking=0.25,cutoff_pct=None):
     aid = str(uuid.uuid4())
     with connect() as db:
-        db.execute('INSERT INTO assessments VALUES (?,?,?,?,?)',(aid,title,json.dumps(questions),duration_seconds,time.time()))
+        db.execute('''INSERT INTO assessments
+            (id,title,questions_json,duration_seconds,created,require_start,negative_marking,cutoff_pct)
+            VALUES (?,?,?,?,?,?,?,?)''',
+            (aid,title,json.dumps(questions),duration_seconds,time.time(),int(require_start),negative_marking,cutoff_pct))
     return aid
 
 def list_assessments():
@@ -186,8 +200,17 @@ def start_assessment(aid):
         return {'assessment_id':aid,'answers':{},'review':[],'started':started,
                 'updated':started,'recovered':False}
 
+def completed_attempt(aid, started):
+    with connect() as database:
+        row=database.execute("""SELECT a.id,a.result_json FROM attempt_receipts r
+            JOIN attempts a ON a.id=r.attempt_id WHERE r.assessment_id=? AND r.started=?""",
+            (aid,started)).fetchone()
+    return ({**json.loads(row['result_json']),'attempt_id':row['id'],'duplicate_submission':True}
+            if row else None)
+
+
 def finalize_attempt(aid,answers,result,started):
-    """One transaction prevents duplicate retries from inflating quiz results."""
+    """Transactional receipt and draft cleanup: retries cannot alter final grades."""
     with connect() as database:
         previous=database.execute("""SELECT a.id,a.result_json FROM attempt_receipts r
             JOIN attempts a ON a.id=r.attempt_id WHERE r.assessment_id=? AND r.started=?""",
@@ -198,6 +221,7 @@ def finalize_attempt(aid,answers,result,started):
         database.execute('INSERT INTO attempts VALUES (?,?,?,?,?,?)',
                          (attempt_id,aid,json.dumps(answers),started,finished,json.dumps(result)))
         database.execute('INSERT INTO attempt_receipts VALUES (?,?,?)',(aid,started,attempt_id))
+        database.execute('DELETE FROM assessment_drafts WHERE assessment_id=? AND started=?',(aid,started))
     return {**result,'attempt_id':attempt_id,'duplicate_submission':False}
 
 def stats():
