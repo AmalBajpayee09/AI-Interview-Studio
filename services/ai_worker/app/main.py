@@ -13,7 +13,7 @@ from fastapi.responses import StreamingResponse, JSONResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from pydantic import BaseModel, Field
-from . import db,config,logic,providers,sql_lab,resources,code_runner,code_jobs,audio_live,audio_offline,resume_intelligence,credentials,startup_events
+from . import db,config,logic,providers,sql_lab,resources,code_runner,code_jobs,audio_live,audio_offline,resume_intelligence,credentials,startup_events,file_security
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -33,7 +33,7 @@ async def lifespan(app: FastAPI):
 ACTIVE_GENERATIONS:dict[str,object]={}
 INFERENCE_LIMIT=asyncio.Semaphore(2)
 
-app=FastAPI(title='AI Interview Studio',version='0.9.0',lifespan=lifespan,docs_url=None,redoc_url=None)
+app=FastAPI(title='AI Interview Studio',version='1.0.0-rc.2',lifespan=lifespan,docs_url=None,redoc_url=None)
 ALLOWED_ORIGINS=['http://localhost:1420','http://127.0.0.1:1420','http://127.0.0.1:8765','http://localhost:8765','tauri://localhost','http://tauri.localhost','https://tauri.localhost']
 app.add_middleware(TrustedHostMiddleware, allowed_hosts=['127.0.0.1','localhost','testserver'])
 app.add_middleware(CORSMiddleware,allow_origins=ALLOWED_ORIGINS,allow_methods=['GET','POST','DELETE'],allow_headers=['Content-Type','X-Studio-Token'],allow_credentials=False)
@@ -140,7 +140,7 @@ async def companion():
 
 @app.get('/api/health')
 async def health():
-    return {'status':'ok','version':'0.9.0','cloud_enabled':cloud_consent() and safe_has_cloud_key(),'retention_days':config.RETENTION_DAYS}
+    return {'status':'ok','version':'1.0.0-rc.2','cloud_enabled':cloud_consent() and safe_has_cloud_key(),'retention_days':config.RETENTION_DAYS}
 
 @app.get('/api/diagnostics')
 async def diagnostics():
@@ -527,13 +527,20 @@ async def extract(file:UploadFile=File(...)):
                 text='\n'.join(p.get_text() for p in doc)
         elif ext=='.docx':
             import docx
-            text='\n'.join(p.text for p in docx.Document(io.BytesIO(data)).paragraphs)
+            file_security.validate_docx(data)
+            document=docx.Document(io.BytesIO(data))
+            chunks=[p.text for p in document.paragraphs]
+            for table in document.tables:
+                for row in table.rows:
+                    chunks.append(' | '.join(cell.text for cell in row.cells))
+            text='\n'.join(chunks)
         elif ext in ('.png','.jpg','.jpeg','.webp'):
             from PIL import Image
             import pytesseract
-            image=Image.open(io.BytesIO(data)); image.verify()
             image=Image.open(io.BytesIO(data))
             if image.width*image.height>16_000_000: raise ValueError('Image too large')
+            image.verify()
+            image=Image.open(io.BytesIO(data))
             text=pytesseract.image_to_string(image)
         else: raise HTTPException(415,'Supported: .txt, .md, .pdf, .docx, .png, .jpg, .webp, source files')
     except HTTPException: raise

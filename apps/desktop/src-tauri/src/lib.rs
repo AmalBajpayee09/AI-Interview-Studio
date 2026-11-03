@@ -349,8 +349,8 @@ mod tests {
     fn restart_limit_is_bounded(){assert_eq!(MAX_RESTARTS,2)}
     #[test]
     fn only_version_matched_200_health_response_is_ready(){
-        assert!(validate_health_response(b"HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n{\"status\":\"ok\",\"version\":\"0.9.0\"}"));
-        assert!(!validate_health_response(b"HTTP/1.1 401 Unauthorized\r\n\r\n{\"status\":\"ok\",\"version\":\"0.9.0\"}"));
+        assert!(validate_health_response(b"HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n{\"status\":\"ok\",\"version\":\"1.0.0-rc.2\"}"));
+        assert!(!validate_health_response(b"HTTP/1.1 401 Unauthorized\r\n\r\n{\"status\":\"ok\",\"version\":\"1.0.0-rc.2\"}"));
         assert!(!validate_health_response(b"HTTP/1.1 200 OK\r\n\r\n{\"status\":\"ok\",\"version\":\"0.8.0\"}"));
         assert!(!validate_health_response(b"HTTP/1.1 200 OK\r\n\r\nnot-json"));
     }

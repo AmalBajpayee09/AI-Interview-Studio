@@ -1,10 +1,11 @@
-name: Windows v0.9 authenticated worker and release acceptance
+name: Windows RC2 NSIS upgrade, authenticated worker and release acceptance
 on:
   workflow_dispatch:
   push:
-    branches: ["feature/v0.10.0-docker-execution", "feature/v1.0-rc1-timed-assessment-integrity"]
+    branches: ["feature/v1.0-rc2-windows-acceptance"]
 permissions:
   contents: read
+  actions: read
 jobs:
   windows:
     runs-on: windows-latest
@@ -81,7 +82,7 @@ jobs:
                 $bad=Invoke-WebRequest -Uri "http://127.0.0.1:$port/api/health" -SkipHttpErrorCheck -TimeoutSec 2
                 if([int]$bad.StatusCode -ne 401){throw 'Unauthenticated health request was not rejected'}
                 $r=Invoke-RestMethod -Uri "http://127.0.0.1:$port/api/health" -Headers @{'X-Studio-Token'=$env:STUDIO_WORKER_TOKEN} -TimeoutSec 2
-                if($r.status -eq 'ok' -and $r.version -eq '0.9.0'){$ready=$true;break}
+                if($r.status -eq 'ok' -and $r.version -eq '1.0.0-rc.2'){$ready=$true;break}
               }catch {
                 if($_.Exception.Message -match 'Unauthenticated health'){throw}
               }
@@ -121,8 +122,11 @@ jobs:
           }
       - name: Generate exact-commit source and validate installer
         run: |
-          git archive --format=zip HEAD -o AI-Interview-Studio-RC1-Canonical-Source.zip
+          git archive --format=zip HEAD -o AI-Interview-Studio-RC2-Canonical-Source.zip
           if($LASTEXITCODE -ne 0){throw 'Canonical source ZIP failed'}
+          $sourceHash=(Get-FileHash AI-Interview-Studio-RC2-Canonical-Source.zip -Algorithm SHA256).Hash
+          "RC2 exact-commit source SHA256 $sourceHash" | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
+          Write-Host "RC2_SOURCE_SHA256=$sourceHash"
           $exes=@(Get-ChildItem 'apps/desktop/src-tauri/target/release/bundle/nsis/*.exe' -ErrorAction SilentlyContinue)
           if($exes.Count -lt 1){throw 'No actual NSIS installer produced'}
           $exes | ForEach-Object {
@@ -130,78 +134,25 @@ jobs:
             "Windows NSIS: $($_.Name) SHA256 $hash" | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
             Write-Host "NSIS_SHA256=$hash"
           }
-      - name: Install, authenticate, restart and validate retained SQLite on Windows
+      - name: RC2 NSIS clean install, upgrade, crash recovery and uninstall acceptance
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           $ErrorActionPreference='Stop'
-          $installer=@(Get-ChildItem 'apps/desktop/src-tauri/target/release/bundle/nsis/*.exe')[0]
-          $dest=Join-Path $env:RUNNER_TEMP 'AIStudioV09 Installed Path With Spaces'
-          $install=Start-Process -FilePath $installer.FullName -ArgumentList @('/S',"/D=$dest") -PassThru -Wait
-          if($install.ExitCode -ne 0){throw "Silent install failed: $($install.ExitCode)"}
-          $desktop=@(Get-ChildItem $dest -Filter 'ai-interview-studio.exe' -Recurse | Select-Object -First 1)
-          $worker=@(Get-ChildItem $dest -Filter 'ai-studio-worker.exe' -Recurse | Select-Object -First 1)
-          if($desktop.Count -lt 1 -or $worker.Count -lt 1){throw 'Installed desktop or worker executable missing'}
-          $env:STUDIO_DATA_DIR=Join-Path $env:RUNNER_TEMP 'AIStudioV09 Persistent SQLite'
-          $marker=Join-Path $env:LOCALAPPDATA 'com.interviewstudio.desktop/logs/worker-readiness.json'
-          $env:V09_MARKER=$marker
-          $env:V09_INSTALL_DIR=$dest
-          "V09_INSTALL_DIR=$dest" | Out-File -Append -Encoding utf8 $env:GITHUB_ENV
-          $originalPid=0
-          for($relaunch=0;$relaunch -lt 2;$relaunch++){
-            Remove-Item $marker -Force -ErrorAction SilentlyContinue
-            $started=Get-Date
-            $app=Start-Process -FilePath $desktop[0].FullName -PassThru
-            try {
-              $ready=$false;$watch=[System.Diagnostics.Stopwatch]::StartNew()
-              while($watch.Elapsed.TotalSeconds -lt 65){
-                $app.Refresh()
-                if($app.HasExited){throw "Installed desktop exited early: $($app.ExitCode)"}
-                if(Test-Path $marker){
-                  try {
-                    $status=Get-Content $marker -Raw | ConvertFrom-Json
-                    if($status.app_version -eq '0.9.0' -and $status.authenticated -eq $true -and $status.stage -eq 'ready'){
-                      $workerPid=[int]$status.worker_pid
-                      if($workerPid -le 0 -or -not (Get-Process -Id $workerPid -ErrorAction SilentlyContinue)){
-                        throw 'Readiness marker refers to a dead worker'
-                      }
-                      $ready=$true;break
-                    }
-                  }catch {
-                    if($_.Exception.Message -match 'dead worker'){throw}
-                  }
-                }
-                Start-Sleep -Milliseconds 250
-              }
-              if(-not $ready){throw 'Desktop never established authenticated worker readiness'}
-              $db=Join-Path $env:STUDIO_DATA_DIR 'studio.sqlite3'
-              if(-not (Test-Path $db)){throw 'Installed desktop did not initialize SQLite'}
-              $env:V09_SQLITE_DB=$db
-              & services/ai_worker/.venv/Scripts/python.exe -c "import sqlite3,os; p=os.environ['V09_SQLITE_DB']; c=sqlite3.connect(p); assert c.execute('PRAGMA user_version').fetchone()[0]>=5; c.close()"
-              if($LASTEXITCODE -ne 0){throw 'SQLite migration validation failed'}
-              "Installed desktop launch $relaunch authenticated in $($watch.ElapsedMilliseconds) ms" | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
-            }finally {
-              if(-not $app.HasExited){$null=$app.CloseMainWindow();Start-Sleep -Milliseconds 750;$app.Refresh();if(-not $app.HasExited){$app.Kill($true);$app.WaitForExit()}}
-            }
-          }
-          # Actual upgrade migration from 0.8 is NOT established by a clean install+restart test.
-          "Windows clean install and restart: PASS. Upgrade: NOT TESTED. Real Ollama: NOT TESTED." | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
-      - name: Remove test installation
-        if: always()
-        run: |
-          if($env:V09_INSTALL_DIR -and (Test-Path $env:V09_INSTALL_DIR)){
-            $uninstaller=@(Get-ChildItem $env:V09_INSTALL_DIR -Filter '*uninstall*.exe' -Recurse -ErrorAction SilentlyContinue)
-            if($uninstaller.Count -gt 0){
-              $p=Start-Process -FilePath $uninstaller[0].FullName -ArgumentList '/S' -Wait -PassThru
-              if($p.ExitCode -ne 0){Write-Warning "Silent uninstall exit code: $($p.ExitCode)"}
-            }else{Write-Warning 'Uninstaller not located; not verified'}
-          }
+          $installer=@(Get-ChildItem 'apps/desktop/src-tauri/target/release/bundle/nsis/*.exe' | Select-Object -First 1)
+          if($installer.Count -ne 1){throw 'RC2 installer missing'}
+          & .\\scripts\\rc2-windows-acceptance.ps1 -CurrentInstaller $installer[0].FullName
+          if($LASTEXITCODE -ne 0){throw 'RC2 installed-app acceptance script failed'}
       - name: Upload test logs and actual installer
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: windows-v09-installer-source-and-test-evidence
+          name: rc2-installer-source-and-windows-acceptance
           path: |
             python-test-results.xml
-            AI-Interview-Studio-RC1-Canonical-Source.zip
+            AI-Interview-Studio-RC2-Canonical-Source.zip
             apps/desktop/src-tauri/target/release/bundle/nsis/*.exe
+            apps/desktop/src-tauri/Cargo.lock
             ${{ runner.temp }}/v09-worker-stderr.txt
+            ${{ runner.temp }}/rc2-windows-acceptance.json
           if-no-files-found: warn
