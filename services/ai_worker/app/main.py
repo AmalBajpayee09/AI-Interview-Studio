@@ -70,6 +70,9 @@ class AssessmentBody(BaseModel):
     title:str=Field(min_length=1,max_length=120)
     duration_seconds:int=Field(ge=30,le=14400)
     questions:list[dict]=Field(min_length=1,max_length=200)
+    require_start:bool=False  # Old practice clients remain compatible; new timed attempts opt in.
+    negative_marking:float=Field(default=0.25,ge=0,le=1)
+    cutoff_pct:float|None=Field(default=None,ge=0,le=100)
 
 class AttemptBody(BaseModel):
     answers:dict[str,str|list[str]]
@@ -298,7 +301,7 @@ async def assessments():
 async def create_assessment(body:AssessmentBody):
     try: logic.validate_assessment_questions(body.questions)
     except ValueError as e: raise HTTPException(400,str(e))
-    return {'id':db.create_assessment(body.title,body.questions,body.duration_seconds)}
+    return {'id':db.create_assessment(body.title,body.questions,body.duration_seconds,require_start=body.require_start,negative_marking=body.negative_marking,cutoff_pct=body.cutoff_pct)}
 
 @app.post('/api/assessments/{aid}/submit')
 async def submit_attempt(aid:str,body:AttemptBody):
@@ -309,6 +312,10 @@ async def submit_attempt(aid:str,body:AttemptBody):
     draft=db.get_assessment_draft(aid)
     expired=False
     answers=body.answers
+    if draft is None and assessment['require_start']:
+        completed=db.completed_attempt(aid,body.started)
+        if completed is not None: return completed
+        raise HTTPException(409,'Start the timed assessment before submitting; there is no active server-issued timer')
     if draft is not None:
         # The draft start timestamp was issued or accepted when the draft began.
         # It is immutable for the lifetime of the active attempt.
@@ -318,13 +325,15 @@ async def submit_attempt(aid:str,body:AttemptBody):
         # Requests arriving after the deadline may only submit autosaved data.
         # A late UI tab cannot add answers after the clock expires.
         if expired: answers=draft['answers']
-    result=logic.score(assessment['questions'],answers,body.negative_marking)
+    result=logic.score(assessment['questions'],answers,float(assessment['negative_marking']))
     result['explanations']=[{'id':q['id'],'correct':q['correct'],'explanation':q.get('explanation','')} for q in assessment['questions']]
     result['elapsed_seconds']=max(0,round(now-(float(draft['started']) if draft else body.started)))
     result['timed_out']=expired
+    result['negative_marking']=assessment['negative_marking']
+    result['cutoff_pct']=assessment['cutoff_pct']
+    result['passed_cutoff']=None if assessment['cutoff_pct'] is None else result['percent']>=float(assessment['cutoff_pct'])
     result['timing_enforcement']='server_started_draft' if draft is not None else 'legacy_unstarted_practice'
     scored=db.finalize_attempt(aid,answers,result,float(draft['started']) if draft else body.started)
-    if draft is not None: db.remove_assessment_draft(aid)
     return scored
 
 @app.get('/api/resource')
@@ -369,11 +378,18 @@ async def put_draft(aid:str, body:DraftBody):
     if not set(body.answers).issubset(valid_ids) or not set(body.review).issubset(valid_ids):
         raise HTTPException(400,'Draft contains unknown question IDs')
     if len(body.review)>len(valid_ids): raise HTTPException(400,'Invalid review count')
+    if assessment['require_start'] and db.get_assessment_draft(aid) is None:
+        raise HTTPException(409,'Start the timed assessment before saving answers')
     try:return db.save_assessment_draft(aid,body.answers,body.review,body.started)
     except ValueError as exc:raise HTTPException(409,str(exc))
 
 @app.delete('/api/assessments/{aid}/draft')
-async def delete_draft(aid:str): return {'deleted':db.remove_assessment_draft(aid)}
+async def delete_draft(aid:str):
+    try: assessment=db.assessment_by_id(aid)
+    except ValueError as e: raise HTTPException(404,str(e))
+    if assessment['require_start']:
+        raise HTTPException(409,'Timed assessments cannot reset their server-issued clock by deleting a draft')
+    return {'deleted':db.remove_assessment_draft(aid)}
 
 @app.get('/api/backup/database')
 async def backup_database():
