@@ -96,3 +96,7 @@ If a key already exists in the `OPENAI_API_KEY` environment variable, it remains
 ## v0.8 engineering status
 
 This is a development branch, not a fully accepted Windows product. See docs/V08_RELEASE_STATUS.md, docs/V08_TEST_REPORT.json and docs/V08_ACCEPTANCE_AND_BLOCKERS.md for evidence. Live AI providers, Windows audio hardware and Docker execution require opt-in validation.
+
+## v0.9 worker runtime stabilization
+
+Tauri now waits for an authenticated worker health handshake, maintains bounded automatic restart attempts, emits allowlisted diagnostics and supports on-demand export. See `docs/V09_WINDOWS_WORKER_INVESTIGATION.md`, `docs/V09_WINDOWS_TROUBLESHOOTING.md` and `docs/V09_OLLAMA_ACCEPTANCE.md`. This update is not evidence of live Ollama inference or complete Windows acceptance.

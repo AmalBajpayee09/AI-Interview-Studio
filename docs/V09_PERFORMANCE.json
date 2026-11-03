@@ -1,0 +1,11 @@
+{
+  "status": "PARTIAL",
+  "environment": "Linux Python 3.13",
+  "backend_api_latency": "not benchmarked in this cycle",
+  "windows_cold_start_ms": null,
+  "windows_warm_start_ms": null,
+  "ollama_first_token_ms": null,
+  "ollama_complete_latency_ms": null,
+  "transcription_ms": null,
+  "note": "No model or Windows host; do not reuse v0.8 Linux benchmark as v0.9 evidence"
+}
