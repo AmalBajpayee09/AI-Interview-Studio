@@ -126,6 +126,10 @@ fn authenticated_health(port: u16, token: &str) -> bool {
     if socket.write_all(request.as_bytes()).is_err() {return false}
     let mut raw = Vec::with_capacity(1024);
     if socket.take(16_384).read_to_end(&mut raw).is_err() {return false}
+    validate_health_response(&raw)
+}
+
+fn validate_health_response(raw: &[u8]) -> bool {
     let Some(separator) = raw.windows(4).position(|part| part == b"\r\n\r\n") else {return false};
     let headers = String::from_utf8_lossy(&raw[..separator]);
     if !headers.lines().next().unwrap_or("").contains(" 200 ") {return false}
@@ -343,4 +347,11 @@ mod tests {
     }
     #[test]
     fn restart_limit_is_bounded(){assert_eq!(MAX_RESTARTS,2)}
+    #[test]
+    fn only_version_matched_200_health_response_is_ready(){
+        assert!(validate_health_response(b"HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n{\"status\":\"ok\",\"version\":\"0.9.0\"}"));
+        assert!(!validate_health_response(b"HTTP/1.1 401 Unauthorized\r\n\r\n{\"status\":\"ok\",\"version\":\"0.9.0\"}"));
+        assert!(!validate_health_response(b"HTTP/1.1 200 OK\r\n\r\n{\"status\":\"ok\",\"version\":\"0.8.0\"}"));
+        assert!(!validate_health_response(b"HTTP/1.1 200 OK\r\n\r\nnot-json"));
+    }
 }

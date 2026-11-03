@@ -42,7 +42,7 @@ export default function App(){const [page,setPage]=useState<Page>('dashboard'),[
  },[]);
  const recoverWorker=async()=>{
    try{
-     if(isTauri())await invoke('restart_worker');
+     if(isTauri()){await invoke('restart_worker');await invoke('worker_connection')}
      await request('/api/health');
      setOnline(true);setWorkerStage('ready');refresh();
    }catch(e){setOnline(false);setWorkerStage('unavailable');alert('Worker failed authenticated readiness: '+String(e))}
