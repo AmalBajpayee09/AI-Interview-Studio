@@ -33,7 +33,7 @@ async def lifespan(app: FastAPI):
 ACTIVE_GENERATIONS:dict[str,object]={}
 INFERENCE_LIMIT=asyncio.Semaphore(2)
 
-app=FastAPI(title='AI Interview Studio',version='0.9.0',lifespan=lifespan,docs_url=None,redoc_url=None)
+app=FastAPI(title='AI Interview Studio',version='1.0.0-rc.2',lifespan=lifespan,docs_url=None,redoc_url=None)
 ALLOWED_ORIGINS=['http://localhost:1420','http://127.0.0.1:1420','http://127.0.0.1:8765','http://localhost:8765','tauri://localhost','http://tauri.localhost','https://tauri.localhost']
 app.add_middleware(TrustedHostMiddleware, allowed_hosts=['127.0.0.1','localhost','testserver'])
 app.add_middleware(CORSMiddleware,allow_origins=ALLOWED_ORIGINS,allow_methods=['GET','POST','DELETE'],allow_headers=['Content-Type','X-Studio-Token'],allow_credentials=False)
@@ -140,7 +140,7 @@ async def companion():
 
 @app.get('/api/health')
 async def health():
-    return {'status':'ok','version':'0.9.0','cloud_enabled':cloud_consent() and safe_has_cloud_key(),'retention_days':config.RETENTION_DAYS}
+    return {'status':'ok','version':'1.0.0-rc.2','cloud_enabled':cloud_consent() and safe_has_cloud_key(),'retention_days':config.RETENTION_DAYS}
 
 @app.get('/api/diagnostics')
 async def diagnostics():
