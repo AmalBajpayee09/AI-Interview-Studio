@@ -34,10 +34,12 @@ def analyze_wav(data:bytes,*,threshold:float=.015,frame_ms:int=100)->dict:
                 pcm=array('h');pcm.frombytes(raw)
                 if sys.byteorder!='little':pcm.byteswap()
                 volume=0.0;sample_count=len(pcm)//channels
-                for index in range(0,len(pcm),channels):
-                    mono=sum(pcm[index:index+channels])/(channels*32768.0)
-                    volume+=mono*mono
-                rms=math.sqrt(volume/max(1,sample_count))
+                # Per-channel energy avoids erasing valid speech on anti-phase
+                # stereo channels. Do not infer speaker identity from channels.
+                for sample in pcm:
+                    normalized=sample/32768.0
+                    volume+=normalized*normalized
+                rms=math.sqrt(volume/max(1,len(pcm)))
                 loud=rms>=threshold
                 if loud:
                     peaks+=1
