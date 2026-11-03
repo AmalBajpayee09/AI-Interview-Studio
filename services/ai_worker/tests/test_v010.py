@@ -39,7 +39,7 @@ real=os.getenv('AI_STUDIO_REAL_DOCKER_TESTS')=='1'
 def test_real_four_languages(lang,code):
     assert code_runner.docker_available()['available']
     r=code_runner.run(code,lang,expected='42',timeout_seconds=10)
-    assert r['status']=='passed' and r['matched']
+    assert r['status']=='passed' and r['matched'], repr(r)
 
 @pytest.mark.skipif(not real,reason='Requires explicit real Docker daemon and images')
 def test_real_isolation_errors_timeout():
