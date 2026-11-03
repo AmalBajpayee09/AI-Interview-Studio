@@ -25,18 +25,33 @@ export default function App(){const [page,setPage]=useState<Page>('dashboard'),[
  useEffect(()=>{document.documentElement.dataset.theme=theme;localStorage.setItem('studio-theme',theme)},[theme]);
  const go=(p:Page)=>{setPage(p);setCompact(false);refresh()};
  const goLive=(q:string)=>{setSeed(q);go('live')};
+ const [workerStage,setWorkerStage]=useState('initializing'),[diagnosticExport,setDiagnosticExport]=useState('');
+ useEffect(()=>{let alive=true;
+   const check=async()=>{
+     try {
+       if(isTauri()){
+         const status=await invoke<{ready:boolean;stage:string}>('worker_status');
+         if(alive){setWorkerStage(status.stage);setOnline(status.ready)}
+       }else{
+         await request('/api/health');if(alive){setOnline(true);setWorkerStage('ready')}
+       }
+     }catch{if(alive){setOnline(false);setWorkerStage('unavailable')}}
+   };
+   void check();const timer=setInterval(check,5000);
+   return()=>{alive=false;clearInterval(timer)};
+ },[]);
  const recoverWorker=async()=>{
-  try{
-    if(isTauri())await invoke('restart_worker');
-    let lastError:unknown=new Error('Worker did not become ready');
-    for(let attempt=0;attempt<30;attempt++){
-      try{await request('/api/health');setOnline(true);refresh();return}catch(e){lastError=e}
-      await new Promise(resolve=>setTimeout(resolve,500));
-    }
-    throw lastError;
-  }catch(e){setOnline(false);alert('Unable to restart worker: '+String(e)+'. Check worker diagnostics in the app logs directory.')}
+   try{
+     if(isTauri()){await invoke('restart_worker');await invoke('worker_connection')}
+     await request('/api/health');
+     setOnline(true);setWorkerStage('ready');refresh();
+   }catch(e){setOnline(false);setWorkerStage('unavailable');alert('Worker failed authenticated readiness: '+String(e))}
+ };
+ const exportDiagnostics=async()=>{
+   try{setDiagnosticExport(await invoke<string>('export_worker_diagnostics'))}
+   catch(e){setDiagnosticExport('Diagnostic export unavailable: '+String(e))}
  };
  const overlay=async()=>{try{await invoke('set_compact',{compact:!compact});setCompact(x=>!x)}catch(e){alert('Compact mode requires the Tauri desktop shell: '+String(e))}};
  const content=page==='dashboard'?<Dashboard go={go} sessions={sessions} stats={stats} online={online}/>:page==='live'?<Live key={openSid+seed} sessions={sessions} seed={seed} initialSid={openSid} refresh={refresh}/>:page==='assessments'?<Assessments/>:page==='coding'?<CodePractice goLive={goLive}/>:page==='sql'?<SQLLab/>:page==='documents'?<Documents/>:page==='communication'?<Communication/>:page==='history'?<History sessions={sessions} refresh={refresh} onOpen={id=>{setOpenSid(id);go('live')}}/>:page==='analytics'?<Analytics/>:page==='settings'?<Settings theme={theme} setTheme={setTheme}/>:<div className="page"><div className="page-top"><div><div className="eyebrow">SPECIALIST PRACTICE</div><h1>{page==='ml'?'Machine learning interviews':'System design interviews'}</h1><p>{page==='ml'?'Reason about evaluation, generalization, algorithms, and ML architectures.':'Practice requirements, trade-offs, scaling, APIs and technical diagrams.'}</p></div></div><Panel title="Guided sessions"><p>Pick a prompt and explore it with the AI practice coach.</p><div className="practice-topics">{(page==='ml'?['Explain bias versus variance','Design a recommendation engine','Derive logistic regression','Explain ROC-AUC vs PR-AUC','ML model monitoring']:['Design a URL shortener','Design a high-scale chat system','Design a payment system','Design a video streaming service','Design a distributed cache']).map(t=><button key={t} onClick={()=>goLive(t+'; give requirements, alternatives, trade-offs, and follow-up interview questions.')}>{t} ↗</button>)}</div><button className="btn primary" onClick={()=>go('live')}>Open practice workspace</button></Panel></div>;
- return <div className={'shell '+(compact?'compact':'')}><aside className="sidebar"><div className="brand"><div className="brand-mark">✳</div><div><strong>INTERVIEW<span>STUDIO</span></strong><small>AI-powered practice</small></div></div><nav>{NAV.map(group=><div key={group.section} className="nav-group"><div className="nav-label">{group.section}</div>{group.items.map(x=><button key={x.id} onClick={()=>go(x.id)} className={'nav-item '+(page===x.id?'active':'')}><span>{x.icon}</span>{x.label}{page===x.id&&<i>●</i>}</button>)}</div>)}</nav><div className="sidebar-bottom"><div className="connection"><span className={'connection-dot '+(online?'yes':'')}/><div><strong>{online?'AI worker connected':'Worker offline'}</strong><small>{online?'Local secure workspace':'Run scripts/dev.ps1'}</small></div></div><p>AI Interview Studio<br/><span>Version 0.6.0 · Engineering preview</span></p></div></aside><main className="main"><header className="topbar"><div className="breadcrumb">WORKSPACE <span>/</span> {NAV.flatMap(g=>g.items).find(x=>x.id===page)?.label}</div><div className="top-actions"><span className="top-hint">Practice only</span><button className="icon-button" title="Toggle theme" onClick={()=>setTheme(theme==='dark'?'light':'dark')}>{theme==='dark'?'☼':'☾'}</button><button className="btn secondary compact-btn" onClick={overlay}>{compact?'Expand':'▣ Compact'}</button><span className="avatar">IS</span></div></header>{!online&&<div className="offline-warning">⚠ AI worker is offline. Start the Python service to enable all features. <button onClick={recoverWorker}>Restart / Retry</button></div>}{content}<footer>Designed for authorized interview preparation · Local-first storage · Model outputs may be incorrect</footer></main></div>
+ return <div className={'shell '+(compact?'compact':'')}><aside className="sidebar"><div className="brand"><div className="brand-mark">✳</div><div><strong>INTERVIEW<span>STUDIO</span></strong><small>AI-powered practice</small></div></div><nav>{NAV.map(group=><div key={group.section} className="nav-group"><div className="nav-label">{group.section}</div>{group.items.map(x=><button key={x.id} onClick={()=>go(x.id)} className={'nav-item '+(page===x.id?'active':'')}><span>{x.icon}</span>{x.label}{page===x.id&&<i>●</i>}</button>)}</div>)}</nav><div className="sidebar-bottom"><div className="connection"><span className={'connection-dot '+(online?'yes':'')}/><div><strong>{online?'AI worker connected':'Worker offline'}</strong><small>{online?'Local secure workspace':'Run scripts/dev.ps1'}</small></div></div><p>AI Interview Studio<br/><span>Version 0.6.0 · Engineering preview</span></p></div></aside><main className="main"><header className="topbar"><div className="breadcrumb">WORKSPACE <span>/</span> {NAV.flatMap(g=>g.items).find(x=>x.id===page)?.label}</div><div className="top-actions"><span className="top-hint">Practice only</span><button className="icon-button" title="Toggle theme" onClick={()=>setTheme(theme==='dark'?'light':'dark')}>{theme==='dark'?'☼':'☾'}</button><button className="btn secondary compact-btn" onClick={overlay}>{compact?'Expand':'▣ Compact'}</button><span className="avatar">IS</span></div></header>{!online&&<div className="offline-warning">⚠ AI worker: {workerStage}. AI and practice features may be unavailable. <button onClick={recoverWorker}>Restart / Retry</button> {isTauri()&&<button onClick={exportDiagnostics}>Export diagnostics</button>} {diagnosticExport&&<span className="tiny">{diagnosticExport}</span>}</div>}{content}<footer>Designed for authorized interview preparation · Local-first storage · Model outputs may be incorrect</footer></main></div>
 }

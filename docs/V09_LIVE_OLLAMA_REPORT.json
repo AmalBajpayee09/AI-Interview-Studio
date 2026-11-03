@@ -1,0 +1,10 @@
+{
+  "status": "BLOCKED",
+  "environment": "Linux 2026-11-03",
+  "connection": "http://127.0.0.1:11434/api/tags refused",
+  "ollama_binary_present": false,
+  "model_tested": null,
+  "tokens_received": null,
+  "latency_ms": null,
+  "instructions": "docs/V09_OLLAMA_ACCEPTANCE.md"
+}

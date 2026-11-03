@@ -9,7 +9,7 @@ export interface Stats {sessions:number;questions:number;average_answer_ms:numbe
 interface WorkerConnection {base:string;token:string}
 let conn:Promise<WorkerConnection>|undefined;
 async function connection():Promise<WorkerConnection>{
-  if(!conn){conn=isTauri()?invoke<WorkerConnection>('worker_connection'):Promise.resolve({base:'http://127.0.0.1:8765',token:''})}
+  if(!conn){conn=(isTauri()?invoke<WorkerConnection>('worker_connection'):Promise.resolve({base:'http://127.0.0.1:8765',token:''})).catch(e=>{conn=undefined;throw e})}
   return await conn;
 }
 export async function apiFetch(path:string, options:RequestInit={}):Promise<Response>{

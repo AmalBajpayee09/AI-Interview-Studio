@@ -17,4 +17,8 @@ def load_env():
 
 if __name__=='__main__':
     load_env()
+    from app import startup_events
+    startup_events.record('process_started')
+    startup_events.record('environment_loaded')
+    startup_events.record('server_starting')
     uvicorn.run('app.main:app',host='127.0.0.1',port=int(os.environ.get('STUDIO_PORT','8765')),log_level='warning',workers=1)

@@ -1,0 +1,55 @@
+{
+  "version": "0.9.0",
+  "environment": {
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+    "python": "3.13.5"
+  },
+  "baseline_github": {
+    "branch": "feature/v0.8.0-integration-hardening",
+    "sha": "3d428cbb23d99e98cd00c9a94187ac71881adae7",
+    "windows_run": 41496591667,
+    "result": "success"
+  },
+  "local_python": {
+    "passed": 86,
+    "skipped": 4,
+    "failed": 0,
+    "invocation": "PYTHONPATH=services/ai_worker python -m pytest -q services/ai_worker/tests",
+    "provider_live": false
+  },
+  "windows_v09": {
+    "status": "not yet run",
+    "native_build": false,
+    "installed_launch": false,
+    "installer": false
+  },
+  "live_ollama": {
+    "status": "BLOCKED",
+    "reason": "No Ollama service or installed local model in the current Linux environment"
+  },
+  "docker_isolation": {
+    "status": "OUT_OF_SCOPE_FOR_V09"
+  },
+  "gpu_audio": {
+    "status": "OUT_OF_SCOPE_FOR_V09"
+  },
+  "full_accepted_workflow": false,
+  "feature_counts": {
+    "PARTIALLY IMPLEMENTED": 78,
+    "NOT IMPLEMENTED": 23,
+    "TESTED — DEFINED CODE-PATH": 19,
+    "INTEGRATION TESTED": 2,
+    "BLOCKED": 8
+  },
+  "first_windows_attempt": {
+    "run_id": 41638649607,
+    "sha": "8eedeab43169908162bb18b50adb1c5e572ad17e",
+    "result": "FAIL",
+    "reason": "Rust E0618: window-event parameter shadowed diagnostic event function",
+    "passed_stages": [
+      "Python regression",
+      "React production build"
+    ],
+    "installer": false
+  }
+}

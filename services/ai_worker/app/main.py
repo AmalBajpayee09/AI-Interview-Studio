@@ -13,18 +13,26 @@ from fastapi.responses import StreamingResponse, JSONResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.trustedhost import TrustedHostMiddleware
 from pydantic import BaseModel, Field
-from . import db,config,logic,providers,sql_lab,resources,code_runner,audio_live,credentials
+from . import db,config,logic,providers,sql_lab,resources,code_runner,audio_live,credentials,startup_events
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    db.initialize(); db.cleanup()
-    yield
-    await asyncio.to_thread(audio_live.live_audio.stop)
+    try:
+        db.initialize(); db.cleanup()
+    except Exception:
+        startup_events.record('database_failure', 'error')
+        raise
+    startup_events.record('database_initialized')
+    try:
+        yield
+    finally:
+        startup_events.record('worker_stopping')
+        await asyncio.to_thread(audio_live.live_audio.stop)
 
 ACTIVE_GENERATIONS:dict[str,object]={}
 INFERENCE_LIMIT=asyncio.Semaphore(2)
 
-app=FastAPI(title='AI Interview Studio',version='0.8.0',lifespan=lifespan,docs_url=None,redoc_url=None)
+app=FastAPI(title='AI Interview Studio',version='0.9.0',lifespan=lifespan,docs_url=None,redoc_url=None)
 ALLOWED_ORIGINS=['http://localhost:1420','http://127.0.0.1:1420','http://127.0.0.1:8765','http://localhost:8765','tauri://localhost','http://tauri.localhost','https://tauri.localhost']
 app.add_middleware(TrustedHostMiddleware, allowed_hosts=['127.0.0.1','localhost','testserver'])
 app.add_middleware(CORSMiddleware,allow_origins=ALLOWED_ORIGINS,allow_methods=['GET','POST','DELETE'],allow_headers=['Content-Type','X-Studio-Token'],allow_credentials=False)
@@ -128,7 +136,7 @@ async def companion():
 
 @app.get('/api/health')
 async def health():
-    return {'status':'ok','version':'0.8.0','cloud_enabled':cloud_consent() and safe_has_cloud_key(),'retention_days':config.RETENTION_DAYS}
+    return {'status':'ok','version':'0.9.0','cloud_enabled':cloud_consent() and safe_has_cloud_key(),'retention_days':config.RETENTION_DAYS}
 
 @app.get('/api/diagnostics')
 async def diagnostics():
