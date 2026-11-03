@@ -72,7 +72,7 @@ def run(code: str, language: str, stdin: str = '', expected: str | None = None, 
             '--memory','256m','--memory-swap','256m','--cpus','1','--user','65534:65534',
             '--ulimit','fsize=33554432:33554432','--ulimit','nofile=128:128',
             '--tmpfs','/tmp:rw,nosuid,noexec,size=16m',
-            '--tmpfs','/work:rw,nosuid,size=96m',
+            '--tmpfs','/work:rw,nosuid,size=96m,uid=65534,gid=65534,mode=1770',
             '--mount',f'type=bind,source={folder.resolve()},target=/code,readonly',
             '--workdir','/work',image,'sh','-c',program]
         cidfile=folder/'container.cid'
