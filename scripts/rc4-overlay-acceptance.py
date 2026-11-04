@@ -117,8 +117,11 @@ def run(executable:Path,report:Path):
             db=data/'studio.sqlite3'
             while time.monotonic()<end:
                 if db.exists():
-                    with sqlite3.connect(db) as conn:
+                    conn=sqlite3.connect(db)
+                    try:
                         row=conn.execute('SELECT count(*) FROM sessions').fetchone()
+                    finally:
+                        conn.close()
                     if row and row[0]>=1:break
                 time.sleep(.2)
             else:raise AssertionError('Overlay did not create persistent session')
