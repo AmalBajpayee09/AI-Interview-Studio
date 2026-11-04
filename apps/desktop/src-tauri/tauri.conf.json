@@ -1,10 +1,43 @@
 {
-  "$schema":"https://schema.tauri.app/config/2",
-  "productName":"AI Interview Studio",
-  "version":"1.0.0-rc.3",
-  "identifier":"com.interviewstudio.desktop",
-  "build":{"beforeDevCommand":"npm run dev","devUrl":"http://localhost:1420","beforeBuildCommand":"npm run build","frontendDist":"../dist"},
-  "app":{"windows":[{"label":"main","title":"AI Interview Studio · Practice","width":1320,"height":860,"minWidth":540,"minHeight":480,"center":true}],
-    "security":{"csp":"default-src 'self'; connect-src 'self' ipc: http://ipc.localhost http://127.0.0.1:* ws://127.0.0.1:1420; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'"}},
-  "bundle":{"active":true,"targets":["nsis"],"icon":["icons/icon.png","icons/icon.ico"],"shortDescription":"AI-powered interview practice"}
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "AI Interview Studio",
+  "version": "1.0.0-rc.4",
+  "identifier": "com.interviewstudio.desktop",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "label": "main",
+        "title": "AI Interview Studio · Overlay",
+        "width": 470,
+        "height": 590,
+        "minWidth": 350,
+        "minHeight": 330,
+        "center": true,
+        "alwaysOnTop": true,
+        "skipTaskbar": true,
+        "resizable": true,
+        "decorations": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; connect-src 'self' ipc: http://ipc.localhost http://127.0.0.1:* ws://127.0.0.1:1420; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "nsis"
+    ],
+    "icon": [
+      "icons/icon.png",
+      "icons/icon.ico"
+    ],
+    "shortDescription": "AI-powered interview practice"
+  }
 }
