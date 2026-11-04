@@ -124,6 +124,26 @@ jobs:
         run: |
           git archive --format=zip HEAD -o AI-Interview-Studio-RC3-Canonical-Source.zip
           if($LASTEXITCODE -ne 0){throw 'Canonical source ZIP failed'}
+          # Source members remain the exact Git HEAD. A generated, separately
+          # identified manifest supplies reproducibility/evidence metadata.
+          $checkpoint=@{
+            schema='studio-source-checkpoint-v1'
+            branch=$env:GITHUB_REF_NAME
+            git_commit=$env:GITHUB_SHA
+            application_version='1.0.0-rc.3'
+            created_utc=[DateTimeOffset]::UtcNow.ToString('o')
+            source='git archive HEAD plus this manifest'
+            test_evidence=@{
+              workflow_run="$env:GITHUB_RUN_ID"
+              python_stage='See exact-run Python test-results.xml'
+              react_rust_build='See exact-run CI steps'
+              installed_webview='Pending later acceptance step; do not infer PASS'
+              real_ollama='Separate Linux Ollama acceptance only'
+            }
+          }
+          $checkpoint | ConvertTo-Json -Depth 5 | Set-Content -Encoding utf8 RC3_CHECKPOINT_MANIFEST.json
+          & py -3.11 -c "import zipfile; p='AI-Interview-Studio-RC3-Canonical-Source.zip'; z=zipfile.ZipFile(p,'a',compression=zipfile.ZIP_DEFLATED); z.write('RC3_CHECKPOINT_MANIFEST.json','RC3_CHECKPOINT_MANIFEST.json'); z.close(); z=zipfile.ZipFile(p); bad=z.testzip(); assert bad is None,bad; assert 'RC3_CHECKPOINT_MANIFEST.json' in z.namelist(); print('RC3 exact-commit ZIP manifest and CRC: PASS')"
+          if($LASTEXITCODE -ne 0){throw 'Source ZIP manifest or CRC verification failed'}
           $sourceHash=(Get-FileHash AI-Interview-Studio-RC3-Canonical-Source.zip -Algorithm SHA256).Hash
           "RC3 exact-commit source SHA256 $sourceHash" | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
           Write-Host "RC3_SOURCE_SHA256=$sourceHash"
@@ -173,6 +193,7 @@ jobs:
           path: |
             python-test-results.xml
             AI-Interview-Studio-RC3-Canonical-Source.zip
+            RC3_CHECKPOINT_MANIFEST.json
             apps/desktop/src-tauri/target/release/bundle/nsis/*.exe
             apps/desktop/src-tauri/Cargo.lock
             ${{ runner.temp }}/v09-worker-stderr.txt
