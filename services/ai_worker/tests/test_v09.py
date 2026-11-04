@@ -1,4 +1,4 @@
-"""v1.0.0-rc.2 startup security and session-continuity tests.
+"""v1.0.0-rc.3 startup security and session-continuity tests.
 
 These use a real Python worker HTTP subprocess and controlled AI stubs, not a real Ollama
 installation and not a compiled Windows desktop. Live-provider acceptance remains opt-in.
@@ -105,7 +105,7 @@ def test_real_subprocess_auth_database_and_restart(tmp_path):
                         if process.poll() is not None: raise AssertionError('Worker exited before readiness')
                         try:
                             res=http.get(url+'/api/health',headers={'X-Studio-Token':token})
-                            if res.status_code==200 and res.json()['version']=='1.0.0-rc.2': break
+                            if res.status_code==200 and res.json()['version']=='1.0.0-rc.3': break
                         except httpx.HTTPError: pass
                         if time.monotonic()-start>12: raise AssertionError('Worker did not authenticate in time')
                         time.sleep(0.08)

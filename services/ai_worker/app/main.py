@@ -33,10 +33,9 @@ async def lifespan(app: FastAPI):
 ACTIVE_GENERATIONS:dict[str,object]={}
 INFERENCE_LIMIT=asyncio.Semaphore(2)
 
-app=FastAPI(title='AI Interview Studio',version='1.0.0-rc.2',lifespan=lifespan,docs_url=None,redoc_url=None)
+app=FastAPI(title='AI Interview Studio',version='1.0.0-rc.3',lifespan=lifespan,docs_url=None,redoc_url=None)
 ALLOWED_ORIGINS=['http://localhost:1420','http://127.0.0.1:1420','http://127.0.0.1:8765','http://localhost:8765','tauri://localhost','http://tauri.localhost','https://tauri.localhost']
 app.add_middleware(TrustedHostMiddleware, allowed_hosts=['127.0.0.1','localhost','testserver'])
-app.add_middleware(CORSMiddleware,allow_origins=ALLOWED_ORIGINS,allow_methods=['GET','POST','DELETE'],allow_headers=['Content-Type','X-Studio-Token'],allow_credentials=False)
 @app.middleware('http')
 async def origin_filter(request: Request,call_next):
     token=os.getenv('STUDIO_WORKER_TOKEN','')
@@ -46,6 +45,16 @@ async def origin_filter(request: Request,call_next):
     origin=request.headers.get('origin')
     if origin and origin not in ALLOWED_ORIGINS: return JSONResponse({'detail':'Origin not permitted'},status_code=403)
     return await call_next(request)
+
+# Starlette processes middleware in reverse registration order. CORS must be
+# the outermost layer: browsers send unauthenticated OPTIONS preflights before
+# actual X-Studio-Token requests. Only the real API call requires the token.
+# This also ensures 401/403 API responses get appropriate CORS response headers.
+app.add_middleware(CORSMiddleware,
+    allow_origins=ALLOWED_ORIGINS,
+    allow_methods=['GET','POST','PUT','DELETE'],
+    allow_headers=['Content-Type','X-Studio-Token'],
+    allow_credentials=False)
 
 def cloud_consent():
     return db.setting('cloud_consent',None) == 'true' if db.setting('cloud_consent',None) is not None else config.ALLOW_CLOUD
@@ -140,7 +149,7 @@ async def companion():
 
 @app.get('/api/health')
 async def health():
-    return {'status':'ok','version':'1.0.0-rc.2','cloud_enabled':cloud_consent() and safe_has_cloud_key(),'retention_days':config.RETENTION_DAYS}
+    return {'status':'ok','version':'1.0.0-rc.3','cloud_enabled':cloud_consent() and safe_has_cloud_key(),'retention_days':config.RETENTION_DAYS}
 
 @app.get('/api/diagnostics')
 async def diagnostics():
@@ -358,7 +367,18 @@ async def sql_query(body:SQLBody):
 
 @app.post('/api/assessments/{aid}/start')
 async def start_assessment(aid:str):
-    try:return {'draft':db.start_assessment(aid)}
+    try:
+        assessment=db.assessment_by_id(aid)
+        draft=db.start_assessment(aid)
+        # A server clock sample allows an application countdown based on a
+        # monotonic elapsed-time source instead of a changeable OS wall clock.
+        return {'draft':draft,'server_now':time.time(),
+                'deadline_at':draft['started']+float(assessment['duration_seconds'])}
+    except ValueError as exc:raise HTTPException(404,str(exc))
+
+@app.get('/api/assessments/{aid}/latest-result')
+async def latest_assessment_result(aid:str):
+    try:return {'attempt':db.latest_assessment_result(aid)}
     except ValueError as exc:raise HTTPException(404,str(exc))
 
 @app.get('/api/assessments/{aid}/draft')

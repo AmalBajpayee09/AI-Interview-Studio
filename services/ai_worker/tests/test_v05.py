@@ -104,7 +104,7 @@ def test_transcript_deletion_cascades_with_session(client):
     client.delete(f'/api/sessions/{sid}')
     with db.connect() as cx:
         assert cx.execute('SELECT COUNT(*) FROM transcript_segments').fetchone()[0]==0
-        assert cx.execute('PRAGMA user_version').fetchone()[0]==6
+        assert cx.execute('PRAGMA user_version').fetchone()[0]==7
 
 
 def test_existing_schema_v4_upgrades_without_data_loss(client):
@@ -116,7 +116,7 @@ def test_existing_schema_v4_upgrades_without_data_loss(client):
     assert db.get_turns(sid)==[]
     assert db.sessions()[0]['title']=='Keep this'
     with db.connect() as cx:
-        assert cx.execute('PRAGMA user_version').fetchone()[0]==6
+        assert cx.execute('PRAGMA user_version').fetchone()[0]==7
         assert cx.execute("SELECT name FROM sqlite_master WHERE name='transcript_segments'").fetchone() is not None
 
 

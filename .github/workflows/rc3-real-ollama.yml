@@ -1,0 +1,70 @@
+name: RC3 real Ollama local inference and streaming acceptance
+on:
+  workflow_dispatch:
+  push:
+    branches: ["feature/v1.0-rc3-production-acceptance"]
+    paths: [".github/workflows/rc3-real-ollama.yml"]
+permissions:
+  contents: read
+jobs:
+  genuine-local-ollama:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      OLLAMA_URL: http://127.0.0.1:11434
+      STUDIO_LIVE_OLLAMA_TEST: "1"
+      STUDIO_TEST_OLLAMA_MODEL: "smollm2:135m"
+      PYTHONPATH: services/ai_worker
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Start a genuine Ollama server (no mock adapter)
+        run: |
+          set -euo pipefail
+          docker pull ollama/ollama:latest
+          docker run -d --name rc3-ollama --cpus=3 --memory=5g -p 127.0.0.1:11434:11434 ollama/ollama:latest
+          python - <<'PY'
+          import time,urllib.request
+          deadline=time.monotonic()+75
+          while time.monotonic()<deadline:
+              try:
+                  with urllib.request.urlopen('http://127.0.0.1:11434/api/tags', timeout=2) as r:
+                      if r.status==200:
+                          print('Genuine Ollama endpoint ready')
+                          break
+              except Exception:
+                  time.sleep(.5)
+          else:
+              raise SystemExit('Ollama did not become ready')
+          PY
+      - name: Explicitly download small test model (271 MB)
+        run: |
+          set -euo pipefail
+          docker exec rc3-ollama ollama pull smollm2:135m
+          docker exec rc3-ollama ollama list
+          curl --fail --silent --show-error "$OLLAMA_URL/api/tags" | python -c "import json,sys; print([m['name'] for m in json.load(sys.stdin)['models']])"
+      - name: Install Python service and test dependencies
+        run: python -m pip install -r services/ai_worker/requirements.txt
+      - name: Real two-question streamed inference and persisted session
+        run: |
+          set -euo pipefail
+          python -m pytest services/ai_worker/tests/test_v09.py::test_real_ollama_api_stream_and_followup services/ai_worker/tests/test_rc3_real_ollama_cancellation.py -q --tb=short -s --junitxml=rc3-ollama-junit.xml
+          echo "Real Ollama model streamed answers; cancellation discarded partial response, allowed retry and persisted only completed turn." >> "$GITHUB_STEP_SUMMARY"
+          docker exec rc3-ollama ollama --version >> "$GITHUB_STEP_SUMMARY"
+      - name: Preserve environment and failure diagnostics (no prompts)
+        if: always()
+        run: |
+          docker version --format '{{.Server.Version}}' || true
+          docker inspect rc3-ollama --format '{{.State.Status}} {{.State.ExitCode}}' || true
+          docker logs --tail 30 rc3-ollama 2>&1 | sed -E 's/(Bearer|sk-)[A-Za-z0-9_.-]+/[redacted]/g' > rc3-ollama-container-log.txt || true
+          docker rm -f rc3-ollama || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rc3-genuine-ollama-test-evidence
+          path: |
+            rc3-ollama-junit.xml
+            rc3-ollama-container-log.txt
+          if-no-files-found: warn
