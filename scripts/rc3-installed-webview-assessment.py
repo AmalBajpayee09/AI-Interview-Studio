@@ -35,7 +35,7 @@ def close_window(pid: int):
     user32 = ctypes.windll.user32
     # WM_CLOSE exercises the same native lifecycle as clicking the window close
     # button. It must not be replaced by a forced process kill to count as pass.
-    fn = ctypes.WINFUNCTYPE(ctypes.c_bool, ctypes.c_void_p, ctypes.c_void_p)
+    fn = ctypes.WINFUNCTYPE(ctypes.c_int, ctypes.c_void_p, ctypes.c_void_p)
     found = []
 
     def each(hwnd, _):
@@ -124,7 +124,7 @@ def create_quiz(page, title, duration_minutes=1):
     page.locator('label').filter(has_text='Pass cutoff').locator('input').fill('75')
     questions = [
         {'id': 'w1', 'stem': 'RC3 synthetic choice question', 'kind': 'single', 'section': 'Logic',
-         'options': [{'label': 'A', 'text': 'Incorrect choice'}, {'label': 'B', 'text': 'Correct choice'}],
+         'options': [{'label': 'A', 'text': 'Wrong option'}, {'label': 'B', 'text': 'Correct choice'}],
          'correct': 'B', 'points': 1},
         {'id': 'w2', 'stem': 'RC3 synthetic numerical question', 'kind': 'numerical', 'section': 'Quant',
          'correct': 4, 'tolerance': 0, 'points': 1}
