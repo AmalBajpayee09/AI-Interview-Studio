@@ -12,7 +12,7 @@ def test_worker_token_required(client, monkeypatch):
     assert client.get('/api/health',headers={'X-Studio-Token':'bad'}).status_code==401
     response=client.get('/api/health',headers={'X-Studio-Token':'a'*64})
     assert response.status_code==200
-    assert response.json()['version']=='1.0.0-rc.3'
+    assert response.json()['version']=='1.0.0-rc.4'
 
 
 def test_code_runner_unavailable_never_runs(client,monkeypatch):
