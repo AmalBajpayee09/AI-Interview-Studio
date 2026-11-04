@@ -333,7 +333,7 @@ fn shutdown_worker(app: &AppHandle) {
         rt.ready=false;rt.stage="stopped";
         event(&state,"desktop_shutdown","ok",rt.attempts,None);
         readiness_marker(&state,&rt);
-    }
+    };
 }
 
 #[tauri::command]
@@ -402,7 +402,7 @@ pub fn run() {
                     let settings=app.state::<OverlaySettings>();
                     if let Ok(current)=settings.hotkey.lock() {
                         if &current.1==shortcut {toggle_overlay(app);}
-                    }
+                    };
                 }).build()
             )?;
             if app.global_shortcut().register(default_shortcut).is_ok() {
