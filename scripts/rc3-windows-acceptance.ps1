@@ -101,7 +101,8 @@ try {
   $oldApp=Start-Process -FilePath $oldDesktop -PassThru
   try {
     $oldReady=Wait-Ready $oldApp $oldVersion
-    $db=Assert-Database 'pre-upgrade-database' 7
+    # RC2 predecessor ships SQLite schema v6. Only RC3 should migrate it to v7.
+    $db=Assert-Database 'pre-upgrade-database' 6
     $env:RC3_VERIFY_DB=$db
     & py -3.11 -c "import sqlite3,os,time; c=sqlite3.connect(os.environ['RC3_VERIFY_DB']); now=time.time(); c.execute('INSERT INTO sessions(id,title,created,updated) VALUES(?,?,?,?)',('rc3-upgrade-preservation','RC3 preserved session',now,now)); c.commit(); c.close()"
     if($LASTEXITCODE -ne 0){throw 'Could not write pre-upgrade session fixture'}
@@ -114,7 +115,7 @@ try {
   $rc3Ready=$null
   try {
     $rc3Ready=Wait-Ready $rc3App $newVersion
-    $db=Assert-Database 'post-upgrade-database'
+    $db=Assert-Database 'post-upgrade-database' 7
     $env:RC3_VERIFY_DB=$db
     & py -3.11 -c "import sqlite3,os; c=sqlite3.connect(os.environ['RC3_VERIFY_DB']); row=c.execute('SELECT title FROM sessions WHERE id=?',('rc3-upgrade-preservation',)).fetchone(); assert row and row[0]=='RC3 preserved session'; c.close()"
     if($LASTEXITCODE -ne 0){throw 'Upgrade lost the existing session'}
