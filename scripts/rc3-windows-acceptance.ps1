@@ -9,7 +9,7 @@ $ErrorActionPreference='Stop'
 $oldVersion='1.0.0-rc.2'
 $newVersion='1.0.0-rc.3'
 $dest=Join-Path $env:RUNNER_TEMP 'AI Studio RC3 安装 test folder'
-$download=Join-Path $env:RUNNER_TEMP 'AIStudio RC1 predecessor artifact'
+$download=Join-Path $env:RUNNER_TEMP 'AIStudio RC2 predecessor artifact'
 $env:STUDIO_DATA_DIR=Join-Path $env:RUNNER_TEMP 'AI Studio RC3 durable user data'
 $logDir=Join-Path $env:LOCALAPPDATA 'com.interviewstudio.desktop/logs'
 $marker=Join-Path $logDir 'worker-readiness.json'
@@ -86,13 +86,13 @@ try {
   if(-not $env:GH_TOKEN){throw 'Actions read token is required to download verified predecessor installer'}
   if(Test-Path $download){Remove-Item $download -Recurse -Force}
   New-Item -ItemType Directory -Force $download | Out-Null
-  & gh run download $PriorRun --repo $Repository --name 'rc3-installer-source-and-windows-acceptance' --dir $download
+  & gh run download $PriorRun --repo $Repository --name 'rc2-installer-source-and-windows-acceptance' --dir $download
   if($LASTEXITCODE -ne 0){throw 'Could not download predecessor installer; upgrade acceptance cannot be skipped'}
   $older=@(Get-ChildItem $download -Filter '*setup.exe' -Recurse -File | Select-Object -First 1)
   if($older.Count -ne 1){throw 'Predecessor artifact lacks NSIS setup executable'}
   $priorHash=(Get-FileHash $older[0].FullName -Algorithm SHA256).Hash.ToUpperInvariant()
   $expected='A6C0F94B1C6A6D92BBE68D22BDF5555E2EDD7DDDADDDB20CAB2219FE5E335097'
-  if($priorHash -ne $expected){throw "Predecessor checksum did not match previously verified RC1 artifact"}
+  if($priorHash -ne $expected){throw "Predecessor checksum did not match previously verified RC2 artifact"}
   Record 'predecessor-integrity' 'PASS' @{source_run=$PriorRun;sha256=$priorHash}
 
   if(Test-Path $dest){Remove-Item $dest -Recurse -Force}
