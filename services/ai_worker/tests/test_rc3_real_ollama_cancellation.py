@@ -56,7 +56,7 @@ def test_real_ollama_cancellation_and_authenticated_retry(tmp_path):
                     raise AssertionError("Worker exited before authenticated readiness")
                 try:
                     r = client.get(base + "/api/health", headers=headers)
-                    if r.status_code == 200 and r.json()["version"] == "1.0.0-rc.3":
+                    if r.status_code == 200 and r.json()["version"] == "1.0.0-rc.4":
                         break
                 except httpx.RequestError:
                     pass
