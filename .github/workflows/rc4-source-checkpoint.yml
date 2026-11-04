@@ -1,0 +1,75 @@
+name: RC4 exact-commit complete source checkpoint
+on:
+  push:
+    branches: ["feature/overlay-first-foundation-rc4"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Create full Git-source archive, manifest and SHA-256
+        shell: bash
+        run: |
+          set -euo pipefail
+          git archive --format=zip HEAD -o AI-Interview-Studio-RC4-Overlay-Source.zip
+          python3 - <<'PY'
+          import hashlib, json, os, subprocess, zipfile
+          from pathlib import Path
+          src=Path("AI-Interview-Studio-RC4-Overlay-Source.zip")
+          sha=subprocess.check_output(["git","rev-parse","HEAD"], text=True).strip()
+          tree=subprocess.check_output(["git","rev-parse","HEAD^{tree}"],text=True).strip()
+          tracked=subprocess.check_output(["git","ls-files","-z"]).decode().split("\0")
+          tracked=[p for p in tracked if p]
+          manifest={
+              "schema":"studio-full-source-checkpoint-v2",
+              "product":"AI Interview Studio",
+              "version":"1.0.0-rc.4",
+              "milestone":"Overlay-first background/tray foundation",
+              "branch":os.getenv("GITHUB_REF_NAME"),
+              "git_commit":sha,
+              "git_tree":tree,
+              "workflow_run":os.getenv("GITHUB_RUN_ID"),
+              "build_number":os.getenv("GITHUB_RUN_NUMBER"),
+              "created_utc":__import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(),
+              "git_tracked_files":len(tracked),
+              "tests":{"source_git_tree":"compare Git member bytes against Git blobs",
+                       "python_react_rust":"see exact-commit Windows CI",
+                       "installed_windows_overlay":"NOT VERIFIED until exact-commit acceptance succeeds",
+                       "real_provider_docker_audio":"NOT VERIFIED in this milestone"},
+              "known_limitations":["shortcut presets only","multi-monitor and DPI not measured",
+                                   "no click-through or screen-capture exclusion",
+                                   "real Windows microphone/Ollama/Docker acceptance pending"],
+              "next_milestone":"installed Windows overlay and tray acceptance, then genuine local Ollama"
+          }
+          with zipfile.ZipFile(src,"a",compression=zipfile.ZIP_DEFLATED) as out:
+              out.writestr("RC4_CHECKPOINT_MANIFEST.json",json.dumps(manifest,indent=2)+"\n")
+          with zipfile.ZipFile(src) as z:
+              bad=z.testzip()
+              assert bad is None,bad
+              archived=[n for n in z.namelist() if not n.endswith("/") and n!="RC4_CHECKPOINT_MANIFEST.json"]
+              assert set(archived)==set(tracked),(len(archived),len(tracked))
+              for name in tracked:
+                  actual=z.read(name)
+                  blob=subprocess.check_output(["git","show",f"HEAD:{name}"])
+                  assert actual==blob,name
+          digest=hashlib.sha256(src.read_bytes()).hexdigest()
+          Path("RC4-SHA256SUMS.txt").write_text(f"{digest}  {src.name}\n")
+          Path("RC4-CHECKPOINT-INFO.json").write_text(json.dumps({**manifest,"source_zip_sha256":digest,"source_zip_bytes":src.stat().st_size,"zip_integrity":"PASS","tracked_bytes_match_git":"PASS"},indent=2)+"\n")
+          print("RC4_SOURCE_SHA256="+digest)
+          print("RC4_GIT_COMMIT="+sha)
+          print("RC4_GIT_TREE="+tree)
+          PY
+      - name: Publish source and checksum
+        uses: actions/upload-artifact@v4
+        with:
+          name: rc4-exact-commit-source-checkpoint
+          path: |
+            AI-Interview-Studio-RC4-Overlay-Source.zip
+            RC4_CHECKPOINT_MANIFEST.json
+            RC4-SHA256SUMS.txt
+            RC4-CHECKPOINT-INFO.json
+          if-no-files-found: error
