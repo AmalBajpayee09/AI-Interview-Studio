@@ -65,6 +65,38 @@ def wait_worker(log_dir:Path,proc,seconds=75):
     raise AssertionError('Installed worker never achieved authenticated readiness')
 
 
+
+def verify_native_window(pid:int):
+    """Read actual HWND style/bounds, not Tauri config or a mocked DOM."""
+    from ctypes import wintypes
+    user32=ctypes.windll.user32
+    found=[]
+    callback_type=ctypes.WINFUNCTYPE(ctypes.c_bool,wintypes.HWND,wintypes.LPARAM)
+    def visit(hwnd,_):
+        owner=wintypes.DWORD()
+        user32.GetWindowThreadProcessId(hwnd,ctypes.byref(owner))
+        if owner.value==pid and user32.IsWindowVisible(hwnd):
+            title=ctypes.create_unicode_buffer(256)
+            user32.GetWindowTextW(hwnd,title,256)
+            if 'Interview Studio' in title.value: found.append(hwnd)
+        return True
+    callback=callback_type(visit)
+    user32.EnumWindows(callback,0)
+    if not found:raise AssertionError('No visible native overlay window for application PID')
+    hwnd=found[0]
+    rect=wintypes.RECT()
+    if not user32.GetWindowRect(hwnd,ctypes.byref(rect)):
+        raise AssertionError('GetWindowRect failed')
+    width=rect.right-rect.left;height=rect.bottom-rect.top
+    exstyle=user32.GetWindowLongW(hwnd,-20)
+    style=user32.GetWindowLongW(hwnd,-16)
+    if not exstyle & 0x8:raise AssertionError('Native overlay is not always on top')
+    if not style & 0x40000:raise AssertionError('Native overlay is not user-resizable')
+    if not (350<=width<=750 and 330<=height<=900):
+        raise AssertionError(f'Overlay launched outside compact size bounds: {width}x{height}')
+    return {'width':width,'height':height,'topmost':True,'resizable':True}
+
+
 def run(executable:Path,report:Path):
     steps=[]
     evidence={'commit':os.getenv('GITHUB_SHA','unknown'),
@@ -101,7 +133,8 @@ def run(executable:Path,report:Path):
             assert page.locator('aside.sidebar').count()==0,'Dashboard launched as primary interface'
             state=wait_native_state(page,True)
             assert state.get('tray_installed') and state.get('hotkey_registered'),state
-            steps.append({'stage':'overlay-first-native-tray-and-shortcut','result':'PASS'})
+            window_details=verify_native_window(app.pid)
+            steps.append({'stage':'overlay-first-native-tray-and-shortcut','result':'PASS',**window_details})
             worker_pid=wait_worker(log_dir,app)
             expect(page.get_by_text('Local AI worker connected')).to_be_visible(timeout=25000)
             steps.append({'stage':'authenticated-bundled-worker','result':'PASS','worker_pid':worker_pid})
