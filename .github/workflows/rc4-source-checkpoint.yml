@@ -45,8 +45,9 @@ jobs:
                                    "real Windows microphone/Ollama/Docker acceptance pending"],
               "next_milestone":"installed Windows overlay and tray acceptance, then genuine local Ollama"
           }
+          Path("RC4_CHECKPOINT_MANIFEST.json").write_text(json.dumps(manifest,indent=2)+"\n")
           with zipfile.ZipFile(src,"a",compression=zipfile.ZIP_DEFLATED) as out:
-              out.writestr("RC4_CHECKPOINT_MANIFEST.json",json.dumps(manifest,indent=2)+"\n")
+              out.write("RC4_CHECKPOINT_MANIFEST.json","RC4_CHECKPOINT_MANIFEST.json")
           with zipfile.ZipFile(src) as z:
               bad=z.testzip()
               assert bad is None,bad
