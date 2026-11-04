@@ -1,8 +1,8 @@
-name: Windows RC3 installed WebView2 assessment and native upgrade acceptance
+name: Windows RC4 installed WebView2 assessment and native upgrade acceptance
 on:
   workflow_dispatch:
   push:
-    branches: ["feature/v1.0-rc3-production-acceptance"]
+    branches: ["feature/overlay-first-foundation-rc4"]
 permissions:
   contents: read
   actions: read
@@ -122,7 +122,7 @@ jobs:
           }
       - name: Generate exact-commit source and validate installer
         run: |
-          git archive --format=zip HEAD -o AI-Interview-Studio-RC3-Canonical-Source.zip
+          git archive --format=zip HEAD -o AI-Interview-Studio-RC4-Canonical-Source.zip
           if($LASTEXITCODE -ne 0){throw 'Canonical source ZIP failed'}
           # Source members remain the exact Git HEAD. A generated, separately
           # identified manifest supplies reproducibility/evidence metadata.
@@ -130,7 +130,7 @@ jobs:
             schema='studio-source-checkpoint-v1'
             branch=$env:GITHUB_REF_NAME
             git_commit=$env:GITHUB_SHA
-            application_version='1.0.0-rc.3'
+            application_version='1.0.0-rc.4'
             created_utc=[DateTimeOffset]::UtcNow.ToString('o')
             source='git archive HEAD plus this manifest'
             test_evidence=@{
@@ -138,15 +138,15 @@ jobs:
               python_stage='See exact-run Python test-results.xml'
               react_rust_build='See exact-run CI steps'
               installed_webview='Pending later acceptance step; do not infer PASS'
-              real_ollama='Separate Linux Ollama acceptance only'
+              real_ollama='Separate Linux Ollama acceptance only'; overlay_tray='Pending later acceptance step'
             }
           }
-          $checkpoint | ConvertTo-Json -Depth 5 | Set-Content -Encoding utf8 RC3_CHECKPOINT_MANIFEST.json
-          & py -3.11 -c "import zipfile; p='AI-Interview-Studio-RC3-Canonical-Source.zip'; z=zipfile.ZipFile(p,'a',compression=zipfile.ZIP_DEFLATED); z.write('RC3_CHECKPOINT_MANIFEST.json','RC3_CHECKPOINT_MANIFEST.json'); z.close(); z=zipfile.ZipFile(p); bad=z.testzip(); assert bad is None,bad; assert 'RC3_CHECKPOINT_MANIFEST.json' in z.namelist(); print('RC3 exact-commit ZIP manifest and CRC: PASS')"
+          $checkpoint | ConvertTo-Json -Depth 5 | Set-Content -Encoding utf8 RC4_CHECKPOINT_MANIFEST.json
+          & py -3.11 -c "import zipfile; p='AI-Interview-Studio-RC4-Canonical-Source.zip'; z=zipfile.ZipFile(p,'a',compression=zipfile.ZIP_DEFLATED); z.write('RC4_CHECKPOINT_MANIFEST.json','RC4_CHECKPOINT_MANIFEST.json'); z.close(); z=zipfile.ZipFile(p); bad=z.testzip(); assert bad is None,bad; assert 'RC4_CHECKPOINT_MANIFEST.json' in z.namelist(); print('RC4 exact-commit ZIP manifest and CRC: PASS')"
           if($LASTEXITCODE -ne 0){throw 'Source ZIP manifest or CRC verification failed'}
-          $sourceHash=(Get-FileHash AI-Interview-Studio-RC3-Canonical-Source.zip -Algorithm SHA256).Hash
-          "RC3 exact-commit source SHA256 $sourceHash" | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
-          Write-Host "RC3_SOURCE_SHA256=$sourceHash"
+          $sourceHash=(Get-FileHash AI-Interview-Studio-RC4-Canonical-Source.zip -Algorithm SHA256).Hash
+          "RC4 exact-commit source SHA256 $sourceHash" | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
+          Write-Host "RC4_SOURCE_SHA256=$sourceHash"
           $exes=@(Get-ChildItem 'apps/desktop/src-tauri/target/release/bundle/nsis/*.exe' -ErrorAction SilentlyContinue)
           if($exes.Count -lt 1){throw 'No actual NSIS installer produced'}
           $exes | ForEach-Object {
@@ -154,50 +154,50 @@ jobs:
             "Windows NSIS: $($_.Name) SHA256 $hash" | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
             Write-Host "NSIS_SHA256=$hash"
           }
-      - name: RC3 NSIS clean install, upgrade, crash recovery and uninstall acceptance
+      - name: RC4 NSIS clean install, upgrade, crash recovery and uninstall acceptance
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           $ErrorActionPreference='Stop'
           $installer=@(Get-ChildItem 'apps/desktop/src-tauri/target/release/bundle/nsis/*.exe' | Select-Object -First 1)
-          if($installer.Count -ne 1){throw 'RC2 installer missing'}
-          & .\\scripts\\rc3-windows-acceptance.ps1 -CurrentInstaller $installer[0].FullName
-          if($LASTEXITCODE -ne 0){throw 'RC3 installed-app acceptance script failed'}
+          if($installer.Count -ne 1){throw 'RC4 installer missing'}
+          & .\\scripts\\rc4-windows-acceptance.ps1 -CurrentInstaller $installer[0].FullName
+          if($LASTEXITCODE -ne 0){throw 'RC4 installed-app acceptance script failed'}
       - name: Install WebView2 CDP GUI automation client
         run: |
           py -3.11 -m pip install playwright==1.58.0
           if($LASTEXITCODE -ne 0){throw 'Playwright package installation failed'}
           # Do not install Chromium; Playwright connects to the actual installed WebView2.
-      - name: Installed Windows WebView2 assessment, autosave, restart and results E2E
+      - name: Installed Windows overlay-first tray, shortcuts, workspace and worker acceptance
         run: |
           $ErrorActionPreference='Stop'
           $installer=@(Get-ChildItem 'apps/desktop/src-tauri/target/release/bundle/nsis/*.exe' | Select-Object -First 1)
-          if($installer.Count -ne 1){throw 'RC3 installer missing'}
-          $dest=Join-Path $env:RUNNER_TEMP 'AI Studio RC3 WebView GUI Test'
+          if($installer.Count -ne 1){throw 'RC4 installer missing'}
+          $dest=Join-Path $env:RUNNER_TEMP 'AI Studio RC4 Overlay GUI Test'
           $p=Start-Process -FilePath $installer[0].FullName -ArgumentList @('/S',"/D=$dest") -PassThru -Wait
-          if($p.ExitCode -ne 0){throw 'Cannot install RC3 desktop for GUI test'}
+          if($p.ExitCode -ne 0){throw 'Cannot install RC4 desktop for overlay GUI test'}
           $app=@(Get-ChildItem -LiteralPath $dest -Filter 'ai-interview-studio.exe' -Recurse | Select-Object -First 1)
           if($app.Count -ne 1){throw 'Installed desktop binary missing'}
-          & py -3.11 .\scripts\rc3-installed-webview-assessment.py --installed-exe $app[0].FullName --report (Join-Path $env:RUNNER_TEMP 'rc3-webview-assessment.json')
-          if($LASTEXITCODE -ne 0){throw 'Actual installed WebView2 assessment recovery failed'}
+          & py -3.11 .\scripts\rc4-overlay-acceptance.py --installed-exe $app[0].FullName --report (Join-Path $env:RUNNER_TEMP 'rc4-overlay-acceptance.json')
+          if($LASTEXITCODE -ne 0){throw 'Installed overlay-first acceptance failed'}
           $un=@(Get-ChildItem -LiteralPath $dest -Filter '*uninstall*.exe' -Recurse | Select-Object -First 1)
-          if($un.Count -ne 1){throw 'WebView2 test uninstaller missing'}
+          if($un.Count -ne 1){throw 'Overlay test uninstaller missing'}
           $p=Start-Process -FilePath $un[0].FullName -ArgumentList '/S' -Wait -PassThru
-          if($p.ExitCode -ne 0){throw 'WebView2 test uninstall failed'}
-          "Installed Windows WebView2 assessment UI recovery: PASS" | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
+          if($p.ExitCode -ne 0){throw 'Overlay test uninstall failed'}
+          "Installed RC4 overlay-first lifecycle: PASS" | Out-File -Append -Encoding utf8 $env:GITHUB_STEP_SUMMARY
       - name: Upload test logs and actual installer
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: rc3-installer-source-and-windows-acceptance
+          name: rc4-installer-source-and-windows-acceptance
           path: |
             python-test-results.xml
-            AI-Interview-Studio-RC3-Canonical-Source.zip
-            RC3_CHECKPOINT_MANIFEST.json
+            AI-Interview-Studio-RC4-Canonical-Source.zip
+            RC4_CHECKPOINT_MANIFEST.json
             apps/desktop/src-tauri/target/release/bundle/nsis/*.exe
             apps/desktop/src-tauri/Cargo.lock
             ${{ runner.temp }}/v09-worker-stderr.txt
-            ${{ runner.temp }}/rc3-windows-acceptance.json
-            ${{ runner.temp }}/rc3-webview-assessment.json
-            ${{ runner.temp }}/rc3-synthetic-assessment-failure.png
+            ${{ runner.temp }}/rc4-windows-acceptance.json
+            ${{ runner.temp }}/rc4-overlay-acceptance.json
+            ${{ runner.temp }}/rc4-overlay-failure.png
           if-no-files-found: warn
