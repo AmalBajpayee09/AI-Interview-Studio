@@ -158,9 +158,12 @@ def run(executable:Path,report:Path):
             app.wait(timeout=20)
             end=time.monotonic()+15
             while time.monotonic()<end:
-                try:
-                    os.kill(worker_pid,0)
-                except OSError:break
+                handle=ctypes.windll.kernel32.OpenProcess(0x1000,False,worker_pid)
+                if not handle:break
+                code=ctypes.c_ulong()
+                ctypes.windll.kernel32.GetExitCodeProcess(handle,ctypes.byref(code))
+                ctypes.windll.kernel32.CloseHandle(handle)
+                if code.value!=259:break  # STILL_ACTIVE is Windows exit code 259
                 time.sleep(.2)
             else:raise AssertionError('Worker process remained alive after native exit')
             steps.append({'stage':'native-explicit-exit-stops-owned-worker','result':'PASS'})
