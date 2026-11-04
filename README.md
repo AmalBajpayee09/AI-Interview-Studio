@@ -1,3 +1,15 @@
+# AI Interview Studio RC4 — overlay-first foundation (Windows engineering preview)
+
+This branch converts the **primary Windows experience** from the legacy dashboard to a compact floating practice overlay. The historical React workspace is preserved as a secondary window for settings, assessments, coding, SQL, resume, audio and analytics.
+
+**Controls:** on launch a resizable always-on-top overlay opens; use **Ctrl+Alt+Shift+O** to show/hide it, use the Windows notification-area tray icon for Show / Hide / Workspace / Exit, and use the overlay gear to open the full workspace. Closing the overlay hides it without stopping the authenticated local Python worker; **Exit** explicitly shuts the worker down. The three available hotkey presets are selectable in the overlay footer, with registration conflict errors surfaced. Four layouts (Compact, Teleprompter, Split desk, Q&A Feed) share the same local saved interview session. AI responses require a real configured provider and model; no microphone, screenshot or cloud usage starts automatically.
+
+**Current acceptance:** Windows RC4 build and installed-app native lifecycle tests are required before this is an accepted preview. Historical RC3 installed Windows assessment and NSIS upgrade acceptance passed at [GitHub run #41823829065](https://github.com/AmalBajpayee09/AI-Interview-Studio/actions/runs/41823829065), but that is not evidence for the RC4 overlay. This source is **not production-ready**; actual Windows audio/diarization, Docker Desktop, multi-monitor/DPI, screen capture and real Ollama inference through this overlay are not yet verified.
+
+Read [Overlay-first audit](docs/RC4_OVERLAY_FIRST_AUDIT.md), [Windows acceptance instructions](docs/RC4_WINDOWS_ACCEPTANCE.md), [RC4 checkpoint](docs/RC4_RELEASE_CHECKPOINT.md) and the [170-item matrix](docs/REQUIREMENT_MATRIX.json).
+
+---
+
 # AI Interview Studio v0.6.0 — development branch (not production approved)
 
 AI-assisted Windows desktop application for **authorized mock interviews and assessment practice**. Built with Tauri 2, Rust, React/TypeScript, a bundled Python AI worker, and SQLite. This repository preserves functionality from v0.1 through v0.3 and adds incremental v0.4 improvements.
