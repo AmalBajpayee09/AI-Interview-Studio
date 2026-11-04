@@ -50,8 +50,8 @@ jobs:
       - name: Real two-question streamed inference and persisted session
         run: |
           set -euo pipefail
-          python -m pytest services/ai_worker/tests/test_v09.py::test_real_ollama_api_stream_and_followup -q --tb=short -s --junitxml=rc3-ollama-junit.xml
-          echo "Real Ollama model streamed two answers and local SQLite session persisted." >> "$GITHUB_STEP_SUMMARY"
+          python -m pytest services/ai_worker/tests/test_v09.py::test_real_ollama_api_stream_and_followup services/ai_worker/tests/test_rc3_real_ollama_cancellation.py -q --tb=short -s --junitxml=rc3-ollama-junit.xml
+          echo "Real Ollama model streamed answers; cancellation discarded partial response, allowed retry and persisted only completed turn." >> "$GITHUB_STEP_SUMMARY"
           docker exec rc3-ollama ollama --version >> "$GITHUB_STEP_SUMMARY"
       - name: Preserve environment and failure diagnostics (no prompts)
         if: always()
