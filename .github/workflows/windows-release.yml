@@ -82,7 +82,7 @@ jobs:
                 $bad=Invoke-WebRequest -Uri "http://127.0.0.1:$port/api/health" -SkipHttpErrorCheck -TimeoutSec 2
                 if([int]$bad.StatusCode -ne 401){throw 'Unauthenticated health request was not rejected'}
                 $r=Invoke-RestMethod -Uri "http://127.0.0.1:$port/api/health" -Headers @{'X-Studio-Token'=$env:STUDIO_WORKER_TOKEN} -TimeoutSec 2
-                if($r.status -eq 'ok' -and $r.version -eq '1.0.0-rc.3'){$ready=$true;break}
+                if($r.status -eq 'ok' -and $r.version -eq '1.0.0-rc.4'){$ready=$true;break}
               }catch {
                 if($_.Exception.Message -match 'Unauthenticated health'){throw}
               }
