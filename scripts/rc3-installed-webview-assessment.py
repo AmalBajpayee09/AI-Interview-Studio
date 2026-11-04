@@ -11,6 +11,7 @@ import ctypes
 import json
 import os
 import re
+import shutil
 import socket
 import sqlite3
 import subprocess
@@ -222,6 +223,43 @@ def check_receipt(path, title, expected=1):
         raise AssertionError(f'Installed SQLite schema is {schema}, expected v7')
 
 
+@contextmanager
+def verified_temporary_directory(report_path: Path, *, timeout_seconds=35):
+    """Treat a lingering worker/database lock as a lifecycle failure, not a false UI failure.
+
+    Windows may release database handles slightly after the desktop closes.
+    Retry boundedly; never mark leaked process/file handles as passing. Keep
+    the synthetic test data on disk for CI diagnosis if cleanup genuinely fails.
+    """
+    folder = Path(tempfile.mkdtemp(prefix='rc3-ui-'))
+    try:
+        yield folder
+    finally:
+        deadline=time.monotonic()+timeout_seconds
+        last_error=None
+        while time.monotonic()<deadline:
+            try:
+                shutil.rmtree(folder)
+                last_error=None
+                break
+            except (PermissionError, OSError) as exc:
+                last_error=exc
+                time.sleep(.35)
+        if last_error is not None:
+            try:
+                evidence=json.loads(report_path.read_text(encoding='utf-8'))
+                evidence['status']='FAIL'
+                evidence['failure_category']='WindowsDatabaseHandleLeak'
+                evidence['failure_message']='Installed desktop/worker retained an open SQLite file after bounded shutdown'
+                report_path.write_text(json.dumps(evidence,indent=2)+'\n',encoding='utf-8')
+            except (ValueError,OSError):
+                pass
+            raise AssertionError(
+                'RC3 failed to release SQLite/database handles after 35 seconds. '
+                'Worker process ownership or WebView2 shutdown must be corrected.'
+            ) from last_error
+
+
 def run_ui(executable, report):
     steps = []
     report_path = Path(report)
@@ -229,8 +267,7 @@ def run_ui(executable, report):
                 'app_version': APP_VERSION, 'steps': steps, 'status': 'NOT RUN',
                 'note': 'Synthetic local-only assessment; remote debugging enabled only in isolated CI process.'}
     report_path.parent.mkdir(parents=True, exist_ok=True)
-    with tempfile.TemporaryDirectory(prefix='rc3-ui-') as root, sync_playwright() as playwright:
-        root = Path(root)
+    with verified_temporary_directory(report_path) as root, sync_playwright() as playwright:
         data, profile, logs = root / 'data', root / 'webview-profile', root / 'logs'
         data.mkdir(); profile.mkdir(); logs.mkdir()
         active = None
