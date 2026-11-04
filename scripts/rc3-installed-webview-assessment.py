@@ -20,7 +20,7 @@ import tempfile
 import time
 import urllib.request
 from pathlib import Path
-from contextlib import contextmanager
+from contextlib import contextmanager, closing
 
 from playwright.sync_api import sync_playwright, expect
 
@@ -203,7 +203,7 @@ def begin(page, title):
 
 
 def db_row(path, title):
-    with sqlite3.connect(path, timeout=15) as db:
+    with closing(sqlite3.connect(path, timeout=15)) as db:
         row = db.execute('SELECT a.id,d.started,d.answers_json,d.review_json FROM assessments a '
                          'LEFT JOIN assessment_drafts d ON d.assessment_id=a.id '
                          'WHERE a.title=? ORDER BY a.created DESC LIMIT 1', (title,)).fetchone()
@@ -213,7 +213,7 @@ def db_row(path, title):
 
 
 def check_receipt(path, title, expected=1):
-    with sqlite3.connect(path, timeout=15) as db:
+    with closing(sqlite3.connect(path, timeout=15)) as db:
         count = db.execute('SELECT count(*) FROM attempts t JOIN assessments a ON a.id=t.assessment_id '
                            'WHERE a.title=?', (title,)).fetchone()[0]
         schema = db.execute('PRAGMA user_version').fetchone()[0]
