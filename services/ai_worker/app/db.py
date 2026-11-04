@@ -186,14 +186,15 @@ def latest_assessment_result(aid):
     """Retrieve the persisted final result for desktop restart/review.
 
     Do not expose answer keys for assessments still in progress. Only completed
-    attempt receipts are visible here. The authenticated local API is single-user.
+    finished assessment attempts are visible here, including pre-v6 legacy
+    attempts without receipts. The authenticated local API is single-user.
     """
     with connect() as database:
         existing=database.execute('SELECT 1 FROM assessments WHERE id=?',(aid,)).fetchone()
         if not existing:raise ValueError('Unknown assessment')
         row=database.execute("""SELECT a.id,a.started,a.finished,a.result_json
-            FROM attempts a JOIN attempt_receipts r ON r.attempt_id=a.id
-            WHERE a.assessment_id=? AND a.result_json IS NOT NULL
+            FROM attempts a
+            WHERE a.assessment_id=? AND a.result_json IS NOT NULL AND a.finished IS NOT NULL
             ORDER BY a.finished DESC,a.id DESC LIMIT 1""",(aid,)).fetchone()
     if row is None:return None
     return {'attempt_id':row['id'],'started':row['started'],'finished':row['finished'],

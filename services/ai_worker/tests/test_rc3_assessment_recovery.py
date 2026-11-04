@@ -164,3 +164,16 @@ def test_real_authenticated_worker_subprocess_result_restoration(tmp_path):
         assert connection.execute('PRAGMA user_version').fetchone()[0]==7
         assert connection.execute('SELECT COUNT(*) FROM attempts WHERE assessment_id=?',(aid,)).fetchone()[0]==1
     assert token not in (tmp_path/'logs'/'worker-startup.jsonl').read_text()
+
+
+def test_historical_completed_attempt_without_receipt_is_readable(client):
+    """Preserve legacy practice result history from before receipt migration v6."""
+    aid = _strict(client, title='Legacy completed result recovery')
+    started=time.time()-20
+    result={'score':1,'percent':100,'explanations':[]}
+    attempt_id=db.save_attempt(aid,{'q1':'B'},result,started)
+    restored=client.get(f'/api/assessments/{aid}/latest-result')
+    assert restored.status_code==200,restored.text
+    row=restored.json()['attempt']
+    assert row['attempt_id']==attempt_id and row['result']==result
+    assert row['finished']>=started
