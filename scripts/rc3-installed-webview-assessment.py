@@ -19,6 +19,7 @@ import tempfile
 import time
 import urllib.request
 from pathlib import Path
+from contextlib import contextmanager
 
 from playwright.sync_api import sync_playwright, expect
 
@@ -68,16 +69,73 @@ def wait_debug_port(port, proc, seconds=60):
     raise AssertionError('Installed WebView2 never exposed test-only loopback CDP endpoint')
 
 
+
+@contextmanager
+def temporary_test_only_webview_cdp_policy(exe_name: str, port: int):
+    """Enable loopback CDP only during one CI launch; restore every registry value.
+
+    Elevated WebView2 ignores user-scoped environment and HKCU policy flags.
+    HKLM AdditionalBrowserArguments is honored, so try it first; non-admin
+    runners can use HKCU. This code runs only inside the Python acceptance test,
+    never in the installed application's production startup.
+    """
+    import winreg
+
+    policy = r'Software\Policies\Microsoft\Edge\WebView2\AdditionalBrowserArguments'
+    flags = f'--remote-debugging-port={port} --remote-debugging-address=127.0.0.1'
+    changed = []
+    for name, hive in [('HKLM', winreg.HKEY_LOCAL_MACHINE), ('HKCU', winreg.HKEY_CURRENT_USER)]:
+        try:
+            key = winreg.CreateKeyEx(hive, policy, 0,
+                                     winreg.KEY_QUERY_VALUE | winreg.KEY_SET_VALUE)
+            try:
+                try:
+                    previous = winreg.QueryValueEx(key, exe_name)
+                except FileNotFoundError:
+                    previous = None
+                winreg.SetValueEx(key, exe_name, 0, winreg.REG_SZ, flags)
+                changed.append((name, hive, previous))
+            finally:
+                winreg.CloseKey(key)
+        except OSError:
+            # A non-admin test runner may lack HKLM policy-write permission.
+            # A failure to set both policies must not masquerade as UI acceptance.
+            continue
+    if not changed:
+        raise AssertionError('Test runner could not configure WebView2 debugging policy')
+    try:
+        yield [item[0] for item in changed]
+    finally:
+        for name, hive, previous in reversed(changed):
+            try:
+                key = winreg.OpenKey(hive, policy, 0, winreg.KEY_SET_VALUE)
+                try:
+                    if previous is None:
+                        winreg.DeleteValue(key, exe_name)
+                    else:
+                        winreg.SetValueEx(key, exe_name, 0, previous[1], previous[0])
+                finally:
+                    winreg.CloseKey(key)
+            except OSError:
+                # Do not hide the original test failure; ephemeral CI runner is
+                # discarded. Record only the policy hive, not its prior value.
+                print(f'WARNING: could not restore temporary WebView2 {name} policy')
+
 def launch(executable, data_dir, profile_dir, log_dir, playwright, steps):
     port = free_port()
     env = os.environ.copy()
     env['STUDIO_DATA_DIR'] = str(data_dir)
     env['WEBVIEW2_USER_DATA_FOLDER'] = str(profile_dir)
     env['WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS'] = f'--remote-debugging-port={port} --remote-debugging-address=127.0.0.1'
-    proc = subprocess.Popen([str(executable)], env=env, stdin=subprocess.DEVNULL,
-                            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    proc = None
     try:
-        wait_debug_port(port, proc)
+        with temporary_test_only_webview_cdp_policy(executable.name, port) as policies:
+            proc = subprocess.Popen([str(executable)], env=env, stdin=subprocess.DEVNULL,
+                                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            # This is a bounded readiness check, not an arbitrary startup sleep.
+            wait_debug_port(port, proc)
+        steps.append({'stage': 'test-only-webview-cdp-attach',
+                      'result': 'PASS', 'policy_hives': policies})
         browser = playwright.chromium.connect_over_cdp(f'http://127.0.0.1:{port}', timeout=20000)
         context = browser.contexts[0]
         deadline = time.monotonic() + 35
@@ -91,7 +149,7 @@ def launch(executable, data_dir, profile_dir, log_dir, playwright, steps):
             time.sleep(.3)
         raise AssertionError('Installed desktop CDP target did not contain the actual Tauri UI')
     except Exception:
-        if proc.poll() is None:
+        if proc is not None and proc.poll() is None:
             subprocess.run(['taskkill', '/PID', str(proc.pid), '/T', '/F'],capture_output=True)
         raise
 
