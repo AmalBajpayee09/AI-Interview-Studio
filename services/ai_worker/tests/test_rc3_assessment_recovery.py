@@ -125,7 +125,7 @@ def test_real_authenticated_worker_subprocess_result_restoration(tmp_path):
                     if process.poll() is not None:raise AssertionError('Worker exited before authenticated readiness')
                     try:
                         res=http.get(uri+'/api/health')
-                        if res.status_code==200 and res.json()['version']=='1.0.0-rc.3':break
+                        if res.status_code==200 and res.json()['version']=='1.0.0-rc.4':break
                     except httpx.HTTPError:pass
                     if time.monotonic()-start>14:raise AssertionError('Worker failed authenticated readiness')
                     time.sleep(.08)
