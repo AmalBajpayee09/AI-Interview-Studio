@@ -12,9 +12,20 @@ use std::{
 };
 use serde::Serialize;
 use serde_json::json;
-use tauri::{AppHandle, LogicalSize, Manager, Size};
+use tauri::{AppHandle, LogicalSize, Manager, Size, WebviewUrl, WebviewWindowBuilder};
+use tauri::menu::{Menu, MenuItem};
+use tauri::tray::{TrayIconBuilder, TrayIconEvent, MouseButton, MouseButtonState};
+use tauri_plugin_global_shortcut::{GlobalShortcutExt, Shortcut, ShortcutState};
 
 const MAX_RESTARTS: u8 = 2;
+const DEFAULT_OVERLAY_HOTKEY: &str = "Ctrl+Alt+Shift+O";
+const HOTKEY_PRESETS: [&str;3] = ["Ctrl+Alt+Shift+O", "Ctrl+Alt+Shift+P", "Ctrl+Alt+Shift+I"];
+
+struct OverlaySettings {
+    hotkey: Mutex<(String, Shortcut)>,
+    registered: AtomicBool,
+}
+
 const READY_TIMEOUT: Duration = Duration::from_secs(22);
 
 struct WorkerRuntime {
@@ -282,12 +293,145 @@ fn set_compact(window: tauri::Window, compact: bool) -> Result<(), String> {
     Ok(())
 }
 
+
+fn show_overlay(app: &AppHandle, focus: bool) {
+    if let Some(window) = app.get_webview_window("main") {
+        let _ = window.unminimize();
+        let _ = window.set_always_on_top(true);
+        let _ = window.show();
+        if focus { let _ = window.set_focus(); }
+    }
+}
+
+fn toggle_overlay(app: &AppHandle) {
+    if let Some(window) = app.get_webview_window("main") {
+        if window.is_visible().unwrap_or(false) { let _ = window.hide(); }
+        else { show_overlay(app, false); }
+    }
+}
+
+fn open_workspace_window(app: &AppHandle) -> Result<(), String> {
+    if let Some(window) = app.get_webview_window("workspace") {
+        window.show().map_err(|e|e.to_string())?;
+        window.set_focus().map_err(|e|e.to_string())?;
+        return Ok(())
+    }
+    WebviewWindowBuilder::new(app,"workspace",WebviewUrl::App("index.html?workspace=1".into()))
+        .title("AI Interview Studio · Workspace")
+        .inner_size(1320.0,860.0)
+        .min_inner_size(640.0,480.0)
+        .center()
+        .build().map_err(|e|e.to_string())?;
+    Ok(())
+}
+
+fn shutdown_worker(app: &AppHandle) {
+    let state=app.state::<WorkerState>();
+    if state.stopping.swap(true,Ordering::SeqCst) {return}
+    if let Ok(mut rt)=state.runtime.lock() {
+        if let Some(mut child)=rt.child.take(){stop_child(&mut child)}
+        rt.ready=false;rt.stage="stopped";
+        event(&state,"desktop_shutdown","ok",rt.attempts,None);
+        readiness_marker(&state,&rt);
+    }
+}
+
+#[tauri::command]
+fn show_overlay_window(app: AppHandle) {show_overlay(&app,false)}
+
+#[tauri::command]
+fn hide_overlay_window(app: AppHandle) {
+    if let Some(window)=app.get_webview_window("main") {let _=window.hide();}
+}
+
+#[tauri::command]
+fn open_workspace(app: AppHandle) -> Result<(),String> {open_workspace_window(&app)}
+
+#[tauri::command]
+fn overlay_window_status(app: AppHandle) -> serde_json::Value {
+    let visible=app.get_webview_window("main")
+        .and_then(|w|w.is_visible().ok()).unwrap_or(false);
+    let status=app.state::<OverlaySettings>();
+    let name=status.hotkey.lock().map(|h|h.0.clone()).unwrap_or_default();
+    json!({"visible":visible,"hotkey":name,
+           "hotkey_registered":status.registered.load(Ordering::SeqCst),
+           "tray_installed":true,"worker_state":"independent_of_overlay"})
+}
+
+#[tauri::command]
+fn set_overlay_hotkey(app: AppHandle, hotkey: String) -> Result<(),String> {
+    if !HOTKEY_PRESETS.contains(&hotkey.as_str()) {
+        return Err("Choose a supported shortcut preset".into())
+    }
+    let next:Shortcut=hotkey.parse().map_err(|_|"Invalid global shortcut")?;
+    let state=app.state::<OverlaySettings>();
+    let mut current=state.hotkey.lock().map_err(|_|"Shortcut state unavailable")?;
+    if current.0==hotkey {return Ok(())}
+    let manager=app.global_shortcut();
+    let was_registered=state.registered.load(Ordering::SeqCst);
+    if was_registered {manager.unregister(current.1).map_err(|_|"Could not unregister previous shortcut")?;}
+    if manager.register(next).is_err() {
+        if was_registered {let _=manager.register(current.1);}
+        return Err("Shortcut is unavailable or already used by another application".into())
+    }
+    *current=(hotkey,next);
+    state.registered.store(true,Ordering::SeqCst);
+    Ok(())
+}
+
+#[tauri::command]
+fn exit_from_overlay(app: AppHandle) {
+    shutdown_worker(&app);
+    app.exit(0);
+}
+
 #[tauri::command]
 fn app_version() -> &'static str {env!("CARGO_PKG_VERSION")}
 
 pub fn run() {
     tauri::Builder::default()
         .setup(|app| {
+            let default_shortcut:Shortcut=DEFAULT_OVERLAY_HOTKEY.parse()?;
+            app.manage(OverlaySettings {
+                hotkey:Mutex::new((DEFAULT_OVERLAY_HOTKEY.to_string(),default_shortcut)),
+                registered:AtomicBool::new(false),
+            });
+            app.handle().plugin(
+                tauri_plugin_global_shortcut::Builder::new().with_handler(|app,shortcut,event| {
+                    if event.state()!=ShortcutState::Pressed {return}
+                    let settings=app.state::<OverlaySettings>();
+                    if let Ok(current)=settings.hotkey.lock() {
+                        if &current.1==shortcut {toggle_overlay(app);}
+                    }
+                }).build()
+            )?;
+            if app.global_shortcut().register(default_shortcut).is_ok() {
+                app.state::<OverlaySettings>().registered.store(true,Ordering::SeqCst);
+            }
+            let show_item=MenuItem::with_id(app,"show_overlay","Show overlay",true,None::<&str>)?;
+            let hide_item=MenuItem::with_id(app,"hide_overlay","Hide overlay",true,None::<&str>)?;
+            let workspace_item=MenuItem::with_id(app,"workspace","Open workspace & settings",true,None::<&str>)?;
+            let quit_item=MenuItem::with_id(app,"quit","Exit AI Interview Studio",true,None::<&str>)?;
+            let menu=Menu::with_items(app,&[&show_item,&hide_item,&workspace_item,&quit_item])?;
+            let _tray=TrayIconBuilder::new()
+                .icon(app.default_window_icon().ok_or("Missing application tray icon")?.clone())
+                .tooltip("AI Interview Studio · running")
+                .menu(&menu)
+                .show_menu_on_left_click(false)
+                .on_menu_event(|app,event| match event.id.as_ref() {
+                    "show_overlay"=>show_overlay(app,false),
+                    "hide_overlay"=>{if let Some(w)=app.get_webview_window("main"){let _=w.hide();}},
+                    "workspace"=>{let _=open_workspace_window(app);},
+                    "quit"=>{shutdown_worker(app);app.exit(0);},
+                    _=>{}
+                })
+                .on_tray_icon_event(|tray,event| {
+                    if let TrayIconEvent::Click{button:MouseButton::Left,
+                       button_state:MouseButtonState::Up,..}=event {
+                        toggle_overlay(tray.app_handle());
+                    }
+                }).build(app)?;
+
             let executable=app.path().resolve("ai-studio-worker.exe",tauri::path::BaseDirectory::Resource)?;
             let log_dir=app.path().app_log_dir()?;
             fs::create_dir_all(&log_dir)?;
@@ -319,22 +463,23 @@ pub fn run() {
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![worker_connection,worker_status,restart_worker,
-            export_worker_diagnostics,set_compact,app_version])
+            export_worker_diagnostics,set_compact,app_version,
+            show_overlay_window,hide_overlay_window,open_workspace,overlay_window_status,
+            set_overlay_hotkey,exit_from_overlay])
         .on_window_event(|window,win_event| {
-            if let tauri::WindowEvent::Destroyed=win_event {
-                if let Some(state)=window.try_state::<WorkerState>() {
-                    state.stopping.store(true,Ordering::SeqCst);
-                    if let Ok(mut rt)=state.runtime.lock() {
-                        if let Some(mut child)=rt.child.take(){stop_child(&mut child)}
-                        rt.ready=false;rt.stage="stopped";
-                        event(&state,"desktop_shutdown","ok",rt.attempts,None);
-                        readiness_marker(&state,&rt);
-                    }
+            if let tauri::WindowEvent::CloseRequested{api,..}=win_event {
+                if window.label()=="main" {
+                    api.prevent_close();
+                    let _=window.hide();
                 }
+                // Closing the secondary workspace does not kill the worker.
             }
         })
-        .run(tauri::generate_context!())
-        .expect("Unable to start AI Interview Studio");
+        .build(tauri::generate_context!())
+        .expect("Unable to build AI Interview Studio")
+        .run(|app,event| {
+            if let tauri::RunEvent::Exit=event {shutdown_worker(app);}
+        });
 }
 
 #[cfg(test)]
@@ -349,7 +494,7 @@ mod tests {
     fn restart_limit_is_bounded(){assert_eq!(MAX_RESTARTS,2)}
     #[test]
     fn only_version_matched_200_health_response_is_ready(){
-        assert!(validate_health_response(b"HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n{\"status\":\"ok\",\"version\":\"1.0.0-rc.3\"}"));
+        assert!(validate_health_response(b"HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n{\"status\":\"ok\",\"version\":\"1.0.0-rc.4\"}"));
         assert!(!validate_health_response(b"HTTP/1.1 401 Unauthorized\r\n\r\n{\"status\":\"ok\",\"version\":\"1.0.0-rc.3\"}"));
         assert!(!validate_health_response(b"HTTP/1.1 200 OK\r\n\r\n{\"status\":\"ok\",\"version\":\"0.8.0\"}"));
         assert!(!validate_health_response(b"HTTP/1.1 200 OK\r\n\r\nnot-json"));
