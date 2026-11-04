@@ -87,8 +87,10 @@ def initialize():
             if 'cutoff_pct' not in columns:
                 db.execute('ALTER TABLE assessments ADD COLUMN cutoff_pct REAL')
             db.execute('PRAGMA user_version=7')
-        if version < 6:
-            db.execute("""CREATE TABLE IF NOT EXISTS ai_usage (
+        # Older v6 databases were created with AI usage, but some migration paths
+        # may not have the table. Keep this idempotent repair independent of the
+        # schema-version marker; never lower user_version after the v7 migration.
+        db.execute("""CREATE TABLE IF NOT EXISTS ai_usage (
                 id TEXT PRIMARY KEY,
                 session_id TEXT NOT NULL REFERENCES sessions(id) ON DELETE CASCADE,
                 provider TEXT NOT NULL,
@@ -98,8 +100,7 @@ def initialize():
                 output_characters INTEGER NOT NULL,
                 created REAL NOT NULL
             )""")
-            db.execute('CREATE INDEX IF NOT EXISTS ai_usage_by_session ON ai_usage(session_id,created)')
-            db.execute('PRAGMA user_version=6')
+        db.execute('CREATE INDEX IF NOT EXISTS ai_usage_by_session ON ai_usage(session_id,created)')
 
 def session_create(title='Practice session'):
     sid = str(uuid.uuid4()); now = time.time()
@@ -171,13 +172,32 @@ def create_assessment(title,questions,duration_seconds,*,require_start=False,neg
 
 def list_assessments():
     with connect() as db:
-        return [{**dict(r),'questions':json.loads(r['questions_json'])} for r in db.execute('SELECT * FROM assessments ORDER BY created DESC')]
+        return [{**dict(r),'questions':json.loads(r['questions_json'])} for r in db.execute('''
+            SELECT a.*, (SELECT COUNT(*) FROM attempts t WHERE t.assessment_id=a.id) AS attempt_count
+            FROM assessments a ORDER BY a.created DESC''')]
 
 def assessment_by_id(aid):
     with connect() as db:
         row = db.execute('SELECT * FROM assessments WHERE id=?',(aid,)).fetchone()
     if not row: raise ValueError('Unknown assessment')
     return {**dict(row),'questions':json.loads(row['questions_json'])}
+
+def latest_assessment_result(aid):
+    """Retrieve the persisted final result for desktop restart/review.
+
+    Do not expose answer keys for assessments still in progress. Only completed
+    attempt receipts are visible here. The authenticated local API is single-user.
+    """
+    with connect() as database:
+        existing=database.execute('SELECT 1 FROM assessments WHERE id=?',(aid,)).fetchone()
+        if not existing:raise ValueError('Unknown assessment')
+        row=database.execute("""SELECT a.id,a.started,a.finished,a.result_json
+            FROM attempts a JOIN attempt_receipts r ON r.attempt_id=a.id
+            WHERE a.assessment_id=? AND a.result_json IS NOT NULL
+            ORDER BY a.finished DESC,a.id DESC LIMIT 1""",(aid,)).fetchone()
+    if row is None:return None
+    return {'attempt_id':row['id'],'started':row['started'],'finished':row['finished'],
+            'result':json.loads(row['result_json'])}
 
 def save_attempt(aid, answers, result, started):
     attempt_id = str(uuid.uuid4()); now = time.time()

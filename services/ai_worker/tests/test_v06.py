@@ -94,7 +94,7 @@ def test_schema_v5_migrates_to_v6_preserving_transcripts(client):
     db.initialize()
     assert client.get(f'/api/sessions/{sid}/transcripts').json()['transcripts'][0]['text']=='test sentence'
     with db.connect() as cx:
-        assert cx.execute('PRAGMA user_version').fetchone()[0]==6
+        assert cx.execute('PRAGMA user_version').fetchone()[0]==7
         assert cx.execute('PRAGMA foreign_key_check').fetchall()==[]
 
 
